@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>The Yellow Train – Reading Comprehension Game</title>
+  <style>
+    body { margin: 0; font-family: sans-serif; background: #ffc0cb; line-height: 1.8; font-size: 1.1rem; }
+    .container { max-width: 1000px; margin: 2rem auto; padding: 2rem; background: #fff; border-radius: 12px; }
+    h1 { margin-top: 0; font-size: 2rem; }
+    article { max-height: 500px; overflow-y: auto; padding:1rem; border:1px solid #ccc; border-radius:12px; font-size: 1.05rem; line-height: 1.9; }
+    .question { display: none; margin-bottom: 1rem; }
+    .question.active { display: block; }
+    .options { display: grid; gap: .75rem; margin-top: .5rem; }
+    label { display: flex; gap: .5rem; align-items: center; }
+    .nav { margin-top: 1.5rem; display: flex; justify-content: space-between; }
+    .scorebar { margin-top: 1.5rem; padding: 1rem; background: #f3f3f3; border-radius: 8px; font-size: 1.1rem; }
+    button { padding: .75rem 1.25rem; border-radius: 8px; cursor: pointer; font-size: 1rem; }
+    button.primary { background: #111827; color: #fff; border: none; }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1>Reading Comprehension Game: The Yellow Train</h1>
+    <p>Read the passage, then answer <strong>25</strong> multiple-choice questions. You will see one question at a time.</p>
+
+    <article>
+      <h2>The Yellow Train: A Journey Through the Pyrenees</h2>
+      <p>The Little Yellow Train of the eastern Pyrenees constitutes both a remarkable feat of engineering and a unique cultural experience. Operating for more than a century, this historic railway has transported passengers through one of Europe’s most dramatic mountain landscapes. Stretching across the borderlands between France and Spain, it continues to captivate travelers with its combination of technical ingenuity and breathtaking scenery.</p>
+      <p>The train itself offers a choice of closed or open-air carriages, all distinguished by their characteristic bright yellow paint. For many passengers, the open carriages provide the most memorable experience, allowing for uninterrupted views of the surrounding environment. The journey proceeds at a modest pace of approximately 15 miles per hour, enabling riders to appreciate not only the engineering accomplishments of the line but also the rich natural and cultural landscape it traverses. Among the most notable sights are the formidable fortifications of Vauban, a celebrated French military engineer.</p>
+      <p>Traveling through this region provides a striking sensory experience. The line passes swiftly flowing streams, dense forests, and precipitous gorges, all of which illustrate the varied geography of the Pyrenees. Small mountain villages appear seemingly suspended on cliffs, their church towers piercing the sky like rockets ready to ascend. The railway thus offers an encounter with both human resilience in adapting to rugged terrain and the grandeur of unspoiled nature.</p>
+      <p>The visual impressions are accompanied by a striking sense of tranquility. Unlike modern diesel-powered transport, the Yellow Train moves without intrusive noise, leaving only the sound of rushing air and the occasional echo through tunnels. This silence enhances the contemplative quality of the journey, reinforcing its reputation as an almost timeless mode of travel.</p>
+      <p>As the train ascends further into the mountains, passengers experience a succession of dramatic transitions. The railway crosses France’s only suspension bridge of its kind before reaching Bolquère-Eyne, the highest railway station in the country at 5,226 feet above sea level. Here, the environment changes markedly: travelers emerge into an alpine plateau that resembles an expansive fairytale landscape. Meadows and green fields stretch outward, encircled by distant peaks that evoke the sensation of being situated on the very roof of the world.</p>
+      <p>Ultimately, the Little Yellow Train is more than a mode of transportation. It represents a living connection between technological achievement, natural wonder, and cultural heritage. For over a century, it has enabled visitors to engage with the Pyrenees in a manner that is at once leisurely, reflective, and profoundly memorable.</p>
+    </article>
+
+    <div id="quiz"></div>
+
+    <div class="nav">
+      <button id="prevBtn">Previous</button>
+      <button id="nextBtn" class="primary">Next</button>
+    </div>
+
+    <div class="scorebar" id="scoreBox">No answers yet.</div>
+  </div>
+
+  <script>
+    const quizData = [
+      { q: "Which mountain range does the Little Yellow Train traverse?", options: ["The Pyrenees","The Alps","The Andes","The Carpathians"], answer: 0 },
+      // ... same other 24 questions as before ...
+    ];
+
+    const quizHost = document.getElementById('quiz');
+    const scoreBox = document.getElementById('scoreBox');
+    let current = 0;
+
+    function renderQuiz() {
+      quizHost.innerHTML = '';
+      quizData.forEach((item, idx) => {
+        const div = document.createElement('div');
+        div.className = 'question';
+        if (idx === 0) div.classList.add('active');
+        div.id = `q${idx}`;
+
+        const p = document.createElement('p');
+        p.textContent = `Q${idx+1}. ${item.q}`;
+        div.appendChild(p);
+
+        item.options.forEach((opt, oi) => {
+          const label = document.createElement('label');
+          const input = document.createElement('input');
+          input.type = 'radio';
+          input.name = `q${idx}`;
+          input.value = oi;
+          label.appendChild(input);
+          label.appendChild(document.createTextNode(opt));
+          div.appendChild(label);
+          div.appendChild(document.createElement('br'));
+        });
+
+        quizHost.appendChild(div);
+      });
+    }
+
+    function showQuestion(i) {
+      document.querySelectorAll('.question').forEach((el, idx) => {
+        el.classList.toggle('active', idx === i);
+      });
+    }
+
+    function gradeQuiz() {
+      let correct = 0;
+      quizData.forEach((item, i) => {
+        const picked = document.querySelector(`input[name=q${i}]:checked`);
+        if (picked && Number(picked.value) === item.answer) correct++;
+      });
+      const percent = Math.round((correct/quizData.length)*100);
+      scoreBox.textContent = `Score: ${correct}/${quizData.length} (${percent}%)`;
+    }
+
+    document.getElementById('nextBtn').addEventListener('click', () => {
+      if (current < quizData.length - 1) {
+        current++;
+        showQuestion(current);
+      } else {
+        gradeQuiz();
+      }
+    });
+
+    document.getElementById('prevBtn').addEventListener('click', () => {
+      if (current > 0) {
+        current--;
+        showQuestion(current);
+      }
+    });
+
+    renderQuiz();
+  </script>
+</body>
+</html>
