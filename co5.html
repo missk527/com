@@ -1,0 +1,137 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>11+ Comprehension — CO5</title>
+  <style>
+    :root{--bg:#f7fafc;--card:#ffffff;--ink:#1a202c;--muted:#4a5568;--accent:#2b6cb0;--ok:#2f855a;--bad:#c53030;}
+    html,body{margin:0;padding:0;background:var(--bg);color:var(--ink);font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,"Noto Sans",sans-serif;line-height:1.6}
+    .wrap{max-width:1000px;margin:24px auto;padding:0 16px}
+    header{display:flex;gap:12px;align-items:center;flex-wrap:wrap}
+    header h1{font-size:1.6rem;margin:.2rem 0}
+    header .tag{background:#ebf8ff;color:var(--accent);border:1px solid #bee3f8;padding:2px 8px;border-radius:999px;font-size:.85rem}
+    .card{background:var(--card);border:1px solid #e2e8f0;border-radius:16px;box-shadow:0 4px 16px rgba(0,0,0,.06);padding:20px;margin:16px 0}
+    .story{font-size:1.05rem;white-space:pre-wrap}
+    .q{margin:14px 0}
+    .q h3{margin:0 0 6px 0;font-size:1.02rem}
+    .opts{display:grid;grid-template-columns:1fr;gap:6px}
+    @media (min-width:700px){.opts{grid-template-columns:1fr 1fr}}
+    label{display:flex;gap:8px;align-items:flex-start;border:1px solid #e2e8f0;border-radius:12px;padding:8px 10px;background:#fff;cursor:pointer}
+    .actions{display:flex;gap:8px;flex-wrap:wrap;align-items:center}
+    button{border:none;border-radius:999px;padding:10px 14px;cursor:pointer}
+    .primary{background:var(--accent);color:#fff}
+    .ghost{background:#edf2f7;color:var(--ink)}
+    .ok{color:var(--ok)}
+    .bad{color:var(--bad)}
+    .score{font-size:1.2rem;font-weight:700}
+    .footer{color:var(--muted);font-size:.9rem}
+    .ans{font-size:.95rem;color:var(--muted)}
+  </style>
+</head>
+<body>
+  <div class="wrap">
+    <header>
+      <h1>11+ Comprehension (CO5)</h1>
+      <span class="tag">Time allowed: 30 minutes</span>
+    </header>
+
+    <div class="card">
+      <h2>Passage</h2>
+      <p class="story" id="story">
+
+When our town’s central library announced a “Library of Things,” some people cheered and others frowned. The cheerful crowd imagined borrowing sewing machines, telescopes, and board games the way they borrowed novels. The frowning group asked whether a library should lend anything that wasn’t a book. The head librarian, Mr Dawson, explained that reading is still the heart of the library, but reading isn’t the only way people learn. He pointed to a shelf of repair manuals and said, “A manual is an invitation. The tool you need to try the instructions is the reply.”
+
+The pilot collection began with donations: a pair of binoculars, two ukuleles, and a toolbox with a missing screwdriver. Volunteers cleaned each item and added checklists so borrowers could confirm everything was present on return. A QR code on every case linked to short guides: how to tune a ukulele, how to find the moon’s craters, how to avoid over-tightening a screw. The most popular item in the first month wasn’t flashy. It was a simple cake tin shaped like a train; families borrowed it for birthdays, washed it carefully, and returned it with photos.
+
+Rules were necessary. Borrowers had to be over twelve or bring an adult. Items were loaned for one week and could be renewed if no one else was waiting. Some objects required a quick safety talk at the desk; for the sewing machine, a librarian demonstrated how to keep fingers away from the needle and how to use the emergency stop. When a lamp was returned with a cracked shade, the staff didn’t cancel the program. Instead, they added a small repair station: glue, spare screws, and a label maker for parts.
+
+As the months passed, the library collected data. Which items travelled most? Which sat quietly? They discovered that the telescope was busiest near the dates of meteor showers, while the tool kit peaked during school holidays. A set of noise-cancelling headphones rarely moved until exam season, when it disappeared and reappeared every week. The library posted a public list of requests: bike pumps, picnic blankets, a food dehydrator. Local businesses offered discounts on replacements when parts wore out. The town council asked whether the program saved residents money. Mr Dawson answered that saving money was helpful, but the deeper value was shared confidence. “Skills grow when people borrow the courage to try,” he said.
+
+Not everyone changed their mind, but more people joined the conversation. A retired engineer started a Saturday “fix-it table,” showing teenagers how to test batteries and strip wires safely. A parent who borrowed the ukulele ended up teaching chords to a small group after school. When a storm knocked out power one evening, the library’s camping lanterns—previously ignored—were gone within an hour. In the morning light, borrowers brought them back with thanks and stories. The Library of Things didn’t replace books; it offered another way to read the world—through doing, sharing, and returning.
+</p>
+    </div>
+
+    <div class="card">
+      <h2>Multiple-Choice Questions (Single Answer)</h2>
+      <div id="questions"></div>
+      <div class="actions">
+        <button class="primary" onclick="grade()">Check answers & score</button>
+        <button class="ghost" onclick="resetAll()">Reset</button>
+        <span id="score" class="score"></span>
+      </div>
+      <details>
+        <summary>Answer key (view after checking)</summary>
+        <ol id="answerList" class="ans"></ol>
+      </details>
+    </div>
+
+    <div class="footer">© 2025 Miss K | For classroom practice only.</div>
+  </div>
+
+<script>
+const DATA = [{"q": "What is the main idea of the passage?", "a": ["Libraries should stop lending books", "A 'Library of Things' helps people learn by borrowing useful items", "Only experts should borrow tools", "Borrowing objects is too risky to try"], "ans": "B", "exp": ""}, {"q": "What concern did some people have about the Library of Things?", "a": ["It would make books more expensive", "It wasn't a 'real' library activity", "It would increase parking fees", "It would close the library early"], "ans": "B", "exp": ""}, {"q": "What point does Mr Dawson make about manuals and tools?", "a": ["Manuals replace tools", "Tools are unnecessary for learning", "Manuals invite action, tools enable it", "Only adults can use manuals"], "ans": "C", "exp": ""}, {"q": "How did the pilot collection begin?", "a": ["With a government grant", "With donations of various items", "With purchases from shops", "With items taken from a school"], "ans": "B", "exp": ""}, {"q": "Which item was surprisingly the most popular at first?", "a": ["A telescope", "A sewing machine", "A cake tin shaped like a train", "Noise-cancelling headphones"], "ans": "C", "exp": ""}, {"q": "What did volunteers add to each item for returns?", "a": ["A price tag", "A checklist", "A GPS tracker", "A lock"], "ans": "B", "exp": ""}, {"q": "What did the QR codes provide?", "a": ["Advertisements", "Short guides and how-tos", "Library maps only", "A payment page"], "ans": "B", "exp": ""}, {"q": "What safety step was required for some objects?", "a": ["Signing a long contract", "A quick safety talk at the desk", "A driving test", "An insurance purchase"], "ans": "B", "exp": ""}, {"q": "What sewing-machine safety advice is mentioned?", "a": ["Sew with lights off", "Keep fingers away from the needle and use the emergency stop", "Use the fastest speed always", "Let children operate alone"], "ans": "B", "exp": ""}, {"q": "How did the staff respond to a cracked lamp shade?", "a": ["They cancelled the program", "They fined everyone", "They added a small repair station", "They hid breakable items"], "ans": "C", "exp": ""}, {"q": "What pattern did the library notice about the telescope?", "a": ["It was never borrowed", "It was busiest near meteor showers", "It only worked in summer", "It was broken"], "ans": "B", "exp": ""}, {"q": "When did the toolkit become most popular?", "a": ["During school holidays", "During winter only", "On rainy days only", "Never"], "ans": "A", "exp": ""}, {"q": "When were the noise-cancelling headphones most in demand?", "a": ["During exam season", "During festivals", "During winter holidays", "They were always unpopular"], "ans": "A", "exp": ""}, {"q": "What did the public request list include?", "a": ["Bike pumps and picnic blankets", "Cars", "Laptops for free", "Pets"], "ans": "A", "exp": ""}, {"q": "How did local businesses support the program?", "a": ["By banning library borrowing", "By offering discounts on replacements", "By raising prices", "By lending money"], "ans": "B", "exp": ""}, {"q": "What deeper value did Mr Dawson highlight?", "a": ["Only saving money matters", "Shared confidence and courage to try", "Owning more things is best", "Reading is unnecessary"], "ans": "B", "exp": ""}, {"q": "Which event showed the lanterns’ usefulness?", "a": ["A sports game", "A storm that cut power", "A parade", "A heatwave"], "ans": "B", "exp": ""}, {"q": "What new activity did a retired engineer start?", "a": ["A chess club", "A Saturday 'fix-it table' teaching safe repairs", "A dance class", "A poetry night"], "ans": "B", "exp": ""}, {"q": "What happened after a parent borrowed the ukulele?", "a": ["They broke it", "They taught chords to a small group", "They sold it", "They complained about noise"], "ans": "B", "exp": ""}, {"q": "According to the passage, what is the loan period for items?", "a": ["Three days", "One week", "One month", "It varies daily"], "ans": "B", "exp": ""}, {"q": "What rule applied to younger borrowers?", "a": ["Anyone can borrow alone", "Under-12s need an adult", "Only under-12s can borrow", "No one under 18 may enter"], "ans": "B", "exp": ""}, {"q": "What purpose did the checklists serve?", "a": ["To track late fees", "To confirm all parts are present on return", "To rate item quality", "To teach reading"], "ans": "B", "exp": ""}, {"q": "How did the library respond to damage rather than ending the program?", "a": ["Ignored it", "Blamed borrowers", "Improved systems and added repairs", "Closed the library"], "ans": "C", "exp": ""}, {"q": "Which sentence best captures the author’s view of the program?", "a": ["It replaces books entirely", "It complements books by supporting hands-on learning", "It is a waste of time", "It is too confusing"], "ans": "B", "exp": ""}, {"q": "What does the phrase 'read the world' suggest?", "a": ["Only literature matters", "Understanding grows through practical experiences", "Maps are the only tool", "Reading is impossible"], "ans": "B", "exp": ""}, {"q": "Which detail shows data-driven management?", "a": ["Posting photos only", "Collecting loan patterns by month and season", "Guessing what people want", "Banning renewals"], "ans": "B", "exp": ""}, {"q": "Why is the cake tin example important?", "a": ["It shows only children borrow", "It shows that simple items can have high community value", "It proves baking is required", "It shows the program failed"], "ans": "B", "exp": ""}, {"q": "What is implied by adding safety talks and repair stations?", "a": ["The program learns and adapts to risks", "The program is unsafe and must close", "Borrowers can’t read", "Only experts can borrow"], "ans": "A", "exp": ""}, {"q": "Which audience gained new roles through the program?", "a": ["Retirees and parents", "Only tourists", "Only librarians", "Only teenagers"], "ans": "A", "exp": ""}, {"q": "Why does the librarian call saving money helpful but not central?", "a": ["He dislikes money", "He wants to sell items", "He values shared skills and confidence more", "He thinks borrowing is useless"], "ans": "C", "exp": ""}, {"q": "What does the word 'pilot' most nearly mean as used here?", "a": ["Airplane captain", "Initial trial before expansion", "Cartoon character", "Back-up copy"], "ans": "B", "exp": ""}, {"q": "Which is an inference rather than a directly stated fact?", "a": ["The library posted requests", "Some residents saved money", "More people began discussing the program", "The cake tin was popular"], "ans": "C", "exp": ""}, {"q": "Which item was missing a part at the start?", "a": ["The toolbox", "The telescope", "The ukulele", "The sewing machine"], "ans": "A", "exp": ""}, {"q": "What seasonal pattern is linked to headphone loans?", "a": ["Summer heat", "Exam season", "Holiday shopping", "Monsoon"], "ans": "B", "exp": ""}, {"q": "Which title best fits the passage?", "a": ["Things, Not Books", "Borrowing Courage: Our Library of Things", "Why Libraries Should Sell Tools", "The End of Reading"], "ans": "B", "exp": ""}, {"q": "Which habit does the passage encourage most?", "a": ["Owning as much as possible", "Trying, sharing, and returning responsibly", "Avoiding community projects", "Refusing to repair items"], "ans": "B", "exp": ""}];
+
+const container = document.getElementById('questions');
+DATA.forEach((item, idx)=>{
+  const n = idx + 1;
+  const block = document.createElement('div');
+  block.className = 'q';
+  block.innerHTML = `
+    <h3>${n}. ${item.q}</h3>
+    <div class="opts">
+      ${['A','B','C','D'].map((k,i)=>{
+        const text = item.a[i];
+        const name = 'q'+n;
+        const id = name + '_' + k;
+        return `
+        <label for="${id}">
+          <input type="radio" name="${name}" id="${id}" value="${k}" />
+          <span>(${k}) ${text}</span>
+        </label>`
+      }).join('')}
+    </div>
+    <div id="fb_${n}" class="ans"></div>
+  `;
+  container.appendChild(block);
+});
+
+function grade(){
+  let score = 0;
+  DATA.forEach((item, idx)=>{
+    const n = idx + 1;
+    const picked = document.querySelector(`input[name='q${n}']:checked`);
+    const fb = document.getElementById('fb_'+n);
+    if(!picked){
+      fb.innerHTML = "<span class='bad'>Not answered</span>";
+      return;
+    }
+    if(picked.value === item.ans){
+      score++;
+      fb.innerHTML = "<span class='ok'>✔ Correct</span>";
+    }else{
+      fb.innerHTML = "<span class='bad'>✘ Incorrect</span>. Correct: " + item.ans;
+    }
+  });
+  document.getElementById('score').textContent = `Score: ${score} / ${DATA.length}`;
+}
+
+function resetAll(){
+  document.querySelectorAll("input[type='radio']").forEach(r=>r.checked=false);
+  document.getElementById('score').textContent = "";
+  DATA.forEach((_,i)=>{
+    const fb = document.getElementById('fb_'+(i+1));
+    fb.textContent = "";
+  });
+}
+
+const ansList = document.getElementById('answerList');
+DATA.forEach((item, idx)=>{
+  const li = document.createElement('li');
+  li.textContent = `${idx+1}. ${item.ans}`;
+  ansList.appendChild(li);
+});
+</script>
+</body>
+</html>
