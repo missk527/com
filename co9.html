@@ -1,0 +1,137 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>11+ Comprehension — CO9</title>
+  <style>
+    :root{--bg:#f7fafc;--card:#ffffff;--ink:#1a202c;--muted:#4a5568;--accent:#2b6cb0;--ok:#2f855a;--bad:#c53030;}
+    html,body{margin:0;padding:0;background:var(--bg);color:var(--ink);font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,"Noto Sans",sans-serif;line-height:1.6}
+    .wrap{max-width:1000px;margin:24px auto;padding:0 16px}
+    header{display:flex;gap:12px;align-items:center;flex-wrap:wrap}
+    header h1{font-size:1.6rem;margin:.2rem 0}
+    header .tag{background:#ebf8ff;color:var(--accent);border:1px solid #bee3f8;padding:2px 8px;border-radius:999px;font-size:.85rem}
+    .card{background:var(--card);border:1px solid #e2e8f0;border-radius:16px;box-shadow:0 4px 16px rgba(0,0,0,.06);padding:20px;margin:16px 0}
+    .story{font-size:1.05rem;white-space:pre-wrap}
+    .q{margin:14px 0}
+    .q h3{margin:0 0 6px 0;font-size:1.02rem}
+    .opts{display:grid;grid-template-columns:1fr;gap:6px}
+    @media (min-width:700px){.opts{grid-template-columns:1fr 1fr}}
+    label{display:flex;gap:8px;align-items:flex-start;border:1px solid #e2e8f0;border-radius:12px;padding:8px 10px;background:#fff;cursor:pointer}
+    .actions{display:flex;gap:8px;flex-wrap:wrap;align-items:center}
+    button{border:none;border-radius:999px;padding:10px 14px;cursor:pointer}
+    .primary{background:var(--accent);color:#fff}
+    .ghost{background:#edf2f7;color:var(--ink)}
+    .ok{color:var(--ok)}
+    .bad{color:var(--bad)}
+    .score{font-size:1.2rem;font-weight:700}
+    .footer{color:var(--muted);font-size:.9rem}
+    .ans{font-size:.95rem;color:var(--muted)}
+  </style>
+</head>
+<body>
+  <div class="wrap">
+    <header>
+      <h1>11+ Comprehension (CO9)</h1>
+      <span class="tag">Time allowed: 30 minutes</span>
+    </header>
+
+    <div class="card">
+      <h2>Passage</h2>
+      <p class="story" id="story">
+
+The old storage room beside the theatre hadn’t been used in years, unless you counted dust as a tenant. In January, our media club convinced the head teacher to let us turn it into a tiny community radio studio. We didn’t ask for expensive equipment. We asked for permission, a lock that worked, and a promise that if we met two goals—clear sound and useful programmes—we could stay on air. The plan was to stream online at lunch and one evening a week so neighbours could listen too.
+
+We scrounged parts from the school’s cupboard: a pair of battered microphones, foam from a craft box for makeshift filters, and a rolling cart that became a mixing desk. A parent who fixed bicycles donated a set of padded headphones. Another parent, a nurse, reminded us to sanitise gear between shows. Our physics teacher helped us understand why sound bounces in a small room; we built panels from old curtains and cardboard to dampen echoes. When we tested our first recording, the result was thin and buzzy. We laughed, then made a list: shorten cables, move mics closer, add a carpet square.
+
+By the third week, the sound improved enough that we planned real segments. “Morning Noticeboard” would summarise sports fixtures and club times. “Two Streets Over” would interview one neighbour each week about jobs people rarely see in films: bus scheduler, florist, recycling driver. We created a rule book: no rumours, name sources, ask permission before recording, and avoid music we didn’t have rights to. Our art club designed a tiny logo—a radio with a speech-bubble antenna—and our computing group set up an online player with a big pause button because not everyone likes autoplay.
+
+Going live felt different from rehearsals. Your own voice in the headphones sounded like a stranger. Our first guest was the librarian from the community centre, who explained how to request large-print books and home delivery. She also described how volunteers read stories over the phone to people who couldn’t leave the house. Listeners sent short messages through a form on our website. Some simply said “hello.” One asked when we would add traffic updates. Another wrote that the pause button was a relief.
+
+At the end of the first month, we reviewed numbers and notes. The audience was small but steady, with a bump on Thursdays after the neighbour interview. We made a simple chart for the head teacher and promised the same two goals for the next month: clear sound, useful programmes. He nodded and asked for one more: teach three Year 7 students how to run the desk. “If a station can train new voices,” he said, “it has a future.” We added a final line to our rule book: “Leave a guide for the next presenter.” Then we hit “record,” because the first lesson any station learns is that silence, too, is a choice.
+</p>
+    </div>
+
+    <div class="card">
+      <h2>Multiple-Choice Questions (Single Answer)</h2>
+      <div id="questions"></div>
+      <div class="actions">
+        <button class="primary" onclick="grade()">Check answers & score</button>
+        <button class="ghost" onclick="resetAll()">Reset</button>
+        <span id="score" class="score"></span>
+      </div>
+      <details>
+        <summary>Answer key (view after checking)</summary>
+        <ol id="answerList" class="ans"></ol>
+      </details>
+    </div>
+
+    <div class="footer">© 2025 Miss K | For classroom practice only.</div>
+  </div>
+
+<script>
+const DATA = [{"q": "What was the main purpose of converting the storage room?", "a": ["To build a theatre set", "To create a small community radio studio", "To store equipment", "To open a café"], "ans": "B", "exp": ""}, {"q": "What two goals were promised to keep the studio on air?", "a": ["High ratings and sponsors", "Clear sound and useful programmes", "Long shows and famous guests", "Daily broadcasts and music charts"], "ans": "B", "exp": ""}, {"q": "How often did the club plan to stream at first?", "a": ["All day, every day", "At lunch and one evening a week", "Only weekends", "Once a month"], "ans": "B", "exp": ""}, {"q": "Where did the club get most equipment?", "a": ["Bought brand-new", "Borrowed from another school", "Scrounged from cupboards and donations", "Ordered online"], "ans": "C", "exp": ""}, {"q": "Why did they add foam and curtains to the room?", "a": ["Decoration", "To dampen echoes and improve sound", "To block the door", "To hide cables"], "ans": "B", "exp": ""}, {"q": "What did the first recording sound like?", "a": ["Perfect", "Thin and buzzy", "Too loud to hear", "Completely silent"], "ans": "B", "exp": ""}, {"q": "Which fix was NOT on their improvement list?", "a": ["Shorten cables", "Move microphones closer", "Add a carpet square", "Open all windows during shows"], "ans": "D", "exp": ""}, {"q": "What was the segment 'Morning Noticeboard' about?", "a": ["Weather only", "Sports fixtures and club times", "Traffic reports", "Cooking tips"], "ans": "B", "exp": ""}, {"q": "What was the idea behind 'Two Streets Over'?", "a": ["Interview celebrities", "Interview neighbours about everyday jobs", "Tell jokes", "Play music requests"], "ans": "B", "exp": ""}, {"q": "Which rule was included in their rule book?", "a": ["Share rumours for fun", "Use music without permission", "Name sources and get permission", "Never interview adults"], "ans": "C", "exp": ""}, {"q": "Who designed the logo?", "a": ["A hired company", "The art club", "The head teacher", "A neighbour"], "ans": "B", "exp": ""}, {"q": "Why did the online player include a big pause button?", "a": ["Autoplay is illegal", "To save electricity", "Because not everyone likes autoplay", "To hide the volume"], "ans": "C", "exp": ""}, {"q": "Who was the first guest on the live show?", "a": ["Bus scheduler", "Community centre librarian", "Recycling driver", "Florist"], "ans": "B", "exp": ""}, {"q": "What service did the librarian describe?", "a": ["Home delivery and reading by phone", "Free cinema tickets", "Dog walking", "Homework help only"], "ans": "A", "exp": ""}, {"q": "How did listeners send feedback?", "a": ["By calling a hotline", "Through a form on the website", "By posting letters", "By shouting outside"], "ans": "B", "exp": ""}, {"q": "What was the audience trend after a few weeks?", "a": ["Huge spike then zero", "Small but steady, with a Thursday bump", "No listeners at all", "Random with no pattern"], "ans": "B", "exp": ""}, {"q": "What additional goal did the head teacher suggest?", "a": ["Longer shows", "More music", "Train three Year 7 students to run the desk", "Buy expensive microphones"], "ans": "C", "exp": ""}, {"q": "What final rule did the club add?", "a": ["No more interviews", "Leave a guide for the next presenter", "Always use autoplay", "Turn off the pause button"], "ans": "B", "exp": ""}, {"q": "What does the last sentence suggest about silence?", "a": ["It is always bad", "It is a technical fault only", "It can be a deliberate choice", "It doesn’t matter"], "ans": "C", "exp": ""}, {"q": "Which sentence best states the central idea?", "a": ["Only professionals can run radio", "With clear goals and community focus, students can build a useful station", "Radio is outdated", "Streaming requires expensive gear"], "ans": "B", "exp": ""}, {"q": "Why did the nurse parent advise sanitising gear?", "a": ["To make it shiny", "For hygiene between shows", "To clean dust only", "To pass inspections"], "ans": "B", "exp": ""}, {"q": "What problem does sound ‘bouncing’ cause in small rooms?", "a": ["Better bass", "Echoes that reduce clarity", "More volume", "Less recording time"], "ans": "B", "exp": ""}, {"q": "Why avoid music without rights?", "a": ["It’s boring", "It may be illegal or blocked", "It is too quiet", "Listeners dislike music"], "ans": "B", "exp": ""}, {"q": "What does the phrase 'your own voice sounded like a stranger' convey?", "a": ["The microphones were faulty", "Hearing oneself recorded can feel unfamiliar", "Someone else was talking", "They used the wrong headphones"], "ans": "B", "exp": ""}, {"q": "Which detail shows inclusivity for listeners?", "a": ["Only evening broadcasts", "The large pause button on the player", "Fast talking hosts", "Inside jokes"], "ans": "B", "exp": ""}, {"q": "What metric indicated a popular segment day?", "a": ["Friday lunchtime", "Thursday after neighbour interviews", "Monday mornings", "Sundays"], "ans": "B", "exp": ""}, {"q": "Which is an inference rather than a direct fact?", "a": ["The audience was small but steady", "The librarian explained services", "The site had a feedback form", "Some listeners prefer control over autoplay"], "ans": "D", "exp": ""}, {"q": "What did the physics teacher help with?", "a": ["Script writing", "Understanding acoustics and room treatment", "Marketing", "Finding guests"], "ans": "B", "exp": ""}, {"q": "What role did the computing group play?", "a": ["Audio editing", "Setting up the online player", "Writing songs", "Buying microphones"], "ans": "B", "exp": ""}, {"q": "Which title best fits the passage?", "a": ["Silence Is Always a Problem", "Two Streets Over: Building a Student Radio", "The Theatre’s Secret", "Autoplay Forever"], "ans": "B", "exp": ""}, {"q": "Why was training Year 7 students important?", "a": ["To make longer shows", "To ensure continuity by teaching new voices", "To reduce workload for teachers", "To pass an exam"], "ans": "B", "exp": ""}, {"q": "What habit does the passage encourage?", "a": ["Guess first, measure later", "Set clear goals, test, improve, and share", "Avoid feedback", "Hide mistakes"], "ans": "B", "exp": ""}, {"q": "Which job is mentioned as an example for interviews?", "a": ["Pilot", "Bus scheduler", "Astronaut", "Chef"], "ans": "B", "exp": ""}, {"q": "What did the logo look like?", "a": ["A lightning bolt", "A radio with a speech-bubble antenna", "A microphone with wings", "A pair of headphones"], "ans": "B", "exp": ""}, {"q": "Which evidence shows responsible practice?", "a": ["Using rumours", "Sanitising gear and naming sources", "Ignoring licences", "Playing copyrighted music freely"], "ans": "B", "exp": ""}, {"q": "What does the head teacher require to let the studio continue?", "a": ["New furniture", "Clear sound and useful programmes month after month", "A celebrity guest", "Paid ads"], "ans": "B", "exp": ""}];
+
+const container = document.getElementById('questions');
+DATA.forEach((item, idx)=>{
+  const n = idx + 1;
+  const block = document.createElement('div');
+  block.className = 'q';
+  block.innerHTML = `
+    <h3>${n}. ${item.q}</h3>
+    <div class="opts">
+      ${['A','B','C','D'].map((k,i)=>{
+        const text = item.a[i];
+        const name = 'q'+n;
+        const id = name + '_' + k;
+        return `
+        <label for="${id}">
+          <input type="radio" name="${name}" id="${id}" value="${k}" />
+          <span>(${k}) ${text}</span>
+        </label>`
+      }).join('')}
+    </div>
+    <div id="fb_${n}" class="ans"></div>
+  `;
+  container.appendChild(block);
+});
+
+function grade(){
+  let score = 0;
+  DATA.forEach((item, idx)=>{
+    const n = idx + 1;
+    const picked = document.querySelector(`input[name='q${n}']:checked`);
+    const fb = document.getElementById('fb_'+n);
+    if(!picked){
+      fb.innerHTML = "<span class='bad'>Not answered</span>";
+      return;
+    }
+    if(picked.value === item.ans){
+      score++;
+      fb.innerHTML = "<span class='ok'>✔ Correct</span>";
+    }else{
+      fb.innerHTML = "<span class='bad'>✘ Incorrect</span>. Correct: " + item.ans;
+    }
+  });
+  document.getElementById('score').textContent = `Score: ${score} / ${DATA.length}`;
+}
+
+function resetAll(){
+  document.querySelectorAll("input[type='radio']").forEach(r=>r.checked=false);
+  document.getElementById('score').textContent = "";
+  DATA.forEach((_,i)=>{
+    const fb = document.getElementById('fb_'+(i+1));
+    fb.textContent = "";
+  });
+}
+
+const ansList = document.getElementById('answerList');
+DATA.forEach((item, idx)=>{
+  const li = document.createElement('li');
+  li.textContent = `${idx+1}. ${item.ans}`;
+  ansList.appendChild(li);
+});
+</script>
+</body>
+</html>
