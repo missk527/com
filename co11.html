@@ -1,0 +1,137 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>11+ Comprehension — CO11</title>
+  <style>
+    :root{--bg:#f7fafc;--card:#ffffff;--ink:#1a202c;--muted:#4a5568;--accent:#2b6cb0;--ok:#2f855a;--bad:#c53030;}
+    html,body{margin:0;padding:0;background:var(--bg);color:var(--ink);font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,"Noto Sans",sans-serif;line-height:1.6}
+    .wrap{max-width:1000px;margin:24px auto;padding:0 16px}
+    header{display:flex;gap:12px;align-items:center;flex-wrap:wrap}
+    header h1{font-size:1.6rem;margin:.2rem 0}
+    header .tag{background:#ebf8ff;color:var(--accent);border:1px solid #bee3f8;padding:2px 8px;border-radius:999px;font-size:.85rem}
+    .card{background:var(--card);border:1px solid #e2e8f0;border-radius:16px;box-shadow:0 4px 16px rgba(0,0,0,.06);padding:20px;margin:16px 0}
+    .story{font-size:1.05rem;white-space:pre-wrap}
+    .q{margin:14px 0}
+    .q h3{margin:0 0 6px 0;font-size:1.02rem}
+    .opts{display:grid;grid-template-columns:1fr;gap:6px}
+    @media (min-width:700px){.opts{grid-template-columns:1fr 1fr}}
+    label{display:flex;gap:8px;align-items:flex-start;border:1px solid #e2e8f0;border-radius:12px;padding:8px 10px;background:#fff;cursor:pointer}
+    .actions{display:flex;gap:8px;flex-wrap:wrap;align-items:center}
+    button{border:none;border-radius:999px;padding:10px 14px;cursor:pointer}
+    .primary{background:var(--accent);color:#fff}
+    .ghost{background:#edf2f7;color:var(--ink)}
+    .ok{color:var(--ok)}
+    .bad{color:var(--bad)}
+    .score{font-size:1.2rem;font-weight:700}
+    .footer{color:var(--muted);font-size:.9rem}
+    .ans{font-size:.95rem;color:var(--muted)}
+  </style>
+</head>
+<body>
+  <div class="wrap">
+    <header>
+      <h1>11+ Comprehension (CO11)</h1>
+      <span class="tag">Time allowed: 30 minutes</span>
+    </header>
+
+    <div class="card">
+      <h2>Passage</h2>
+      <p class="story" id="story">
+
+Our town’s hall smelled like solder and cinnamon on the same Saturday—the first time the community ran a Repair Café beside the weekend bake sale. People arrived with lamps that blinked, zips that stuck, and toasters that had decided bread was a stranger. Our school’s design club volunteered to help greet visitors, log items, and match each person with a fixer. The rules were simple: repairs were free, advice was free, and replacements were up to you. If fixing wasn’t possible, we tried to help people decide whether to donate parts or recycle safely.
+
+Before the doors opened, mentors gave us a briefing. “Ask three questions,” said Malik, a radio technician. “When did it last work? What changed? What have you already tried?” Those questions, he said, were a map. Another volunteer rolled out a “triage table” with screwdrivers, zip ties, a multimeter, and a tangle of cables sorted into clear tubs. Beside it, a sewing teacher checked needles, spare buttons, and threads. On the wall, someone pinned a big sign: “We repair together. You keep your hands on your own item.”
+
+The first hour felt like a puzzle race. A kettle that refused to boil turned out to have a loose spade connector; we tightened it and wrote “check limescale monthly” on a small card for the owner’s fridge. A coat with a broken zip slider was mended with a five‑minute swap of a two‑pound part. A tablet that “wouldn’t charge” revived when we cleaned lint from its port with a toothpick and a burst of air. Not everything was quick. A turntable with a worn belt had to wait for a part, and a cracked phone screen went to a professional—sharp glass and home repairs don’t mix.
+
+At midday the organiser rang a bell so bakers and fixers would actually eat. While we chewed cinnamon rolls, we added tick marks on a poster: items repaired, items advised, items sent on. One visitor asked whether fixing old things was worth it if new ones were cheap. Malik shrugged and pointed at the line of people learning how to open a plug safely. “Skill is value, too,” he said. A parent signed up for next month’s event after watching her child replace a lamp switch with help from a volunteer.
+
+In the last hour, the hall grew quieter. Someone tuned a radio; the song sounded clearer than before, as if the room had been repaired too. We counted the day’s totals: thirty‑one items fixed, eleven advised, six referred to specialists, and a bucket of parts sorted for reuse. We recycled a shoebox of dead batteries and posted our numbers online with a list of the most common faults. The organiser thanked everyone and added one more line to the poster: “Bring a friend, and bring a question.” The repairs would continue next month, but the habit—ask, learn, mend—could start tonight at anyone’s kitchen table.
+</p>
+    </div>
+
+    <div class="card">
+      <h2>Multiple-Choice Questions (Single Answer)</h2>
+      <div id="questions"></div>
+      <div class="actions">
+        <button class="primary" onclick="grade()">Check answers & score</button>
+        <button class="ghost" onclick="resetAll()">Reset</button>
+        <span id="score" class="score"></span>
+      </div>
+      <details>
+        <summary>Answer key (view after checking)</summary>
+        <ol id="answerList" class="ans"></ol>
+      </details>
+    </div>
+
+    <div class="footer">© 2025 Miss K | For classroom practice only.</div>
+  </div>
+
+<script>
+const DATA = [{"q": "What event took place at the town hall?", "a": ["A sports tournament", "A Repair Café alongside a bake sale", "A film festival", "A car show"], "ans": "B", "exp": ""}, {"q": "What roles did the school’s design club take?", "a": ["Baking cakes", "Greeting visitors, logging items, and matching them with fixers", "Selling tickets", "Cleaning the hall"], "ans": "B", "exp": ""}, {"q": "What were the basic rules about repairs and advice?", "a": ["Repairs cost money, advice is free", "Both repairs and advice are free; replacements are your choice", "Everything costs money", "Only replacements are allowed"], "ans": "B", "exp": ""}, {"q": "What three questions did Malik recommend?", "a": ["Where, why, and who?", "When did it last work? What changed? What have you tried?", "How much and how long?", "Who broke it and why?"], "ans": "B", "exp": ""}, {"q": "What was the purpose of the 'triage table'?", "a": ["Serving food", "Sorting people into lines", "Providing common tools to diagnose problems", "Displaying posters"], "ans": "C", "exp": ""}, {"q": "What message did the wall sign emphasise?", "a": ["Only experts repair", "We repair together; owners keep hands on their own items", "No questions allowed", "Repairs are guaranteed"], "ans": "B", "exp": ""}, {"q": "Why didn’t the kettle boil?", "a": ["The lid was open", "The power was out", "A loose spade connector", "A broken handle"], "ans": "C", "exp": ""}, {"q": "What advice was given after fixing the kettle?", "a": ["Replace it next time", "Check limescale monthly", "Never use tap water", "Boil only once a day"], "ans": "B", "exp": ""}, {"q": "How was the coat’s zip repaired?", "a": ["Sewing it shut", "Replacing the slider with a cheap part", "Adding glue", "Cutting the zip off"], "ans": "B", "exp": ""}, {"q": "How did the team revive the tablet that wouldn’t charge?", "a": ["Replacing the battery", "Buying a new charger", "Cleaning lint from the charging port", "Restarting the router"], "ans": "C", "exp": ""}, {"q": "Why was the phone with a cracked screen sent to a professional?", "a": ["No one had time", "It was too old", "Sharp glass makes home repairs unsafe", "It was under warranty"], "ans": "C", "exp": ""}, {"q": "Which item needed a part ordered later?", "a": ["Kettle", "Coat", "Turntable with a worn belt", "Radio"], "ans": "C", "exp": ""}, {"q": "What did the organiser do at midday?", "a": ["Closed the event", "Rang a bell so people would eat", "Started a raffle", "Announced winners"], "ans": "B", "exp": ""}, {"q": "How did volunteers track outcomes?", "a": ["By guessing", "By adding tick marks on a poster for repaired, advised, and sent‑on items", "By secret ballots", "By photographs only"], "ans": "B", "exp": ""}, {"q": "What point did Malik make about value?", "a": ["Only money matters", "New items are always better", "Skill and learning are value too", "Repair is a waste of time"], "ans": "C", "exp": ""}, {"q": "What effect did the event have on one parent and child?", "a": ["They left early", "They argued about costs", "They signed up for next month after replacing a lamp switch together", "They bought a new lamp instead"], "ans": "C", "exp": ""}, {"q": "How did the hall feel in the last hour?", "a": ["Noisier and chaotic", "Quieter, as if the room had been repaired too", "Crowded and hot", "Empty"], "ans": "B", "exp": ""}, {"q": "What were the final totals for the day?", "a": ["31 fixed, 11 advised, 6 referred, plus parts sorted", "11 fixed, 31 advised, 6 referred", "20 fixed only", "No repairs succeeded"], "ans": "A", "exp": ""}, {"q": "What was recycled at the end?", "a": ["Plastic bottles", "Dead batteries", "Old posters", "Tin cans"], "ans": "B", "exp": ""}, {"q": "What did the organisers post online?", "a": ["Only photos of cakes", "Numbers and a list of common faults", "Adverts for new gadgets", "Nothing"], "ans": "B", "exp": ""}, {"q": "Which sentence best states the central idea?", "a": ["Repairs are impossible without professionals", "Community repair events build skills and reduce waste", "Buying new is always cheaper", "Only electronics can be fixed"], "ans": "B", "exp": ""}, {"q": "What habit does the passage encourage most?", "a": ["Throw things away quickly", "Ask, learn, and mend with guidance", "Avoid asking questions", "Never touch your own items"], "ans": "B", "exp": ""}, {"q": "Why is ‘owners keep hands on their own item’ important?", "a": ["Insurance and learning: people stay involved and responsible", "It makes repairs slower", "It prevents experts from helping", "It avoids teaching"], "ans": "A", "exp": ""}, {"q": "Which detail shows data‑driven practice?", "a": ["Guessing the faults", "Posting counts and common faults online", "Taking selfies", "Closing early"], "ans": "B", "exp": ""}, {"q": "Which item was not fixed immediately due to parts?", "a": ["Turntable", "Tablet", "Kettle", "Coat"], "ans": "A", "exp": ""}, {"q": "Which is an inference rather than a direct fact?", "a": ["Cinnamon rolls were served", "The room felt repaired because people’s anxiety dropped", "A kettle had a loose connector", "A phone screen was cracked"], "ans": "B", "exp": ""}, {"q": "What safety boundary did volunteers follow?", "a": ["Never touch electricity", "Send all items away", "Avoid sharp glass and risky repairs for amateurs", "Ban children"], "ans": "C", "exp": ""}, {"q": "Why did the event use a multimeter?", "a": ["To weigh items", "To measure electrical properties during diagnosis", "To heat connectors", "To sew zips"], "ans": "B", "exp": ""}, {"q": "Which title best fits the passage?", "a": ["Throw It Out", "Questions First: A Repair Café Story", "The Bake Sale Mystery", "The New Gadget Parade"], "ans": "B", "exp": ""}, {"q": "How were tools organised for quick access?", "a": ["Random piles", "Locked cabinet only", "Clear tubs on a triage table", "Backpacks"], "ans": "C", "exp": ""}, {"q": "Why did someone ask if repairs were worth it when new items were cheap?", "a": ["To criticise volunteers", "To question value; answer: skills and learning also matter", "To insist on refunds", "To compare brand names"], "ans": "B", "exp": ""}, {"q": "What does the phrase 'as if the room had been repaired too' suggest?", "a": ["The roof was fixed", "The atmosphere improved as problems were solved", "The floor was mopped", "The lights were replaced"], "ans": "B", "exp": ""}, {"q": "Which audience is the event designed to include?", "a": ["Only experts", "Residents with broken items, learning by doing", "Only teenagers", "Only shop owners"], "ans": "B", "exp": ""}, {"q": "What outcome encourages future participation?", "a": ["Posting nothing", "Adding 'Bring a friend, and bring a question' to the poster", "Charging high fees", "Hiding the results"], "ans": "B", "exp": ""}, {"q": "What is the narrative point of view?", "a": ["First‑person student helper", "Second person", "Third person omniscient", "Script format"], "ans": "A", "exp": ""}, {"q": "Which measurement/diagnostic tool is mentioned besides the multimeter?", "a": ["Stethoscope", "Toothpick and air burst for cleaning ports", "Microscope", "Thermal imager"], "ans": "B", "exp": ""}];
+
+const container = document.getElementById('questions');
+DATA.forEach((item, idx)=>{
+  const n = idx + 1;
+  const block = document.createElement('div');
+  block.className = 'q';
+  block.innerHTML = `
+    <h3>${n}. ${item.q}</h3>
+    <div class="opts">
+      ${['A','B','C','D'].map((k,i)=>{
+        const text = item.a[i];
+        const name = 'q'+n;
+        const id = name + '_' + k;
+        return `
+        <label for="${id}">
+          <input type="radio" name="${name}" id="${id}" value="${k}" />
+          <span>(${k}) ${text}</span>
+        </label>`
+      }).join('')}
+    </div>
+    <div id="fb_${n}" class="ans"></div>
+  `;
+  container.appendChild(block);
+});
+
+function grade(){
+  let score = 0;
+  DATA.forEach((item, idx)=>{
+    const n = idx + 1;
+    const picked = document.querySelector(`input[name='q${n}']:checked`);
+    const fb = document.getElementById('fb_'+n);
+    if(!picked){
+      fb.innerHTML = "<span class='bad'>Not answered</span>";
+      return;
+    }
+    if(picked.value === item.ans){
+      score++;
+      fb.innerHTML = "<span class='ok'>✔ Correct</span>";
+    }else{
+      fb.innerHTML = "<span class='bad'>✘ Incorrect</span>. Correct: " + item.ans;
+    }
+  });
+  document.getElementById('score').textContent = `Score: ${score} / ${DATA.length}`;
+}
+
+function resetAll(){
+  document.querySelectorAll("input[type='radio']").forEach(r=>r.checked=false);
+  document.getElementById('score').textContent = "";
+  DATA.forEach((_,i)=>{
+    const fb = document.getElementById('fb_'+(i+1));
+    fb.textContent = "";
+  });
+}
+
+const ansList = document.getElementById('answerList');
+DATA.forEach((item, idx)=>{
+  const li = document.createElement('li');
+  li.textContent = `${idx+1}. ${item.ans}`;
+  ansList.appendChild(li);
+});
+</script>
+</body>
+</html>
