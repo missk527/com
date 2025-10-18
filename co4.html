@@ -1,0 +1,135 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>11+ Comprehension — CO4</title>
+  <style>
+    :root{--bg:#f7fafc;--card:#ffffff;--ink:#1a202c;--muted:#4a5568;--accent:#2b6cb0;--ok:#2f855a;--bad:#c53030;}
+    html,body{margin:0;padding:0;background:var(--bg);color:var(--ink);font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,"Noto Sans",sans-serif;line-height:1.6}
+    .wrap{max-width:1000px;margin:24px auto;padding:0 16px}
+    header{display:flex;gap:12px;align-items:center;flex-wrap:wrap}
+    header h1{font-size:1.6rem;margin:.2rem 0}
+    header .tag{background:#ebf8ff;color:var(--accent);border:1px solid #bee3f8;padding:2px 8px;border-radius:999px;font-size:.85rem}
+    .card{background:var(--card);border:1px solid #e2e8f0;border-radius:16px;box-shadow:0 4px 16px rgba(0,0,0,.06);padding:20px;margin:16px 0}
+    .story{font-size:1.05rem;white-space:pre-wrap}
+    .q{margin:14px 0}
+    .q h3{margin:0 0 6px 0;font-size:1.02rem}
+    .opts{display:grid;grid-template-columns:1fr;gap:6px}
+    @media (min-width:700px){.opts{grid-template-columns:1fr 1fr}}
+    label{display:flex;gap:8px;align-items:flex-start;border:1px solid #e2e8f0;border-radius:12px;padding:8px 10px;background:#fff;cursor:pointer}
+    .actions{display:flex;gap:8px;flex-wrap:wrap;align-items:center}
+    button{border:none;border-radius:999px;padding:10px 14px;cursor:pointer}
+    .primary{background:var(--accent);color:#fff}
+    .ghost{background:#edf2f7;color:var(--ink)}
+    .ok{color:var(--ok)}
+    .bad{color:var(--bad)}
+    .score{font-size:1.2rem;font-weight:700}
+    .footer{color:var(--muted);font-size:.9rem}
+    .ans{font-size:.95rem;color:var(--muted)}
+  </style>
+</head>
+<body>
+  <div class="wrap">
+    <header>
+      <h1>11+ Comprehension (CO4)</h1>
+      <span class="tag">Time allowed: 30 minutes</span>
+    </header>
+
+    <div class="card">
+      <h2>Passage</h2>
+      <p class="story" id="story">
+
+Across the river from the old stadium, a grocery chain turned the roof of its largest store into a small apiary—four wooden hives painted blue, yellow, and white. On weekends, a volunteer group invites visitors to climb the stairs and learn why bees matter to cities. The project began after a hot summer when gardens produced fewer tomatoes and strawberries than usual. A biology teacher, Ms Patel, told the store manager that pollinators were likely struggling, and offered to help set up a pilot site if the company promised to keep records and share them with local schools.
+
+Some customers worried about stings and sticky honey leaking through the ceiling. The team responded with facts and design. The hives were placed far from the roof edge and surrounded by planters filled with lavender and thyme to give bees a reason to circle close. A mesh windbreak slowed gusts so the insects could land more gently. Clear signs explained that honeybees are usually calm when left alone and that foraging workers focus on flowers, not people’s lunches. The store also bought light suits and veils for training sessions, which quickly sold out because parents wanted a science activity they could do with their children.
+
+Keeping bees on a roof is not as simple as leaving boxes in the sun. The volunteers record weekly notes: queen-right or not, brood pattern, mite counts, and nectar sources. In late summer they weigh each hive to make sure there is enough food for winter. If a colony seems weak, they combine it with a stronger one. When autumn arrives, they reduce entrances so wasps and cold drafts are less of a problem. Data from the roof is compared with notes from parks and backyard keepers to spot patterns across the neighbourhood.
+
+The honey yield is modest—only enough jars to stock two shelves—but the impact reaches further. Students map which streets bloom earliest and suggest where to plant drought-tolerant flowers. The store hosts a “pollinator aisle” each May, setting out seed packets beside fruit and explaining how habitat supports harvests. The city council has started to include green roofs in new building guidelines, and a nearby hospital planted a small meadow along its ambulance road. On quiet mornings, you can stand by the windbreak and hear a sound that resembles a steady violin note. It is the hum of thousands of wings, stitching together gardens one visit at a time. The apiary doesn’t solve every problem facing insects, but it gives people a way to notice and to help—and noticing, the volunteers like to say, is where stewardship begins.
+</p>
+    </div>
+
+    <div class="card">
+      <h2>Multiple-Choice Questions (Single Answer)</h2>
+      <div id="questions"></div>
+      <div class="actions">
+        <button class="primary" onclick="grade()">Check answers & score</button>
+        <button class="ghost" onclick="resetAll()">Reset</button>
+        <span id="score" class="score"></span>
+      </div>
+      <details>
+        <summary>Answer key (view after checking)</summary>
+        <ol id="answerList" class="ans"></ol>
+      </details>
+    </div>
+
+    <div class="footer">© 2025 Miss K | For classroom practice only.</div>
+  </div>
+
+<script>
+const DATA = [{"q": "Where is the apiary located?", "a": ["In a park pavilion", "On the roof of a large grocery store", "Inside a greenhouse", "At a farm outside the city"], "ans": "B", "exp": ""}, {"q": "What problem prompted the project to begin?", "a": ["Too much rain ruined crops", "A summer with fewer garden fruits than usual", "Bees swarmed the stadium", "Honey prices were high"], "ans": "B", "exp": ""}, {"q": "Who first suggested setting up the pilot site?", "a": ["The store manager", "Ms Patel, a biology teacher", "A city councilor", "A hospital director"], "ans": "B", "exp": ""}, {"q": "What did Ms Patel ask the company to promise?", "a": ["To sell honey cheaply", "To keep records and share them with schools", "To paint the hives red", "To hire full‑time beekeepers"], "ans": "B", "exp": ""}, {"q": "What were customers worried about?", "a": ["Noise from machines", "Stings and honey leaking through the ceiling", "Parking fees", "The colour of the hives"], "ans": "B", "exp": ""}, {"q": "How did the team encourage bees to stay near the hives?", "a": ["By placing sugar bowls", "By surrounding hives with lavender and thyme planters", "By adding bright lights", "By playing music"], "ans": "B", "exp": ""}, {"q": "What purpose did the mesh windbreak serve?", "a": ["Decoration", "Slowing gusts to help bees land", "Keeping rain out of the store", "Catching pollen"], "ans": "B", "exp": ""}, {"q": "Why did training suits and veils sell out quickly?", "a": ["They were fashionable", "Parents wanted a science activity with their children", "They were discounted", "They were required by law"], "ans": "B", "exp": ""}, {"q": "Which statement about honeybees is supported by the passage?", "a": ["They always attack humans", "They are usually calm when left alone", "They cannot live in cities", "They do not pollinate"], "ans": "B", "exp": ""}, {"q": "What does “queen-right or not” refer to in the notes?", "a": ["Whether the hive has a healthy laying queen", "Whether the hive is painted correctly", "If bees are flying at night", "If honey is ripe"], "ans": "A", "exp": ""}, {"q": "Why do volunteers weigh hives in late summer?", "a": ["To compare sizes", "To check if there is enough food for winter", "To calculate honey prices", "To choose a hive for painting"], "ans": "B", "exp": ""}, {"q": "What action is taken if a colony seems weak?", "a": ["It is moved to the stadium", "It is combined with a stronger colony", "It is sold", "It is left alone until spring"], "ans": "B", "exp": ""}, {"q": "Why are entrances reduced in autumn?", "a": ["To keep wasps and cold drafts out", "To make bees faster", "To trap more heat for honey cooking", "To stop bees from leaving forever"], "ans": "A", "exp": ""}, {"q": "What is done with the data from the roof?", "a": ["It is kept secret", "It is compared with notes from parks and backyard keepers", "It is sent to the hospital", "It is posted without context"], "ans": "B", "exp": ""}, {"q": "How large is the honey harvest?", "a": ["Enough to fill a warehouse", "None at all", "Only a few shelves’ worth", "More than the city can eat"], "ans": "C", "exp": ""}, {"q": "What do students do with street-bloom information?", "a": ["They decorate hives", "They map bloom times and suggest plantings", "They harvest fruit", "They remove weeds"], "ans": "B", "exp": ""}, {"q": "What happens in the store each May?", "a": ["A sale on umbrellas", "A ‘pollinator aisle’ with seeds and explanations", "A beekeeping ban", "A fireworks show"], "ans": "B", "exp": ""}, {"q": "Which city policy change is mentioned?", "a": ["A tax on honey", "Green roofs included in new building guidelines", "A ban on rooftop access", "Mandatory hive painting"], "ans": "B", "exp": ""}, {"q": "What did the nearby hospital plant?", "a": ["A vegetable plot on the roof", "A small meadow along the ambulance road", "Fruit trees in the lobby", "Nothing"], "ans": "B", "exp": ""}, {"q": "Which description is most figurative?", "a": ["A mesh windbreak slowed gusts", "The hum resembled a steady violin note", "Hives were painted blue, yellow, and white", "The team kept weekly notes"], "ans": "B", "exp": ""}, {"q": "What is the best statement of the main idea?", "a": ["Rooftop bees produce huge profits", "A small rooftop apiary can educate people and support urban ecology", "Only experts should keep bees", "City gardens don’t need pollinators"], "ans": "B", "exp": ""}, {"q": "What is the author’s tone toward the project?", "a": ["Skeptical", "Admiring and practical", "Angry", "Sarcastic"], "ans": "B", "exp": ""}, {"q": "Which detail shows community engagement?", "a": ["Parents buying suits for training", "Hives painted white", "The roof is flat", "Honey jars are small"], "ans": "A", "exp": ""}, {"q": "What does the passage suggest about record‑keeping?", "a": ["It is optional and unhelpful", "It helps compare patterns across sites", "It scares bees", "It replaces observations"], "ans": "B", "exp": ""}, {"q": "What is implied by calling the site a ‘pilot’?", "a": ["It will end quickly", "It is an initial trial that could grow", "It is run by pilots", "It is funded by the stadium"], "ans": "B", "exp": ""}, {"q": "What is the meaning of “stewardship” in context?", "a": ["Ownership of property", "Responsible care for the environment", "Winning a contest", "Selling products"], "ans": "B", "exp": ""}, {"q": "Why mention customers’ worries early in the passage?", "a": ["To show conflict that the team answers with facts and design", "To discourage rooftop projects", "To prove bees are dangerous", "To explain why the store closed"], "ans": "A", "exp": ""}, {"q": "Which action best reduces draft and intruders in autumn?", "a": ["Painting the hives", "Reducing entrances", "Moving the hives indoors", "Adding sugar water"], "ans": "B", "exp": ""}, {"q": "What does the phrase “stitching together gardens one visit at a time” suggest?", "a": ["Bees sew leaves", "Bees connect separate green spaces through pollination", "Bees repair fences", "Bees travel only in straight lines"], "ans": "B", "exp": ""}, {"q": "Why is the honey yield described as modest?", "a": ["To highlight that education and ecology, not profit, are central", "Because bees are lazy", "Because the roof is too small for any honey", "Because honey is banned"], "ans": "A", "exp": ""}, {"q": "Which sentence is an inference rather than a direct fact?", "a": ["Parents wanted science activities", "The council included green roofs in guidelines", "The project improved pollinator awareness", "There are four hives on the roof"], "ans": "C", "exp": ""}, {"q": "Which audience seems especially targeted by the project’s events?", "a": ["Tourists only", "Parents and children", "Professional chefs only", "Retirees only"], "ans": "B", "exp": ""}, {"q": "What role does the store play beyond hosting hives?", "a": ["None", "It educates customers through displays and seeds", "It bans bee‑related products", "It sells expensive suits only"], "ans": "B", "exp": ""}, {"q": "Which title best fits the passage?", "a": ["Liquid Gold", "Rooftop Bees: A Small Project with a Wide Buzz", "Stings and Things", "Bees versus Cities"], "ans": "B", "exp": ""}, {"q": "What habit does the passage encourage most?", "a": ["Buying more honey", "Noticing and caring for urban habitats", "Avoiding rooftops", "Ignoring insects"], "ans": "B", "exp": ""}];
+
+const container = document.getElementById('questions');
+DATA.forEach((item, idx)=>{
+  const n = idx + 1;
+  const block = document.createElement('div');
+  block.className = 'q';
+  block.innerHTML = `
+    <h3>${n}. ${item.q}</h3>
+    <div class="opts">
+      ${['A','B','C','D'].map((k,i)=>{
+        const text = item.a[i];
+        const name = 'q'+n;
+        const id = name + '_' + k;
+        return `
+        <label for="${id}">
+          <input type="radio" name="${name}" id="${id}" value="${k}" />
+          <span>(${k}) ${text}</span>
+        </label>`
+      }).join('')}
+    </div>
+    <div id="fb_${n}" class="ans"></div>
+  `;
+  container.appendChild(block);
+});
+
+function grade(){
+  let score = 0;
+  DATA.forEach((item, idx)=>{
+    const n = idx + 1;
+    const picked = document.querySelector(`input[name='q${n}']:checked`);
+    const fb = document.getElementById('fb_'+n);
+    if(!picked){
+      fb.innerHTML = "<span class='bad'>Not answered</span>";
+      return;
+    }
+    if(picked.value === item.ans){
+      score++;
+      fb.innerHTML = "<span class='ok'>✔ Correct</span>";
+    }else{
+      fb.innerHTML = "<span class='bad'>✘ Incorrect</span>. Correct: " + item.ans;
+    }
+  });
+  document.getElementById('score').textContent = `Score: ${score} / ${DATA.length}`;
+}
+
+function resetAll(){
+  document.querySelectorAll("input[type='radio']").forEach(r=>r.checked=false);
+  document.getElementById('score').textContent = "";
+  DATA.forEach((_,i)=>{
+    const fb = document.getElementById('fb_'+(i+1));
+    fb.textContent = "";
+  });
+}
+
+const ansList = document.getElementById('answerList');
+DATA.forEach((item, idx)=>{
+  const li = document.createElement('li');
+  li.textContent = `${idx+1}. ${item.ans}`;
+  ansList.appendChild(li);
+});
+</script>
+</body>
+</html>

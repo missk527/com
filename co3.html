@@ -1,0 +1,135 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>11+ Comprehension — CO3</title>
+  <style>
+    :root{--bg:#f7fafc;--card:#ffffff;--ink:#1a202c;--muted:#4a5568;--accent:#2b6cb0;--ok:#2f855a;--bad:#c53030;}
+    html,body{margin:0;padding:0;background:var(--bg);color:var(--ink);font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,"Noto Sans",sans-serif;line-height:1.6}
+    .wrap{max-width:1000px;margin:24px auto;padding:0 16px}
+    header{display:flex;gap:12px;align-items:center;flex-wrap:wrap}
+    header h1{font-size:1.6rem;margin:.2rem 0}
+    header .tag{background:#ebf8ff;color:var(--accent);border:1px solid #bee3f8;padding:2px 8px;border-radius:999px;font-size:.85rem}
+    .card{background:var(--card);border:1px solid #e2e8f0;border-radius:16px;box-shadow:0 4px 16px rgba(0,0,0,.06);padding:20px;margin:16px 0}
+    .story{font-size:1.05rem;white-space:pre-wrap}
+    .q{margin:14px 0}
+    .q h3{margin:0 0 6px 0;font-size:1.02rem}
+    .opts{display:grid;grid-template-columns:1fr;gap:6px}
+    @media (min-width:700px){.opts{grid-template-columns:1fr 1fr}}
+    label{display:flex;gap:8px;align-items:flex-start;border:1px solid #e2e8f0;border-radius:12px;padding:8px 10px;background:#fff;cursor:pointer}
+    .actions{display:flex;gap:8px;flex-wrap:wrap;align-items:center}
+    button{border:none;border-radius:999px;padding:10px 14px;cursor:pointer}
+    .primary{background:var(--accent);color:#fff}
+    .ghost{background:#edf2f7;color:var(--ink)}
+    .ok{color:var(--ok)}
+    .bad{color:var(--bad)}
+    .score{font-size:1.2rem;font-weight:700}
+    .footer{color:var(--muted);font-size:.9rem}
+    .ans{font-size:.95rem;color:var(--muted)}
+  </style>
+</head>
+<body>
+  <div class="wrap">
+    <header>
+      <h1>11+ Comprehension (CO3)</h1>
+      <span class="tag">Time allowed: 30 minutes</span>
+    </header>
+
+    <div class="card">
+      <h2>Passage</h2>
+      <p class="story" id="story">
+
+On the first weekend of spring, our town tested a handmade “tide clock” beside the harbour. It wasn’t a digital screen or a phone app. Instead, a round wooden face had a single hand that moved slowly to mark “high tide,” “falling,” “low tide,” and “rising.” The clock was part of a student project to help walkers, fishers, and kayakers plan their time safely along the shore. The idea came after two middle-school friends, Noor and Ethan, were caught on a narrow strip of sand when the water suddenly rushed back in. They made it to the steps in time, but the moment scared them enough to start asking questions.
+
+They learned that the sea in our bay rises and falls roughly twice every twenty-four hours, but not at the same times each day. The moon’s gravity and the coastline’s shape both matter. With a science teacher’s help, the pair collected a month of readings: when the water reached a certain marker on the pier, they wrote down the time. They also checked online tables from the national weather service to verify whether their notes made sense. The more they learned, the more they realized people needed a simple way to “read” the tide without looking up numbers.
+
+The first design was a poster with arrows showing safe and unsafe zones, but it sat flat and was easy to ignore. Later, Noor’s grandfather, a retired carpenter, offered scraps of cedar to build the clock body. Ethan designed the face on paper: four labelled arcs and small icons—a boot print, a fish, a kayak—placed where each group should be most careful. When the wood was ready, they installed a slow-turning mechanism powered by a cheap solar cell. The tide hand completes one full circle in about twelve hours and twenty-five minutes, then keeps going, day after day.
+
+On launch day, a small crowd gathered near the stairs to the water. A local reporter took photos while a councilor cut a ribbon. The science teacher reminded everyone that the clock was a guide, not a guarantee: storms and strong winds can make the water arrive earlier than expected. Still, the clock encouraged conversations. Children pointed at the icons and guessed who should wait before stepping onto the rocks. A pair of early-morning swimmers checked the hand and decided to use the pool that day. After a week, the harbour master agreed to keep the clock mounted through summer, as long as a volunteer group signed up to check it weekly. Noor and Ethan didn’t promise that their invention could predict everything, but they had made the tides easier to notice—and noticing, they said, is where safety begins.
+</p>
+    </div>
+
+    <div class="card">
+      <h2>Multiple-Choice Questions (Single Answer)</h2>
+      <div id="questions"></div>
+      <div class="actions">
+        <button class="primary" onclick="grade()">Check answers & score</button>
+        <button class="ghost" onclick="resetAll()">Reset</button>
+        <span id="score" class="score"></span>
+      </div>
+      <details>
+        <summary>Answer key (view after checking)</summary>
+        <ol id="answerList" class="ans"></ol>
+      </details>
+    </div>
+
+    <div class="footer">© 2025 Miss K | For classroom practice only.</div>
+  </div>
+
+<script>
+const DATA = [{"q": "What is the main purpose of the tide clock project?", "a": ["To decorate the harbour", "To help people plan safely around the tides", "To advertise local shops", "To replace weather reports"], "ans": "B", "exp": ""}, {"q": "What event inspired Noor and Ethan to start asking questions?", "a": ["A school competition", "Being trapped on a sand strip by rising water", "A TV documentary", "A science fair prize"], "ans": "B", "exp": ""}, {"q": "How many times does the sea in the bay typically rise and fall in 24 hours?", "a": ["Once", "Twice", "Three times", "Four times"], "ans": "B", "exp": ""}, {"q": "Which two factors do the students learn affect the tides most?", "a": ["Wind and temperature", "Moon’s gravity and coastline shape", "Rainfall and clouds", "Boats and bridges"], "ans": "B", "exp": ""}, {"q": "How did they collect initial data?", "a": ["By guessing", "By reading old newspapers", "By noting water levels at a pier marker", "By interviewing swimmers"], "ans": "C", "exp": ""}, {"q": "What did they use to check whether their notes made sense?", "a": ["A fishing guide", "Online tables from the national weather service", "A compass", "A radio broadcast"], "ans": "B", "exp": ""}, {"q": "Why did the first poster design fail to achieve the goal?", "a": ["It got wet", "It was too colourful", "It was easy to ignore", "It had spelling errors"], "ans": "C", "exp": ""}, {"q": "Who provided wood for the clock body?", "a": ["The harbour master", "Noor’s grandfather", "Ethan’s aunt", "The councilor"], "ans": "B", "exp": ""}, {"q": "What material was the clock body made from?", "a": ["Pine", "Oak", "Cedar", "Plastic"], "ans": "C", "exp": ""}, {"q": "What powers the clock’s mechanism?", "a": ["Batteries only", "A windmill", "Solar cell", "Hand-crank"], "ans": "C", "exp": ""}, {"q": "How long does the tide hand take to complete one full circle?", "a": ["Six hours", "Twelve hours and twenty-five minutes", "Twenty-four hours", "Two days"], "ans": "B", "exp": ""}, {"q": "Where were icons like a boot print, fish, and kayak placed?", "a": ["Randomly", "Near each arc as reminders for different groups", "On the back of the clock", "On the ribbon"], "ans": "B", "exp": ""}, {"q": "What warning does the science teacher give at the launch?", "a": ["Never visit the harbour", "The clock is a guide, not a guarantee", "The clock is broken", "Swimming is banned"], "ans": "B", "exp": ""}, {"q": "What can make water arrive earlier than expected?", "a": ["Cold air", "Storms and strong winds", "Sunrise", "Bird migrations"], "ans": "B", "exp": ""}, {"q": "How did the community react to the clock?", "a": ["They ignored it", "They argued about it", "It encouraged conversations and decisions", "They removed it"], "ans": "C", "exp": ""}, {"q": "What did the early-morning swimmers decide to do?", "a": ["Swim anyway", "Use the pool instead", "Wait until evening", "Cancel all exercise"], "ans": "B", "exp": ""}, {"q": "What condition did the harbour master set for keeping the clock up?", "a": ["A fee must be paid", "It must be repainted weekly", "Volunteers check it weekly", "It must be locked"], "ans": "C", "exp": ""}, {"q": "What is the best summary of the final sentence?", "a": ["Prediction is perfect", "Safety starts with paying attention", "Numbers are useless", "Technology solves everything"], "ans": "B", "exp": ""}, {"q": "Which sentence best expresses the central idea of the passage?", "a": ["Designing gadgets is easy", "A simple, well-tested tool can help people behave safely", "Tides never change", "Only experts can understand tides"], "ans": "B", "exp": ""}, {"q": "Why is the clock helpful even without precise numbers?", "a": ["Because it looks expensive", "Because a single hand shows the phase clearly", "Because it has many colours", "Because it makes sounds"], "ans": "B", "exp": ""}, {"q": "Which group would the boot print icon most likely address?", "a": ["Walkers", "Fishers", "Kayakers", "Sailors"], "ans": "A", "exp": ""}, {"q": "Which step shows the students practiced verification?", "a": ["Drawing icons", "Checking national tables against their notes", "Painting the wood", "Cutting the ribbon"], "ans": "B", "exp": ""}, {"q": "Why does the text mention the moon’s gravity?", "a": ["To introduce astronomy trivia", "To explain a cause of tides", "To argue against using clocks", "To warn about eclipses"], "ans": "B", "exp": ""}, {"q": "Which statement is an inference rather than a direct fact?", "a": ["The clock is mounted near the stairs", "Children pointed at the icons", "The clock made some readers feel more cautious", "The hand completes a circle in about 12 hours 25 minutes"], "ans": "C", "exp": ""}, {"q": "What problem did Noor and Ethan face at the beginning?", "a": ["They lost their notes", "They were bored", "They were caught by incoming water", "They broke the clock"], "ans": "C", "exp": ""}, {"q": "Why is cedar a good choice for the clock body, based on context?", "a": ["It is waterproof and durable outdoors (implied)", "It is the cheapest wood", "It is the heaviest wood", "It looks exactly like plastic"], "ans": "A", "exp": ""}, {"q": "What role did the retired carpenter play?", "a": ["Advisor on wording", "Supplier of wood and skills", "Weather forecaster", "Harbour inspector"], "ans": "B", "exp": ""}, {"q": "What does the phrase “guide, not a guarantee” suggest readers should do?", "a": ["Ignore the clock", "Treat it as the only source", "Use judgment and watch conditions", "Avoid the harbour"], "ans": "C", "exp": ""}, {"q": "Which feature makes the clock noticeable and engaging for the public?", "a": ["Its quiet location", "Icons tailored to different users", "Its small size", "Hidden placement"], "ans": "B", "exp": ""}, {"q": "What schedule does the harbour master require?", "a": ["Monthly checks", "Weekly checks by volunteers", "Daily checks by police", "No checks"], "ans": "B", "exp": ""}, {"q": "Which detail shows community partnership?", "a": ["A councilor cutting the ribbon", "A broken ladder nearby", "A closed café", "Empty benches"], "ans": "A", "exp": ""}, {"q": "Why don’t the times of high and low tide stay the same each day?", "a": ["Because the moon rises at the same time daily", "Because the moon’s position shifts and local geography affects timing", "Because clocks are inaccurate", "Because weekends change"], "ans": "B", "exp": ""}, {"q": "What is the narrative perspective of the passage?", "a": ["First-person narrator", "Third-person observer", "Second-person instruction", "Diary entries"], "ans": "B", "exp": ""}, {"q": "Which title best fits the passage?", "a": ["Moon Secrets", "The Harbour That Slept", "Reading the Water: A Tide Clock Story", "How to Build a Boat"], "ans": "C", "exp": ""}, {"q": "What habit does the passage most encourage?", "a": ["Competing in races", "Noticing patterns in nature for safety", "Ignoring warnings", "Relying on luck"], "ans": "B", "exp": ""}];
+
+const container = document.getElementById('questions');
+DATA.forEach((item, idx)=>{
+  const n = idx + 1;
+  const block = document.createElement('div');
+  block.className = 'q';
+  block.innerHTML = `
+    <h3>${n}. ${item.q}</h3>
+    <div class="opts">
+      ${['A','B','C','D'].map((k,i)=>{
+        const text = item.a[i];
+        const name = 'q'+n;
+        const id = name + '_' + k;
+        return `
+        <label for="${id}">
+          <input type="radio" name="${name}" id="${id}" value="${k}" />
+          <span>(${k}) ${text}</span>
+        </label>`
+      }).join('')}
+    </div>
+    <div id="fb_${n}" class="ans"></div>
+  `;
+  container.appendChild(block);
+});
+
+function grade(){
+  let score = 0;
+  DATA.forEach((item, idx)=>{
+    const n = idx + 1;
+    const picked = document.querySelector(`input[name='q${n}']:checked`);
+    const fb = document.getElementById('fb_'+n);
+    if(!picked){
+      fb.innerHTML = "<span class='bad'>Not answered</span>";
+      return;
+    }
+    if(picked.value === item.ans){
+      score++;
+      fb.innerHTML = "<span class='ok'>✔ Correct</span>";
+    }else{
+      fb.innerHTML = "<span class='bad'>✘ Incorrect</span>. Correct: " + item.ans;
+    }
+  });
+  document.getElementById('score').textContent = `Score: ${score} / ${DATA.length}`;
+}
+
+function resetAll(){
+  document.querySelectorAll("input[type='radio']").forEach(r=>r.checked=false);
+  document.getElementById('score').textContent = "";
+  DATA.forEach((_,i)=>{
+    const fb = document.getElementById('fb_'+(i+1));
+    fb.textContent = "";
+  });
+}
+
+const ansList = document.getElementById('answerList');
+DATA.forEach((item, idx)=>{
+  const li = document.createElement('li');
+  li.textContent = `${idx+1}. ${item.ans}`;
+  ansList.appendChild(li);
+});
+</script>
+</body>
+</html>

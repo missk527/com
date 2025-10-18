@@ -1,0 +1,151 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>11+ Comprehension — CO2</title>
+<style>
+:root{--bg:#f7fafc;--card:#fff;--ink:#1a202c;--muted:#4a5568;--accent:#2b6cb0;--ok:#2f855a;--bad:#c53030;}
+body{margin:0;padding:0;background:var(--bg);color:var(--ink);font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;line-height:1.6}
+.wrap{max-width:1000px;margin:24px auto;padding:0 16px}
+.card{background:var(--card);border:1px solid #e2e8f0;border-radius:16px;box-shadow:0 4px 16px rgba(0,0,0,.06);padding:20px;margin:16px 0}
+.story{white-space:pre-wrap}
+.actions{display:flex;gap:8px;flex-wrap:wrap;align-items:center}
+button{border:none;border-radius:999px;padding:10px 14px;cursor:pointer}
+.primary{background:var(--accent);color:#fff}
+.ghost{background:#edf2f7;color:var(--ink)}
+.ok{color:var(--ok)}.bad{color:var(--bad)}
+.score{font-size:1.2rem;font-weight:700}
+.ans{font-size:.95rem;color:var(--muted)}
+.q{margin:14px 0}
+.q h3{margin:0 0 6px;font-size:1.02rem}
+.opts{display:grid;grid-template-columns:1fr;gap:6px}
+@media(min-width:700px){.opts{grid-template-columns:1fr 1fr}}
+label{display:flex;gap:8px;align-items:flex-start;border:1px solid #e2e8f0;border-radius:12px;padding:8px 10px;background:#fff;cursor:pointer}
+.footer{color:var(--muted);font-size:.9rem}
+</style>
+</head>
+<body>
+<div class="wrap">
+<header>
+  <h1>11+ Comprehension (CO2)</h1>
+  <span>Time allowed: 30 minutes</span>
+</header>
+<div class="card">
+  <h2>Passage</h2>
+  <p class="story" id="story">
+On the last Saturday of autumn, eleven-year-old Marcus and his cousin Leah were sent to help clean out their grandmother’s attic. At first, they complained about the dust and the strange smell of old wood and mothballs. However, as they pushed aside faded suitcases and yellowed curtains, Leah spotted a wooden box with a metal latch hidden behind a stack of picture frames. The box had swirling carvings along the edges and a tiny keyhole shaped like a leaf.
+
+They searched the attic for a key but found nothing. Marcus tried to pry it open with a hairpin he found in a jewelry tin, but it only rattled. When their grandmother came upstairs with hot chocolate, she froze for a moment upon seeing the box. Then she smiled and said it had belonged to her father, who had traveled across the sea as a young man. She didn’t know where the key had gone, but she encouraged them to keep looking.
+
+Later that afternoon, Leah found an old coat with deep inside pockets. In one of them, wrapped in tissue paper, lay a small brass key, cold and heavy in her hand. The children rushed back to the box and carefully fit the key in the lock. It clicked open with a soft snap. Inside, they found a leather-bound journal filled with sketches of ships, islands, and unfamiliar plants. There were also letters in neat, slanted handwriting addressed to someone named “Elena,” and a silver compass with a cracked glass face.
+
+Marcus and Leah sat on the attic floor reading the first few pages of the journal. It described storms on the ocean, trading goods in distant ports, and once rescuing a stranded sailor. Some pages were written in another language neither of them recognized. When their grandmother returned and saw the journal open, her eyes grew misty. She explained that Elena was her mother and that the journal recorded her parents’ early adventures together before they settled in their hometown.
+
+Instead of putting the box away, their grandmother asked the children to help her store the contents carefully in a new chest downstairs, where everyone could see them. Marcus promised to research the unknown language, while Leah planned to draw a map of the places mentioned in the journal. They no longer saw the attic as dull or dusty; it had become the beginning of a mystery they were eager to explore.
+</p>
+</div>
+<div class="card">
+  <h2>Multiple-Choice Questions</h2>
+  <div id="questions"></div>
+  <div class="actions">
+    <button class="primary" onclick="grade()">Check answers & score</button>
+    <button class="ghost" onclick="resetAll()">Reset</button>
+    <span id="score" class="score"></span>
+  </div>
+  <details>
+    <summary>Answer key</summary>
+    <ol id="answerList" class="ans"></ol>
+  </details>
+</div>
+<div class="footer">© 2025 Miss K | For classroom practice only.</div>
+</div>
+<script>
+const DATA = [];
+<script>
+DATA.push({q:'Where were Marcus and Leah helping on the last Saturday of autumn?',a:['In the garage', "In their grandmother's attic", 'At school', 'In the garden'],ans:'B',exp:''});
+DATA.push({q:'What did Leah first spot behind picture frames?',a:['A backpack', 'A wooden box', 'A basket', 'A trunk'],ans:'B',exp:''});
+DATA.push({q:'What shape was the keyhole?',a:['Star', 'Circle', 'Leaf', 'Heart'],ans:'C',exp:''});
+DATA.push({q:'Who originally owned the box?',a:['Marcus', 'Leah', "Their grandmother's father", 'A neighbor'],ans:'C',exp:''});
+DATA.push({q:'What did Marcus try to use to open the box?',a:['A screwdriver', 'A hairpin', 'A knife', 'A spoon'],ans:'B',exp:''});
+DATA.push({q:'What did their grandmother bring upstairs?',a:['Cookies', 'Books', 'Hot chocolate', 'A broom'],ans:'C',exp:''});
+DATA.push({q:'What did Leah find the key wrapped in?',a:['A scarf', 'Plastic', 'Tissue paper', 'Foil'],ans:'C',exp:''});
+DATA.push({q:'What material was the key made of?',a:['Iron', 'Wood', 'Brass', 'Gold'],ans:'C',exp:''});
+DATA.push({q:'What kind of journal was inside the box?',a:['Leather-bound', 'Digital', 'Plastic-covered', 'Spiral notebook'],ans:'A',exp:''});
+DATA.push({q:'What items were next to the journal?',a:['Coins and stamps', 'Stickers and photos', 'Letters and a compass', 'Keys and a watch'],ans:'C',exp:''});
+DATA.push({q:'Who were the letters addressed to?',a:['Marcus', 'Elena', 'Grandmother', 'Leah'],ans:'B',exp:''});
+DATA.push({q:'What was wrong with the compass?',a:['It was missing', 'The glass was cracked', 'It had no needle', 'It was rusty'],ans:'B',exp:''});
+DATA.push({q:'What did the journal describe?',a:['Farm animals', 'Ocean voyages and ports', 'Math problems', 'School events'],ans:'B',exp:''});
+DATA.push({q:'What language were some pages written in?',a:["They didn't know", 'Spanish', 'French', 'Latin'],ans:'A',exp:''});
+DATA.push({q:'Who was Elena?',a:['A neighbor', "Their grandmother's mother", 'A teacher', 'A sailor'],ans:'B',exp:''});
+DATA.push({q:'What did the grandmother feel when she saw the journal open?',a:['Angry', 'Confused', 'Misty-eyed', 'Surprised but silent'],ans:'C',exp:''});
+DATA.push({q:'What did the grandmother ask the children to do with the contents?',a:['Throw them away', 'Sell them', 'Store them in a new chest', 'Hide them again'],ans:'C',exp:''});
+DATA.push({q:'Where did she want to place the new chest?',a:['In the basement', 'Downstairs where people could see', 'Back in the attic', 'In the garden'],ans:'B',exp:''});
+DATA.push({q:'What did Marcus promise to do?',a:['Clean the attic again', 'Translate the unknown language', 'Fix the compass', 'Write his own journal'],ans:'B',exp:''});
+DATA.push({q:'What did Leah plan to create?',a:['A painting', 'A poem', 'A map', 'A necklace'],ans:'C',exp:''});
+DATA.push({q:'How did the children feel about the attic at the end?',a:['Still bored', 'Scared', 'Excited by the mystery', 'Angry'],ans:'C',exp:''});
+DATA.push({q:'What season is mentioned at the start?',a:['Spring', 'Summer', 'Autumn', 'Winter'],ans:'C',exp:''});
+DATA.push({q:"What covered the journals' pages?",a:['Stamps', 'Sketches and handwriting', 'Photographs', 'Printed text'],ans:'B',exp:''});
+DATA.push({q:'What did Marcus and Leah first complain about?',a:['The cold', 'The dust and smell', 'The time', 'The noise'],ans:'B',exp:''});
+DATA.push({q:'How old is Marcus?',a:['Ten', 'Eleven', 'Twelve', 'Nine'],ans:'B',exp:''});
+DATA.push({q:'What color was the key described as?',a:['Silver', 'Black', 'Brass', 'Bronze'],ans:'C',exp:''});
+DATA.push({q:'What did the grandmother do when she first saw the box?',a:['Shouted', 'Ignored it', 'Paused then smiled', 'Took it immediately'],ans:'C',exp:''});
+DATA.push({q:'What did the tissue-wrapped key feel like?',a:['Warm', 'Sticky', 'Cold and heavy', 'Rough'],ans:'C',exp:''});
+DATA.push({q:'What was the compass made of?',a:['Wood', 'Silver', 'Plastic', 'Steel'],ans:'B',exp:''});
+DATA.push({q:'What did the journal mention rescuing?',a:['A bird', 'A sailor', 'A dog', 'A pirate'],ans:'B',exp:''});
+DATA.push({q:'Who had traveled across the sea?',a:["Their grandmother's father", "Marcus's father", "Leah's friend", 'Elena'],ans:'A',exp:''});
+DATA.push({q:'What did the carvings on the box look like?',a:['Lines', 'Swirling patterns', 'Numbers', 'Flowers'],ans:'B',exp:''});
+DATA.push({q:'Where was the key eventually found?',a:['Under the box', 'In a tin', 'In an old coat pocket', 'On a shelf'],ans:'C',exp:''});
+DATA.push({q:'What did they use to search the attic?',a:['Flashlights', 'A ladder', 'Their hands', 'Maps'],ans:'C',exp:''});
+DATA.push({q:'What did the grandmother call the space after moving the chest?',a:['A museum corner', 'A history shelf', 'A new memory spot', 'A surprise box'],ans:'B',exp:''});
+
+const container=document.getElementById('questions');
+DATA.forEach((item,idx)=>{
+  const n=idx+1;
+  const block=document.createElement('div');
+  block.className='q';
+  block.innerHTML=`
+    <h3>${n}. ${item.q}</h3>
+    <div class="opts">
+      ${['A','B','C','D'].map((k,i)=>{
+        const t=item.a[i];const name='q'+n;const id=name+'_'+k;
+        return `<label for="${id}"><input type="radio" name="${name}" id="${id}" value="${k}"/><span>(${k}) ${t}</span></label>`;
+      }).join('')}
+    </div>
+    <div id="fb_${n}" class="ans"></div>
+  `;
+  container.appendChild(block);
+});
+function grade(){
+  let score=0;
+  DATA.forEach((item,idx)=>{
+    const n=idx+1;
+    const picked=document.querySelector(`input[name='q${n}']:checked`);
+    const fb=document.getElementById('fb_'+n);
+    if(!picked){fb.innerHTML='<span class="bad">Not answered</span>';return;}
+    if(picked.value===item.ans){
+      score++;
+      fb.innerHTML='<span class="ok">✔ Correct</span>';
+    }else{
+      fb.innerHTML='<span class="bad">✘ Incorrect</span>. Correct: '+item.ans;
+    }
+  });
+  document.getElementById('score').textContent=`Score: ${score} / ${DATA.length}`;
+}
+function resetAll(){
+  document.querySelectorAll("input[type='radio']").forEach(r=>r.checked=false);
+  document.getElementById('score').textContent='';
+  DATA.forEach((_,i)=>{
+    document.getElementById('fb_'+(i+1)).textContent='';
+  });
+}
+const ansList=document.getElementById('answerList');
+DATA.forEach((item,idx)=>{
+  const li=document.createElement('li');
+  li.textContent=`${idx+1}. ${item.ans}`;
+  ansList.appendChild(li);
+});
+</script>
+</body>
+</html>
