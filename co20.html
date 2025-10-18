@@ -1,0 +1,137 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>11+ Comprehension — CO20</title>
+  <style>
+    :root{--bg:#f7fafc;--card:#ffffff;--ink:#1a202c;--muted:#4a5568;--accent:#2b6cb0;--ok:#2f855a;--bad:#c53030;}
+    html,body{margin:0;padding:0;background:var(--bg);color:var(--ink);font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,"Noto Sans",sans-serif;line-height:1.6}
+    .wrap{max-width:1000px;margin:24px auto;padding:0 16px}
+    header{display:flex;gap:12px;align-items:center;flex-wrap:wrap}
+    header h1{font-size:1.6rem;margin:.2rem 0}
+    header .tag{background:#ebf8ff;color:var(--accent);border:1px solid #bee3f8;padding:2px 8px;border-radius:999px;font-size:.85rem}
+    .card{background:var(--card);border:1px solid #e2e8f0;border-radius:16px;box-shadow:0 4px 16px rgba(0,0,0,.06);padding:20px;margin:16px 0}
+    .story{font-size:1.05rem;white-space:pre-wrap}
+    .q{margin:14px 0}
+    .q h3{margin:0 0 6px 0;font-size:1.02rem}
+    .opts{display:grid;grid-template-columns:1fr;gap:6px}
+    @media (min-width:700px){.opts{grid-template-columns:1fr 1fr}}
+    label{display:flex;gap:8px;align-items:flex-start;border:1px solid #e2e8f0;border-radius:12px;padding:8px 10px;background:#fff;cursor:pointer}
+    .actions{display:flex;gap:8px;flex-wrap:wrap;align-items:center}
+    button{border:none;border-radius:999px;padding:10px 14px;cursor:pointer}
+    .primary{background:var(--accent);color:#fff}
+    .ghost{background:#edf2f7;color:var(--ink)}
+    .ok{color:var(--ok)}
+    .bad{color:var(--bad)}
+    .score{font-size:1.2rem;font-weight:700}
+    .footer{color:var(--muted);font-size:.9rem}
+    .ans{font-size:.95rem;color:var(--muted)}
+  </style>
+</head>
+<body>
+  <div class="wrap">
+    <header>
+      <h1>11+ Comprehension (CO20)</h1>
+      <span class="tag">Time allowed: 30 minutes</span>
+    </header>
+
+    <div class="card">
+      <h2>Passage</h2>
+      <p class="story" id="story">
+
+Dress rehearsal night made the problem obvious: the new school theatre looked smart, but lines vanished in the back row. Our drama and physics clubs teamed up to tune the sound without buying expensive gear. We began with a clap test—short bursts of applause from different seats—to hear how long the echoes lasted. Then we borrowed a portable speaker and played a speech track while volunteers walked the aisles with clipboards, marking 'clear', 'muffled', or 'lost'.
+
+The hall’s shape—high ceiling, smooth walls—sent reflections bouncing like rubber balls. We built removable panels from wool batting wrapped in fire-safe fabric and hung them on temporary stands along the side walls. The idea wasn’t to make it dead silent; it was to tame the worst reflections so consonants could land. Our music teacher lent five floor screens, and the art department cut cardboard diffusers—zigzag shapes—to break up the bounce at the back wall.
+
+Testing took two evenings. With panels only, voices sounded closer but still smeared at the rear. With diffusers added, the clap tail shortened, and the back row heard the 't' and 'k' sounds more distinctly. We measured improvement crudely by counting how many boxes on the clipboards changed from 'lost' to 'clear'. The map of crosses turned patchy green. We also trained actors to turn slightly toward the middle on key lines and to pause a fraction after a joke so laughter wouldn’t swallow the next word.
+
+One snag remained: a low hum from the air system masked quiet speech. The caretaker showed us a hidden setting that reduced fan speed between scenes without shutting it off. We added a sign by the booth: 'Fan to Scene 2 during dialogue'. On final rehearsal, the difference was plain. The head teacher, who had missed earlier tests, sat in the back and repeated the sharpest line: “Steal my sandwich, will you?” It landed like a tossed coin, bright and definite.
+
+We wrote up a one-page guide for future shows: layout of panels and diffusers, where to stand mics if used, how to place floor screens for soloists, and stage directions for projecting without strain. We didn’t claim a perfect theatre. We left a kit in the storeroom labelled 'Acoustics—Open First', so the next cast wouldn’t have to start from guesswork. Good sound, we decided, is a promise you renew: measure, adjust, and listen together.
+</p>
+    </div>
+
+    <div class="card">
+      <h2>Multiple-Choice Questions (Single Answer)</h2>
+      <div id="questions"></div>
+      <div class="actions">
+        <button class="primary" onclick="grade()">Check answers & score</button>
+        <button class="ghost" onclick="resetAll()">Reset</button>
+        <span id="score" class="score"></span>
+      </div>
+      <details>
+        <summary>Answer key (view after checking)</summary>
+        <ol id="answerList" class="ans"></ol>
+      </details>
+    </div>
+
+    <div class="footer">© 2025 Miss K | For classroom practice only.</div>
+  </div>
+
+<script>
+const DATA = [{"q": "What problem did the new theatre have?", "a": ["Too small", "Speech was hard to hear in the back row", "No lights", "Broken seats"], "ans": "B", "exp": ""}, {"q": "Which two clubs worked together?", "a": ["Chess and cycling", "Drama and physics", "Art and football", "Maths and gardening"], "ans": "B", "exp": ""}, {"q": "What was the purpose of the clap test?", "a": ["Start applause", "Hear echo length in the hall", "Test lights", "Time scenes"], "ans": "B", "exp": ""}, {"q": "How did volunteers record clarity?", "a": ["By filming", "Clipboards marking clear/muffled/lost while walking aisles", "By guessing later", "With tickets"], "ans": "B", "exp": ""}, {"q": "What did the wool panels aim to do?", "a": ["Decorate only", "Absorb some reflections so consonants are clearer", "Block exits", "Increase echo"], "ans": "B", "exp": ""}, {"q": "What did the cardboard diffusers do?", "a": ["Make sound louder", "Break up reflections at the back wall", "Record voices", "Cool the air"], "ans": "B", "exp": ""}, {"q": "What was the effect of adding diffusers?", "a": ["Longer clap tail", "Shorter echo and clearer consonants at the back", "No change", "Too quiet"], "ans": "B", "exp": ""}, {"q": "How was improvement measured crudely?", "a": ["Decibel meter", "Counting boxes changed from 'lost' to 'clear' on maps", "Stopwatch only", "By selfies"], "ans": "B", "exp": ""}, {"q": "What acting tip reduced swallowed lines?", "a": ["Shout always", "Turn slightly to centre and pause after jokes", "Face the floor", "Speak faster"], "ans": "B", "exp": ""}, {"q": "What caused a low hum masking quiet speech?", "a": ["Projector", "Air system fan", "Audience", "Lights"], "ans": "B", "exp": ""}, {"q": "How did the team handle the fan issue?", "a": ["Turned it off all night", "Found a setting to lower speed between scenes", "Ignored it", "Moved the fan"], "ans": "B", "exp": ""}, {"q": "What line did the head teacher test from the back?", "a": ["Where is my book?", "Steal my sandwich, will you?", "Close the door!", "Quiet, please"], "ans": "B", "exp": ""}, {"q": "What did the final guide include?", "a": ["Set designs", "Panel/diffuser layout, mic and screen placement, projection tips", "Catering menu", "Ticket prices"], "ans": "B", "exp": ""}, {"q": "What remains true about the theatre after fixes?", "a": ["Perfect forever", "Not perfect; needs ongoing measuring and adjusting", "Worse than before", "Closed"], "ans": "B", "exp": ""}, {"q": "Where was the kit stored for future casts?", "a": ["Library", "Storeroom labelled 'Acoustics—Open First'", "Head’s office", "Café"], "ans": "B", "exp": ""}, {"q": "What is the central idea of the passage?", "a": ["Only expensive gear works", "Small, thoughtful acoustic changes and habits can make speech clear", "Sound doesn’t matter", "Actors must shout"], "ans": "B", "exp": ""}, {"q": "Why use temporary stands for panels?", "a": ["Fire risk", "Flexibility to position without altering walls", "Decoration", "Storage"], "ans": "B", "exp": ""}, {"q": "What does 'consonants could land' mean?", "a": ["Actors throw letters", "Crisp speech sounds reach listeners distinctly", "Music is louder", "Lights dim"], "ans": "B", "exp": ""}, {"q": "Why add a sign 'Fan to Scene 2 during dialogue'?", "a": ["Confuse people", "Create a repeatable instruction for operators", "Decorate booth", "Hide the switch"], "ans": "B", "exp": ""}, {"q": "Which is an inference rather than a direct fact?", "a": ["Back-row clarity improved", "The head teacher noticed the improvement", "The kit will save future time by avoiding guesswork", "Panels were wrapped in fire-safe fabric"], "ans": "C", "exp": ""}, {"q": "Why pair drama with physics?", "a": ["Random", "Performance plus acoustics knowledge", "Free snacks", "No other clubs"], "ans": "B", "exp": ""}, {"q": "What inexpensive materials were used?", "a": ["Gold foil", "Wool batting, fabric, and cardboard", "Marble", "Glass"], "ans": "B", "exp": ""}, {"q": "What habit does the passage encourage?", "a": ["Ignore tests", "Measure, adjust, and listen together", "Buy expensive gear first", "Postpone fixes"], "ans": "B", "exp": ""}, {"q": "Why avoid 'dead silent' hall?", "a": ["Silence is scary", "Natural sound with controlled reflections is clearer and comfortable", "Actors dislike quiet", "Fans break"], "ans": "B", "exp": ""}, {"q": "What did the map of crosses turning patchy green signify?", "a": ["More chairs", "More zones improved from 'lost' to 'clear'", "Less attendance", "New paint"], "ans": "B", "exp": ""}, {"q": "What simple speaker test was used initially?", "a": ["Music only", "Speech track playback from a portable speaker", "Thunder sounds", "Whistles"], "ans": "B", "exp": ""}, {"q": "How long did testing take?", "a": ["One minute", "Two evenings", "Two months", "All year"], "ans": "B", "exp": ""}, {"q": "What does 'tame the worst reflections' imply?", "a": ["Catch them with nets", "Reduce delays causing blur", "Record them", "Paint the walls"], "ans": "B", "exp": ""}, {"q": "Who lent floor screens?", "a": ["Police", "Music teacher", "Caretaker", "Parents"], "ans": "B", "exp": ""}, {"q": "What do diffusers’ zigzag shapes achieve?", "a": ["Focus sound into a beam", "Scatter reflections to avoid echoes", "Make shadows", "Hold lights"], "ans": "B", "exp": ""}, {"q": "Which title fits best?", "a": ["Echoes Forever", "Finding the Words: Fixing Theatre Sound", "Curtain Call", "Louder, Please"], "ans": "B", "exp": ""}, {"q": "What audience role supports clarity?", "a": ["Clap constantly", "Laugh, then listen as actors pause", "Shout lines", "Move seats"], "ans": "B", "exp": ""}, {"q": "Why label the kit 'Open First'?", "a": ["Priority use before guessing setup", "Because it’s heavy", "To warn cleaners", "For fun"], "ans": "B", "exp": ""}, {"q": "What is a reasonable first diagnostic step for acoustics?", "a": ["Buy microphones", "Do a clap test and map clarity", "Close the school", "Ask for donations"], "ans": "B", "exp": ""}, {"q": "What trade-off did the team avoid?", "a": ["Blocking exits", "Destroying ambience; they kept natural sound while removing smearing", "Using lights", "Changing script"], "ans": "B", "exp": ""}];
+
+const container = document.getElementById('questions');
+DATA.forEach((item, idx)=>{
+  const n = idx + 1;
+  const block = document.createElement('div');
+  block.className = 'q';
+  block.innerHTML = `
+    <h3>${n}. ${item.q}</h3>
+    <div class="opts">
+      ${['A','B','C','D'].map((k,i)=>{
+        const text = item.a[i];
+        const name = 'q'+n;
+        const id = name + '_' + k;
+        return `
+        <label for="${id}">
+          <input type="radio" name="${name}" id="${id}" value="${k}" />
+          <span>(${k}) ${text}</span>
+        </label>`
+      }).join('')}
+    </div>
+    <div id="fb_${n}" class="ans"></div>
+  `;
+  container.appendChild(block);
+});
+
+function grade(){
+  let score = 0;
+  DATA.forEach((item, idx)=>{
+    const n = idx + 1;
+    const picked = document.querySelector(`input[name='q${n}']:checked`);
+    const fb = document.getElementById('fb_'+n);
+    if(!picked){
+      fb.innerHTML = "<span class='bad'>Not answered</span>";
+      return;
+    }
+    if(picked.value === item.ans){
+      score++;
+      fb.innerHTML = "<span class='ok'>✔ Correct</span>";
+    }else{
+      fb.innerHTML = "<span class='bad'>✘ Incorrect</span>. Correct: " + item.ans;
+    }
+  });
+  document.getElementById('score').textContent = `Score: ${score} / ${DATA.length}`;
+}
+
+function resetAll(){
+  document.querySelectorAll("input[type='radio']").forEach(r=>r.checked=false);
+  document.getElementById('score').textContent = "";
+  DATA.forEach((_,i)=>{
+    const fb = document.getElementById('fb_'+(i+1));
+    fb.textContent = "";
+  });
+}
+
+const ansList = document.getElementById('answerList');
+DATA.forEach((item, idx)=>{
+  const li = document.createElement('li');
+  li.textContent = `${idx+1}. ${item.ans}`;
+  ansList.appendChild(li);
+});
+</script>
+</body>
+</html>

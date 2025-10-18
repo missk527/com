@@ -1,0 +1,135 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>11+ Comprehension — CO18</title>
+  <style>
+    :root{--bg:#f7fafc;--card:#ffffff;--ink:#1a202c;--muted:#4a5568;--accent:#2b6cb0;--ok:#2f855a;--bad:#c53030;}
+    html,body{margin:0;padding:0;background:var(--bg);color:var(--ink);font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,"Noto Sans",sans-serif;line-height:1.6}
+    .wrap{max-width:1000px;margin:24px auto;padding:0 16px}
+    header{display:flex;gap:12px;align-items:center;flex-wrap:wrap}
+    header h1{font-size:1.6rem;margin:.2rem 0}
+    header .tag{background:#ebf8ff;color:var(--accent);border:1px solid #bee3f8;padding:2px 8px;border-radius:999px;font-size:.85rem}
+    .card{background:var(--card);border:1px solid #e2e8f0;border-radius:16px;box-shadow:0 4px 16px rgba(0,0,0,.06);padding:20px;margin:16px 0}
+    .story{font-size:1.05rem;white-space:pre-wrap}
+    .q{margin:14px 0}
+    .q h3{margin:0 0 6px 0;font-size:1.02rem}
+    .opts{display:grid;grid-template-columns:1fr;gap:6px}
+    @media (min-width:700px){.opts{grid-template-columns:1fr 1fr}}
+    label{display:flex;gap:8px;align-items:flex-start;border:1px solid #e2e8f0;border-radius:12px;padding:8px 10px;background:#fff;cursor:pointer}
+    .actions{display:flex;gap:8px;flex-wrap:wrap;align-items:center}
+    button{border:none;border-radius:999px;padding:10px 14px;cursor:pointer}
+    .primary{background:var(--accent);color:#fff}
+    .ghost{background:#edf2f7;color:var(--ink)}
+    .ok{color:var(--ok)}
+    .bad{color:var(--bad)}
+    .score{font-size:1.2rem;font-weight:700}
+    .footer{color:var(--muted);font-size:.9rem}
+    .ans{font-size:.95rem;color:var(--muted)}
+  </style>
+</head>
+<body>
+  <div class="wrap">
+    <header>
+      <h1>11+ Comprehension (CO18)</h1>
+      <span class="tag">Time allowed: 30 minutes</span>
+    </header>
+
+    <div class="card">
+      <h2>Passage</h2>
+      <p class="story" id="story">
+
+Our library’s smallest room had once stored maps. Now the shelves were mostly empty, so we asked to start a “Seed Library.” The idea wasn’t to sell anything. It was to help neighbours borrow packets of locally adapted seeds in spring and return a small envelope of saved seeds in autumn. We began with easy vegetables—beans, peas, and lettuce—and a few flowers that welcomed pollinators. The librarian agreed if we could label everything clearly and never confuse saved seeds with snacks at events.
+
+We met on Saturdays to clean jars, fold paper envelopes, and write labels. Each packet carried four lines: variety name, planting window, days to harvest, and a space for the borrower’s notes. We added a “seed story” tag where people could write where the parent plants grew best—sun behind the shed, or pots on a windy balcony. A gardener from the allotments taught us to do a simple “float test” for older seeds: if many floated, germination might be low, so we should double the sowing.
+
+The first month taught us what we missed. The bean packets vanished in two days, but hardly anyone took the lettuce. We realised our display was all green on green. We swapped to bright dividers and put a photo of a salad bowl on the lettuce box. Borrowers began returning with questions: how deep is “shallow”? What counts as “moist but not soggy”? We made a quick reference card with drawings of finger depths and soil textures. We also added a “first timer” shelf with starter kits: six labelled envelopes, a pencil, and instructions on how to save seeds from beans without drying them on a radiator.
+
+By midsummer, the seed room felt like a club that didn’t require membership. People left notes: a child’s drawing of the first pea flower; a warning that pigeons found the sunflowers tasty; a tip to plant beans after the last cold snap even if the calendar said April. We tracked borrowing in a spreadsheet and noticed a pattern: gardeners in flats preferred compact varieties; those with gardens took climbers and corn. The council’s community garden asked whether we could add herbs next year, and the librarian nodded at our careful labels. “Yes,” she said, “as long as the stories travel with the seeds.”
+</p>
+    </div>
+
+    <div class="card">
+      <h2>Multiple-Choice Questions (Single Answer)</h2>
+      <div id="questions"></div>
+      <div class="actions">
+        <button class="primary" onclick="grade()">Check answers & score</button>
+        <button class="ghost" onclick="resetAll()">Reset</button>
+        <span id="score" class="score"></span>
+      </div>
+      <details>
+        <summary>Answer key (view after checking)</summary>
+        <ol id="answerList" class="ans"></ol>
+      </details>
+    </div>
+
+    <div class="footer">© 2025 Miss K | For classroom practice only.</div>
+  </div>
+
+<script>
+const DATA = [{"q": "What was the main purpose of the Seed Library?", "a": ["Sell seeds for profit", "Share locally adapted seeds to borrow in spring and return in autumn", "Store maps", "Run cooking classes"], "ans": "B", "exp": ""}, {"q": "Which items were included at the start?", "a": ["Exotic trees", "Beans, peas, lettuce, and pollinator-friendly flowers", "Only roses", "Only corn"], "ans": "B", "exp": ""}, {"q": "What condition did the librarian set?", "a": ["Charge fees", "Label clearly and never mix seeds with snacks", "Open daily", "Hire staff"], "ans": "B", "exp": ""}, {"q": "What information did each packet label include?", "a": ["Owner’s name only", "Variety, planting window, days to harvest, space for notes", "Soil pH only", "Barcode only"], "ans": "B", "exp": ""}, {"q": "What was the purpose of the 'seed story' tag?", "a": ["Advertising", "To record where parent plants grew best", "Pricing", "Games"], "ans": "B", "exp": ""}, {"q": "What did the allotment gardener teach?", "a": ["How to sell seeds", "A float test to estimate germination", "How to make soup", "How to prune trees"], "ans": "B", "exp": ""}, {"q": "Why might you double sowing after the float test?", "a": ["Seeds too spicy", "Germination likely low if many float", "To use up packets", "To avoid birds"], "ans": "B", "exp": ""}, {"q": "What problem occurred in the first month?", "a": ["No one borrowed beans", "Lettuce packets were ignored", "The room flooded", "Labels fell off"], "ans": "B", "exp": ""}, {"q": "How did they fix the lettuce problem?", "a": ["Raised prices", "Used bright dividers and a salad photo", "Removed lettuce", "Closed the room"], "ans": "B", "exp": ""}, {"q": "What questions did borrowers ask?", "a": ["About novels", "How deep is 'shallow' and what is 'moist but not soggy'", "Bus routes", "Library hours"], "ans": "B", "exp": ""}, {"q": "What tool answered those questions?", "a": ["A cooking book", "A reference card with drawings of depths and textures", "A podcast", "A quiz"], "ans": "B", "exp": ""}, {"q": "What was in the 'first timer' shelf kits?", "a": ["Fertiliser", "Six envelopes, a pencil, and seed-saving instructions", "Chocolate", "Stickers only"], "ans": "B", "exp": ""}, {"q": "Why avoid drying beans on a radiator?", "a": ["It burns them", "It can overdry or crack seeds", "It looks messy", "It’s expensive"], "ans": "B", "exp": ""}, {"q": "What feeling did the seed room have by midsummer?", "a": ["Exclusive club", "A friendly club without membership", "Silent museum", "Chaotic market"], "ans": "B", "exp": ""}, {"q": "What kinds of notes did people leave?", "a": ["Bills", "Drawings, warnings, and tips", "Complaints only", "Weather reports only"], "ans": "B", "exp": ""}, {"q": "What borrowing pattern did they notice?", "a": ["Random choices", "Flat dwellers chose compact varieties; gardeners chose climbers and corn", "Only herbs were popular", "Only children borrowed"], "ans": "B", "exp": ""}, {"q": "What did the community garden request for next year?", "a": ["No more seeds", "Herbs added", "More maps", "Fewer labels"], "ans": "B", "exp": ""}, {"q": "What was the librarian’s requirement for expansion?", "a": ["More shelves", "Stories must travel with the seeds (keep good labels)", "Charge fees", "Hire guards"], "ans": "B", "exp": ""}, {"q": "What central idea does the passage convey?", "a": ["Gardening is private", "Shared knowledge and good labelling make seed sharing work", "Only experts can save seeds", "Seeds never fail"], "ans": "B", "exp": ""}, {"q": "Why track borrowing in a spreadsheet?", "a": ["For fun", "To spot patterns and needs", "To count money", "To compete"], "ans": "B", "exp": ""}, {"q": "Which is an inference rather than a direct fact?", "a": ["The room felt welcoming", "A salad photo helped", "People left notes", "Beans vanished fast"], "ans": "A", "exp": ""}, {"q": "How did bright dividers help?", "a": ["Made packets heavier", "Improved visibility so neglected seeds were noticed", "Raised temperature", "Kept birds away"], "ans": "B", "exp": ""}, {"q": "What habit does the story encourage?", "a": ["Keep tips secret", "Observe, adjust displays, and share practical guidance", "Don’t label things", "Borrow without returning"], "ans": "B", "exp": ""}, {"q": "Why include days to harvest on labels?", "a": ["Decoration", "Helps planning when to sow", "For pricing", "For fines"], "ans": "B", "exp": ""}, {"q": "What does 'locally adapted' suggest?", "a": ["Seeds chosen for local conditions", "Seeds from far away", "Artificial seeds", "Only indoor plants"], "ans": "A", "exp": ""}, {"q": "Why include a space for borrower notes?", "a": ["To doodle only", "To share growing conditions for future users", "To sign for fines", "To count seeds"], "ans": "B", "exp": ""}, {"q": "What role did photos play in displays?", "a": ["None", "Helped link seeds to outcomes (e.g., salad bowl)", "Decoration only", "Confused people"], "ans": "B", "exp": ""}, {"q": "What risk do pigeons pose?", "a": ["Eat sunflowers", "Water the plants", "Label them", "Count them"], "ans": "A", "exp": ""}, {"q": "What timing advice appeared about beans?", "a": ["Plant any time", "After the last cold snap, not just by calendar date", "In winter only", "On rainy nights"], "ans": "B", "exp": ""}, {"q": "Which title best fits the passage?", "a": ["Seeds for Sale", "Borrow, Grow, Return: Our Seed Library", "The Map Room Mystery", "The Lettuce Lottery"], "ans": "B", "exp": ""}, {"q": "What must not be confused with snacks?", "a": ["Pens", "Saved seeds during events", "Books", "Soil"], "ans": "B", "exp": ""}, {"q": "Which measurement was used for older seeds?", "a": ["Float test in water", "Soil pH", "Leaf length", "Root weight"], "ans": "A", "exp": ""}, {"q": "Why include a 'first timer' shelf?", "a": ["To exclude experts", "Lower the barrier for beginners", "Sell products", "Display trophies"], "ans": "B", "exp": ""}, {"q": "Which audience benefitted from compact varieties?", "a": ["Gardeners with big yards", "People in flats", "Only schools", "Birdwatchers"], "ans": "B", "exp": ""}, {"q": "What habit should libraries adopt from this project?", "a": ["Static displays", "Iterate based on feedback and track use", "Ban notes", "Hide labels"], "ans": "B", "exp": ""}];
+
+const container = document.getElementById('questions');
+DATA.forEach((item, idx)=>{
+  const n = idx + 1;
+  const block = document.createElement('div');
+  block.className = 'q';
+  block.innerHTML = `
+    <h3>${n}. ${item.q}</h3>
+    <div class="opts">
+      ${['A','B','C','D'].map((k,i)=>{
+        const text = item.a[i];
+        const name = 'q'+n;
+        const id = name + '_' + k;
+        return `
+        <label for="${id}">
+          <input type="radio" name="${name}" id="${id}" value="${k}" />
+          <span>(${k}) ${text}</span>
+        </label>`
+      }).join('')}
+    </div>
+    <div id="fb_${n}" class="ans"></div>
+  `;
+  container.appendChild(block);
+});
+
+function grade(){
+  let score = 0;
+  DATA.forEach((item, idx)=>{
+    const n = idx + 1;
+    const picked = document.querySelector(`input[name='q${n}']:checked`);
+    const fb = document.getElementById('fb_'+n);
+    if(!picked){
+      fb.innerHTML = "<span class='bad'>Not answered</span>";
+      return;
+    }
+    if(picked.value === item.ans){
+      score++;
+      fb.innerHTML = "<span class='ok'>✔ Correct</span>";
+    }else{
+      fb.innerHTML = "<span class='bad'>✘ Incorrect</span>. Correct: " + item.ans;
+    }
+  });
+  document.getElementById('score').textContent = `Score: ${score} / ${DATA.length}`;
+}
+
+function resetAll(){
+  document.querySelectorAll("input[type='radio']").forEach(r=>r.checked=false);
+  document.getElementById('score').textContent = "";
+  DATA.forEach((_,i)=>{
+    const fb = document.getElementById('fb_'+(i+1));
+    fb.textContent = "";
+  });
+}
+
+const ansList = document.getElementById('answerList');
+DATA.forEach((item, idx)=>{
+  const li = document.createElement('li');
+  li.textContent = `${idx+1}. ${item.ans}`;
+  ansList.appendChild(li);
+});
+</script>
+</body>
+</html>

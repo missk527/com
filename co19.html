@@ -1,0 +1,137 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>11+ Comprehension — CO19</title>
+  <style>
+    :root{--bg:#f7fafc;--card:#ffffff;--ink:#1a202c;--muted:#4a5568;--accent:#2b6cb0;--ok:#2f855a;--bad:#c53030;}
+    html,body{margin:0;padding:0;background:var(--bg);color:var(--ink);font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,"Noto Sans",sans-serif;line-height:1.6}
+    .wrap{max-width:1000px;margin:24px auto;padding:0 16px}
+    header{display:flex;gap:12px;align-items:center;flex-wrap:wrap}
+    header h1{font-size:1.6rem;margin:.2rem 0}
+    header .tag{background:#ebf8ff;color:var(--accent);border:1px solid #bee3f8;padding:2px 8px;border-radius:999px;font-size:.85rem}
+    .card{background:var(--card);border:1px solid #e2e8f0;border-radius:16px;box-shadow:0 4px 16px rgba(0,0,0,.06);padding:20px;margin:16px 0}
+    .story{font-size:1.05rem;white-space:pre-wrap}
+    .q{margin:14px 0}
+    .q h3{margin:0 0 6px 0;font-size:1.02rem}
+    .opts{display:grid;grid-template-columns:1fr;gap:6px}
+    @media (min-width:700px){.opts{grid-template-columns:1fr 1fr}}
+    label{display:flex;gap:8px;align-items:flex-start;border:1px solid #e2e8f0;border-radius:12px;padding:8px 10px;background:#fff;cursor:pointer}
+    .actions{display:flex;gap:8px;flex-wrap:wrap;align-items:center}
+    button{border:none;border-radius:999px;padding:10px 14px;cursor:pointer}
+    .primary{background:var(--accent);color:#fff}
+    .ghost{background:#edf2f7;color:var(--ink)}
+    .ok{color:var(--ok)}
+    .bad{color:var(--bad)}
+    .score{font-size:1.2rem;font-weight:700}
+    .footer{color:var(--muted);font-size:.9rem}
+    .ans{font-size:.95rem;color:var(--muted)}
+  </style>
+</head>
+<body>
+  <div class="wrap">
+    <header>
+      <h1>11+ Comprehension (CO19)</h1>
+      <span class="tag">Time allowed: 30 minutes</span>
+    </header>
+
+    <div class="card">
+      <h2>Passage</h2>
+      <p class="story" id="story">
+
+Our coastal science club wanted to learn whether the creatures in the tidal pools changed across the season. Low tide after school gave us forty minutes before water crept back. We marked three pools on the same stretch of rocks—upper, middle, and lower shore—and set a rule: observe without prying animals off their homes. We would count what we could see and note water temperature, wave splash, and shade.
+
+The first survey felt like a treasure hunt. The upper pool hosted limpets and tiny snails clinging to rough rock. The middle pool held beadlet anemones—red buttons that folded when touched by a dropper—and a shore crab under a ledge. The lower pool, closest to the sea, swayed with fronds of seaweed and flashed with small fish. We used square frames made from bamboo and string to sample the same area each week, placing them in identical positions by aligning knots with a chip on the rock.
+
+Numbers told patterns by week three. As days warmed, the upper pool grew greener with algae, and more snails grazed its surface. The middle pool’s anemones stayed in place, but we counted more juvenile crabs after calm days. The lower pool’s fish vanished in rough weather and returned after two still evenings. We recorded a spike in water temperature during a sunny low tide; the upper pool heated quickest because it was shallow and sheltered from waves.
+
+One change worried us. A bright, unfamiliar seaweed appeared in the middle pool—stringy, with air bladders that kept it afloat. We compared photos with a field guide and decided it was likely an invasive species sometimes washed in by storms. We didn’t remove it ourselves. We emailed the local coastal ranger with our pictures and grid references. She thanked us, visited at the next low tide, and pulled a handful to inspect, leaving most rock surfaces untouched to avoid tearing native species.
+
+By the last week of term, we presented a poster in the corridor: a simple map of the three pools, four line graphs showing counts, and photos from the same angle each week. We wrote a short note on how to watch without harm: keep feet steady, wet hands before touching nothing, and replace any moved stones gently. The ranger added a line about reporting unusual finds with clear photos. Our last photo showed a child crouched at the edge, pointing at a crab while the water returned—learning that the shore is a lesson that moves.
+</p>
+    </div>
+
+    <div class="card">
+      <h2>Multiple-Choice Questions (Single Answer)</h2>
+      <div id="questions"></div>
+      <div class="actions">
+        <button class="primary" onclick="grade()">Check answers & score</button>
+        <button class="ghost" onclick="resetAll()">Reset</button>
+        <span id="score" class="score"></span>
+      </div>
+      <details>
+        <summary>Answer key (view after checking)</summary>
+        <ol id="answerList" class="ans"></ol>
+      </details>
+    </div>
+
+    <div class="footer">© 2025 Miss K | For classroom practice only.</div>
+  </div>
+
+<script>
+const DATA = [{"q": "What was the main question of the club’s project?", "a": ["Do tidal pool creatures change across the season?", "How deep is the ocean?", "What causes storms?", "How to sail?"], "ans": "A", "exp": ""}, {"q": "How many pools were marked for survey?", "a": ["One", "Two", "Three (upper, middle, lower)", "Four"], "ans": "C", "exp": ""}, {"q": "What rule governed handling animals?", "a": ["Collect specimens", "Observe without prying animals off their homes", "Bring them to school", "Feed them"], "ans": "B", "exp": ""}, {"q": "What did the upper pool mainly contain?", "a": ["Fish", "Limpets and tiny snails", "Jellyfish", "Octopuses"], "ans": "B", "exp": ""}, {"q": "Which creature was found under a ledge in the middle pool?", "a": ["Starfish", "Shore crab", "Seahorse", "Seal"], "ans": "B", "exp": ""}, {"q": "What tool helped sample the same area each week?", "a": ["Thermometer only", "Square frames with bamboo and string", "Metal cages", "Cameras only"], "ans": "B", "exp": ""}, {"q": "How were frame positions repeated accurately?", "a": ["Randomly", "By aligning knots with a rock chip", "By GPS", "By memory"], "ans": "B", "exp": ""}, {"q": "What weather affected fish presence in the lower pool?", "a": ["Snow", "Rough weather pushed them away; still evenings brought them back", "Fog", "Windless heat"], "ans": "B", "exp": ""}, {"q": "Which pool heated the quickest and why?", "a": ["Lower, due to waves", "Upper, because shallow and sheltered", "Middle, due to crabs", "None heated"], "ans": "B", "exp": ""}, {"q": "What unfamiliar observation raised concern?", "a": ["New birds", "Bright seaweed with air bladders likely invasive", "Plastic bottles", "A boat"], "ans": "B", "exp": ""}, {"q": "What did the club do about the invasive seaweed?", "a": ["Removed it all", "Ignored it", "Emailed the coastal ranger with photos and coordinates", "Sold it"], "ans": "C", "exp": ""}, {"q": "How did the ranger respond?", "a": ["Did nothing", "Visited at low tide and inspected, removing some carefully", "Fined the club", "Closed the beach"], "ans": "B", "exp": ""}, {"q": "What did the end poster include?", "a": ["Only text", "Map, line graphs, and weekly photos", "A poem", "Tickets"], "ans": "B", "exp": ""}, {"q": "What safety/ethics advice was given for watching?", "a": ["Pry animals off", "Keep steady, wet hands, replace stones gently", "Run quickly", "Take souvenirs"], "ans": "B", "exp": ""}, {"q": "What central idea does the passage support?", "a": ["Nature never changes", "Careful, repeatable observation reveals patterns without harm", "Only scientists can survey", "Always remove invaders yourself"], "ans": "B", "exp": ""}, {"q": "Why did juvenile crabs increase after calm days?", "a": ["They like noise", "Calm conditions may allow more to venture out—observed correlation", "They eat snow", "They hate sun"], "ans": "B", "exp": ""}, {"q": "What measured factor spiked during sunny low tide?", "a": ["Salinity", "Water temperature", "Air pressure", "Noise"], "ans": "B", "exp": ""}, {"q": "Why not remove the seaweed independently?", "a": ["Too heavy", "To avoid damaging natives and to follow ranger guidance", "Because it was beautiful", "Because of tides"], "ans": "B", "exp": ""}, {"q": "What habit does the passage encourage?", "a": ["Grab and collect", "Observe, record, report unusual finds", "Ignore patterns", "Disturb habitats"], "ans": "B", "exp": ""}, {"q": "Which is an inference rather than a direct fact?", "a": ["Upper pool heated fastest", "Calm days may help juvenile crabs appear more", "Frames used", "Three pools marked"], "ans": "B", "exp": ""}, {"q": "What is the function of air bladders in seaweed?", "a": ["Decoration", "Buoyancy to float", "Smell", "Sound"], "ans": "B", "exp": ""}, {"q": "Why include photos from the same angle each week?", "a": ["Aesthetic only", "To compare changes consistently", "To make posters colourful", "For social media"], "ans": "B", "exp": ""}, {"q": "Which pool was closest to the sea?", "a": ["Upper", "Middle", "Lower", "None"], "ans": "C", "exp": ""}, {"q": "What role did the square frames play?", "a": ["Measure depth", "Define a repeatable sampling area", "Catch fish", "Hold notes"], "ans": "B", "exp": ""}, {"q": "What does 'observe without harm' imply?", "a": ["No learning", "Care with movement and minimal disturbance", "Grab animals", "Move stones randomly"], "ans": "B", "exp": ""}, {"q": "Which tool recorded temperature?", "a": ["Thermometer", "Barometer", "Compass", "Binoculars"], "ans": "A", "exp": ""}, {"q": "What caused the lower pool fish to vanish temporarily?", "a": ["Predators only", "Rough weather", "Cold snap", "Visitors"], "ans": "B", "exp": ""}, {"q": "What did the ranger add to the poster?", "a": ["Her phone number", "A reminder to report unusual finds with clear photos", "A menu", "A warning to stay away"], "ans": "B", "exp": ""}, {"q": "Which title best fits the passage?", "a": ["The Moving Shore: A Tidal Pool Survey", "How to Swim", "The Deep Sea", "Crab Races"], "ans": "A", "exp": ""}, {"q": "What time limit did the students face?", "a": ["All day", "About forty minutes at low tide after school", "Ten hours", "No limit"], "ans": "B", "exp": ""}, {"q": "Why align knots with a rock chip?", "a": ["Art", "Consistency of placement", "Decoration", "Ownership"], "ans": "B", "exp": ""}, {"q": "What ethical line did the club draw?", "a": ["Take souvenirs", "Don’t pry animals off homes", "Feed animals", "Sell shells"], "ans": "B", "exp": ""}, {"q": "Which pool had the most seaweed fronds?", "a": ["Upper", "Middle", "Lower", "None"], "ans": "C", "exp": ""}, {"q": "What does the phrase 'a lesson that moves' suggest?", "a": ["School moved", "The shore changes with tides; learning is ongoing", "The poster moved", "Students moved house"], "ans": "B", "exp": ""}];
+
+const container = document.getElementById('questions');
+DATA.forEach((item, idx)=>{
+  const n = idx + 1;
+  const block = document.createElement('div');
+  block.className = 'q';
+  block.innerHTML = `
+    <h3>${n}. ${item.q}</h3>
+    <div class="opts">
+      ${['A','B','C','D'].map((k,i)=>{
+        const text = item.a[i];
+        const name = 'q'+n;
+        const id = name + '_' + k;
+        return `
+        <label for="${id}">
+          <input type="radio" name="${name}" id="${id}" value="${k}" />
+          <span>(${k}) ${text}</span>
+        </label>`
+      }).join('')}
+    </div>
+    <div id="fb_${n}" class="ans"></div>
+  `;
+  container.appendChild(block);
+});
+
+function grade(){
+  let score = 0;
+  DATA.forEach((item, idx)=>{
+    const n = idx + 1;
+    const picked = document.querySelector(`input[name='q${n}']:checked`);
+    const fb = document.getElementById('fb_'+n);
+    if(!picked){
+      fb.innerHTML = "<span class='bad'>Not answered</span>";
+      return;
+    }
+    if(picked.value === item.ans){
+      score++;
+      fb.innerHTML = "<span class='ok'>✔ Correct</span>";
+    }else{
+      fb.innerHTML = "<span class='bad'>✘ Incorrect</span>. Correct: " + item.ans;
+    }
+  });
+  document.getElementById('score').textContent = `Score: ${score} / ${DATA.length}`;
+}
+
+function resetAll(){
+  document.querySelectorAll("input[type='radio']").forEach(r=>r.checked=false);
+  document.getElementById('score').textContent = "";
+  DATA.forEach((_,i)=>{
+    const fb = document.getElementById('fb_'+(i+1));
+    fb.textContent = "";
+  });
+}
+
+const ansList = document.getElementById('answerList');
+DATA.forEach((item, idx)=>{
+  const li = document.createElement('li');
+  li.textContent = `${idx+1}. ${item.ans}`;
+  ansList.appendChild(li);
+});
+</script>
+</body>
+</html>
