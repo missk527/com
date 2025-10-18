@@ -1,0 +1,137 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>11+ Comprehension — CO12</title>
+  <style>
+    :root{--bg:#f7fafc;--card:#ffffff;--ink:#1a202c;--muted:#4a5568;--accent:#2b6cb0;--ok:#2f855a;--bad:#c53030;}
+    html,body{margin:0;padding:0;background:var(--bg);color:var(--ink);font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,"Noto Sans",sans-serif;line-height:1.6}
+    .wrap{max-width:1000px;margin:24px auto;padding:0 16px}
+    header{display:flex;gap:12px;align-items:center;flex-wrap:wrap}
+    header h1{font-size:1.6rem;margin:.2rem 0}
+    header .tag{background:#ebf8ff;color:var(--accent);border:1px solid #bee3f8;padding:2px 8px;border-radius:999px;font-size:.85rem}
+    .card{background:var(--card);border:1px solid #e2e8f0;border-radius:16px;box-shadow:0 4px 16px rgba(0,0,0,.06);padding:20px;margin:16px 0}
+    .story{font-size:1.05rem;white-space:pre-wrap}
+    .q{margin:14px 0}
+    .q h3{margin:0 0 6px 0;font-size:1.02rem}
+    .opts{display:grid;grid-template-columns:1fr;gap:6px}
+    @media (min-width:700px){.opts{grid-template-columns:1fr 1fr}}
+    label{display:flex;gap:8px;align-items:flex-start;border:1px solid #e2e8f0;border-radius:12px;padding:8px 10px;background:#fff;cursor:pointer}
+    .actions{display:flex;gap:8px;flex-wrap:wrap;align-items:center}
+    button{border:none;border-radius:999px;padding:10px 14px;cursor:pointer}
+    .primary{background:var(--accent);color:#fff}
+    .ghost{background:#edf2f7;color:var(--ink)}
+    .ok{color:var(--ok)}
+    .bad{color:var(--bad)}
+    .score{font-size:1.2rem;font-weight:700}
+    .footer{color:var(--muted);font-size:.9rem}
+    .ans{font-size:.95rem;color:var(--muted)}
+  </style>
+</head>
+<body>
+  <div class="wrap">
+    <header>
+      <h1>11+ Comprehension (CO12)</h1>
+      <span class="tag">Time allowed: 30 minutes</span>
+    </header>
+
+    <div class="card">
+      <h2>Passage</h2>
+      <p class="story" id="story">
+
+On the first day back after winter break, our biology teacher taped a note to the science block’s glass corridor: “If you find a bird near this window, tell us immediately.” Two sparrows had hit the glass in one week. No one wanted a corridor that looked like sky to birds but was actually a mirror. Our eco club proposed a small study and a fix. The head teacher agreed on two conditions: collect data for two weeks, then recommend a change we could install ourselves.
+
+We kept a simple log. Each morning and at lunch, two students walked the corridor and checked the planting beds outside. We noted weather, time, and whether lights were on. We also held a sheet of white card inside the glass and a dark cloth outside to see how reflections changed. On bright days, the corridor became a ribbon of sky; on dull ones, it turned into a tunnel lined with trees—the opposite of safe either way. Three soft taps and one hard strike happened in the first week. We phoned a local wildlife group, who explained that narrow stripes or dots on the outside of the glass could help birds “read” the window as a surface instead of open air.
+
+We tested two options using removable film. One panel got vertical stripes five centimetres apart; another got a grid of small dots five centimetres by five. A third panel, left clear, became our control. For three days we rotated which section was the control to avoid bias if birds favoured one side. We also measured inside visibility for students by asking, “Can you clearly see the oak tree’s trunk through this panel?” and rating yes or no. The stripes looked obvious up close but almost disappeared from inside class. The dots were subtle from every angle.
+
+During week two, no strikes were heard on the striped panel. A soft tap happened once on the dotted one. Two taps and a hard strike occurred on the clear control. We sent the numbers and a short chart to the head teacher and asked to install a full set of stripes across the problem corridor. The facilities manager allowed us to use a water-and-soap method to position the film and a rubber squeegee to smooth it. We borrowed ladders and worked in pairs on a Saturday, leaving a narrow gap at the bottom for drainage.
+
+By Monday morning, the corridor looked patterned from the playground but nearly normal from inside. A notice beside the door explained the stripes and thanked the wildlife group for advice. The eco club promised to keep the log going once a week for the rest of term. We didn’t claim a perfect solution. We wrote, “This design reduces collisions here; tell us if you observe an incident elsewhere.” If safety grows from attention, then the thin white lines were not decorations. They were a way of asking birds to notice—and a way of reminding us to notice back.
+</p>
+    </div>
+
+    <div class="card">
+      <h2>Multiple-Choice Questions (Single Answer)</h2>
+      <div id="questions"></div>
+      <div class="actions">
+        <button class="primary" onclick="grade()">Check answers & score</button>
+        <button class="ghost" onclick="resetAll()">Reset</button>
+        <span id="score" class="score"></span>
+      </div>
+      <details>
+        <summary>Answer key (view after checking)</summary>
+        <ol id="answerList" class="ans"></ol>
+      </details>
+    </div>
+
+    <div class="footer">© 2025 Miss K | For classroom practice only.</div>
+  </div>
+
+<script>
+const DATA = [{"q": "What problem triggered the eco club’s project?", "a": ["Graffiti on the corridor", "Birds colliding with the glass corridor", "Leaking roof", "Broken ladders"], "ans": "B", "exp": ""}, {"q": "What two conditions did the head teacher set for approval?", "a": ["Buy new windows and hire experts", "Collect data for two weeks and propose a self-installable fix", "Hold a fundraiser and write an essay", "Paint the corridor"], "ans": "B", "exp": ""}, {"q": "How did students record potential risk factors?", "a": ["By guessing", "By logging weather, time, and indoor lights", "By filming movies", "By counting leaves"], "ans": "B", "exp": ""}, {"q": "What did the white card and dark cloth tests show?", "a": ["Glass changed colour", "Reflections changed with light, making the corridor look like sky or trees", "Glass was dirty", "Birds could see stickers"], "ans": "B", "exp": ""}, {"q": "Which advice did the wildlife group give?", "a": ["Use bright lamps", "Add stripes or dots so birds see the surface", "Close the corridor", "Cut down trees"], "ans": "B", "exp": ""}, {"q": "What was used as a control in the experiment?", "a": ["Striped panel", "Dotted panel", "A clear, untreated panel", "Opaque panel"], "ans": "C", "exp": ""}, {"q": "Why did the team rotate the control panel location?", "a": ["To confuse birds", "To avoid bias from side preferences", "To make installation easier", "To test ladders"], "ans": "B", "exp": ""}, {"q": "How did students check inside visibility?", "a": ["Measured with a laser", "Asked if the oak trunk was clearly visible through each panel", "Counted chairs", "Timed walking speed"], "ans": "B", "exp": ""}, {"q": "Which pattern nearly disappeared from inside?", "a": ["Stripes", "Dots", "Pictures of birds", "Opaque paint"], "ans": "A", "exp": ""}, {"q": "Which option had one soft tap during week two?", "a": ["Striped panel", "Dotted panel", "Control panel", "All panels equally"], "ans": "B", "exp": ""}, {"q": "Where did the hard strike occur in week two?", "a": ["Striped panel", "Dotted panel", "Clear control", "Nowhere"], "ans": "C", "exp": ""}, {"q": "What installation method did the facilities manager allow?", "a": ["Dry stick with heat gun", "Water-and-soap positioning and squeegee", "Glue and nails", "Tape only"], "ans": "B", "exp": ""}, {"q": "Why leave a narrow gap at the bottom of the film?", "a": ["Decoration", "For drainage", "To save material", "To add ventilation"], "ans": "B", "exp": ""}, {"q": "What did the notice by the door explain?", "a": ["Classroom rules", "The reason for the stripes and thanks to the wildlife group", "Lunch menu", "Exam dates"], "ans": "B", "exp": ""}, {"q": "How often would the eco club continue the log after installation?", "a": ["Daily forever", "Once a week for the rest of term", "Never again", "Every minute"], "ans": "B", "exp": ""}, {"q": "Which statement best summarises the test results?", "a": ["Stripes reduced collisions most, dots helped some, clear panels were worst", "Dots were most effective", "Clear was safest", "All options were equal"], "ans": "A", "exp": ""}, {"q": "What is the central idea of the passage?", "a": ["Decorating corridors", "Using data and simple design to reduce bird-window collisions", "Buying expensive technology", "Ignoring wildlife"], "ans": "B", "exp": ""}, {"q": "Why is it important that the fix can be installed by students?", "a": ["To win prizes", "It makes the solution practical and repeatable", "It looks cooler", "It saves paper"], "ans": "B", "exp": ""}, {"q": "What habit does the passage encourage?", "a": ["Blame and move on", "Notice, test, and adjust with evidence", "Rely on rumours", "Avoid asking experts"], "ans": "B", "exp": ""}, {"q": "What does the phrase 'ribbon of sky' suggest about the glass?", "a": ["It was painted blue", "It reflected the sky so birds mistook it for open air", "It was cracked", "It was tilted"], "ans": "B", "exp": ""}, {"q": "Which tool helped smooth the film?", "a": ["Hammer", "Squeegee", "Chisel", "Stapler"], "ans": "B", "exp": ""}, {"q": "Who provided expert input during the project?", "a": ["A wildlife group", "A drama club", "A bus driver", "A sports coach"], "ans": "A", "exp": ""}, {"q": "What safety measure did students use during installation?", "a": ["Worked alone at night", "Borrowed ladders and worked in pairs", "Ran on the ladders", "Allowed birds inside"], "ans": "B", "exp": ""}, {"q": "Which sentence is an inference rather than a direct fact?", "a": ["Two sparrows hit the glass", "The thin white lines were seen as decorations by some", "The stripes looked patterned from the playground", "The team contacted a wildlife group"], "ans": "B", "exp": ""}, {"q": "Why did the team keep a weekly log after installing the stripes?", "a": ["For fun only", "To monitor effectiveness and spot new problems", "To count students", "To track weather only"], "ans": "B", "exp": ""}, {"q": "What does 'control' mean in this context?", "a": ["A panel used for comparison without treatment", "A remote switch", "The head teacher’s permission", "The loudest panel"], "ans": "A", "exp": ""}, {"q": "Which pattern was most effective overall?", "a": ["No pattern", "Dots", "Stripes", "Mirrors"], "ans": "C", "exp": ""}, {"q": "Why thank the wildlife group on the notice?", "a": ["Courtesy and acknowledging guidance", "Advertising", "Because they paid for film", "To fill space"], "ans": "A", "exp": ""}, {"q": "What is implied by 'we didn’t claim a perfect solution'?", "a": ["They think it failed", "They recognise limits and remain open to further fixes", "They want to remove the film", "They dislike science"], "ans": "B", "exp": ""}, {"q": "Which feature made the test fairer?", "a": ["Changing the corridor colour", "Rotating which panel served as control", "Only measuring on sunny days", "Using no measurements"], "ans": "B", "exp": ""}, {"q": "Which title best fits the passage?", "a": ["Invisible Walls", "Lines to Be Seen: Making Windows Safer for Birds", "The Corridor Makeover", "Winter Break Adventures"], "ans": "B", "exp": ""}, {"q": "What role did lighting play in collisions?", "a": ["Reflections varied with light, changing how birds saw the glass", "It made birds sleepy", "It kept students away", "It broke the film"], "ans": "A", "exp": ""}, {"q": "Which detail shows community communication?", "a": ["A secret report", "A notice explaining the change and inviting reports from elsewhere", "Private emails only", "No signs"], "ans": "B", "exp": ""}, {"q": "Why test both stripes and dots?", "a": ["To decorate more", "To compare effectiveness and visibility", "Because the shop insisted", "To confuse birds"], "ans": "B", "exp": ""}, {"q": "What phrase captures the main habit promoted by the club?", "a": ["Measure first, then act", "Act first, measure later", "Ignore evidence", "Change everything at once"], "ans": "A", "exp": ""}];
+
+const container = document.getElementById('questions');
+DATA.forEach((item, idx)=>{
+  const n = idx + 1;
+  const block = document.createElement('div');
+  block.className = 'q';
+  block.innerHTML = `
+    <h3>${n}. ${item.q}</h3>
+    <div class="opts">
+      ${['A','B','C','D'].map((k,i)=>{
+        const text = item.a[i];
+        const name = 'q'+n;
+        const id = name + '_' + k;
+        return `
+        <label for="${id}">
+          <input type="radio" name="${name}" id="${id}" value="${k}" />
+          <span>(${k}) ${text}</span>
+        </label>`
+      }).join('')}
+    </div>
+    <div id="fb_${n}" class="ans"></div>
+  `;
+  container.appendChild(block);
+});
+
+function grade(){
+  let score = 0;
+  DATA.forEach((item, idx)=>{
+    const n = idx + 1;
+    const picked = document.querySelector(`input[name='q${n}']:checked`);
+    const fb = document.getElementById('fb_'+n);
+    if(!picked){
+      fb.innerHTML = "<span class='bad'>Not answered</span>";
+      return;
+    }
+    if(picked.value === item.ans){
+      score++;
+      fb.innerHTML = "<span class='ok'>✔ Correct</span>";
+    }else{
+      fb.innerHTML = "<span class='bad'>✘ Incorrect</span>. Correct: " + item.ans;
+    }
+  });
+  document.getElementById('score').textContent = `Score: ${score} / ${DATA.length}`;
+}
+
+function resetAll(){
+  document.querySelectorAll("input[type='radio']").forEach(r=>r.checked=false);
+  document.getElementById('score').textContent = "";
+  DATA.forEach((_,i)=>{
+    const fb = document.getElementById('fb_'+(i+1));
+    fb.textContent = "";
+  });
+}
+
+const ansList = document.getElementById('answerList');
+DATA.forEach((item, idx)=>{
+  const li = document.createElement('li');
+  li.textContent = `${idx+1}. ${item.ans}`;
+  ansList.appendChild(li);
+});
+</script>
+</body>
+</html>
