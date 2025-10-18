@@ -1,0 +1,135 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>11+ Comprehension — CO35</title>
+  <style>
+    :root{--bg:#f7fafc;--card:#ffffff;--ink:#1a202c;--muted:#4a5568;--accent:#2b6cb0;--ok:#2f855a;--bad:#c53030;}
+    html,body{margin:0;padding:0;background:var(--bg);color:var(--ink);font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,"Noto Sans",sans-serif;line-height:1.6}
+    .wrap{max-width:1000px;margin:24px auto;padding:0 16px}
+    header{display:flex;gap:12px;align-items:center;flex-wrap:wrap}
+    header h1{font-size:1.6rem;margin:.2rem 0}
+    header .tag{background:#ebf8ff;color:var(--accent);border:1px solid #bee3f8;padding:2px 8px;border-radius:999px;font-size:.85rem}
+    .card{background:var(--card);border:1px solid #e2e8f0;border-radius:16px;box-shadow:0 4px 16px rgba(0,0,0,.06);padding:20px;margin:16px 0}
+    .story{font-size:1.05rem;white-space:pre-wrap}
+    .q{margin:14px 0}
+    .q h3{margin:0 0 6px 0;font-size:1.02rem}
+    .opts{display:grid;grid-template-columns:1fr;gap:6px}
+    @media (min-width:700px){.opts{grid-template-columns:1fr 1fr}}
+    label{display:flex;gap:8px;align-items:flex-start;border:1px solid #e2e8f0;border-radius:12px;padding:8px 10px;background:#fff;cursor:pointer}
+    .actions{display:flex;gap:8px;flex-wrap:wrap;align-items:center}
+    button{border:none;border-radius:999px;padding:10px 14px;cursor:pointer}
+    .primary{background:var(--accent);color:#fff}
+    .ghost{background:#edf2f7;color:var(--ink)}
+    .ok{color:var(--ok)}
+    .bad{color:var(--bad)}
+    .score{font-size:1.2rem;font-weight:700}
+    .footer{color:var(--muted);font-size:.9rem}
+    .ans{font-size:.95rem;color:var(--muted)}
+  </style>
+</head>
+<body>
+  <div class="wrap">
+    <header>
+      <h1>11+ Comprehension (CO35)</h1>
+      <span class="tag">Time allowed: 30 minutes</span>
+    </header>
+
+    <div class="card">
+      <h2>Passage</h2>
+      <p class="story" id="story">
+
+Our town’s park hosted a monthly evening run. As autumn darkened, some turns felt unsafe. We planned a low-glare lighting trial along the 3 km loop using rechargeable lanterns on short posts and reflective arrows at ankle height. The rules: lights off by 9 p.m., no lights near the bat roost, and set lanterns to warm white to protect night vision.
+
+We measured a test kilometre and placed markers at bends, roots, and narrow bridges. Runners wore small clip-on reflectors. On trial night, a crew cycled ahead to switch lanterns on and check for fallen branches. The course felt calmer, and finish times tightened as fewer runners slowed to peer into shadows. A volunteer with a decibel meter showed that lanterns didn’t increase crowd noise; the loudest moments were still at the start and finish.
+
+Two issues arose. Fog rolled in and made distant lights halo; we lowered post height and added extra reflectors instead of more lumens. A neighbour worried about light spill near her window; we fitted simple caps that shaded the back half of the lanterns. We also mapped where bats crossed an open stretch and shifted one arrow to avoid shining into their flight line.
+
+At the debrief, the club voted for a mixed kit: lanterns for corners and bridges, reflectors for straight paths, and chalk marks for temporary mud. We posted a guide: charge lanterns in the morning, check caps, and collect all gear by 9:15. The park returned to darkness, but the memory of the route remained lit in people’s legs.
+</p>
+    </div>
+
+    <div class="card">
+      <h2>Multiple-Choice Questions (Single Answer)</h2>
+      <div id="questions"></div>
+      <div class="actions">
+        <button class="primary" onclick="grade()">Check answers & score</button>
+        <button class="ghost" onclick="resetAll()">Reset</button>
+        <span id="score" class="score"></span>
+      </div>
+      <details>
+        <summary>Answer key (view after checking)</summary>
+        <ol id="answerList" class="ans"></ol>
+      </details>
+    </div>
+
+    <div class="footer">© 2025 Miss K | For classroom practice only.</div>
+  </div>
+
+<script>
+const DATA = [{"q": "What event needed lighting?", "a": ["Morning market", "Monthly evening run in the park", "School play", "Football match"], "ans": "B", "exp": ""}, {"q": "What kind of lighting did they use?", "a": ["Floodlights", "Rechargeable lanterns on short posts and reflective arrows", "Street lamps", "Torches only"], "ans": "B", "exp": ""}, {"q": "What colour setting protected night vision?", "a": ["Blue", "Warm white", "Green", "Red"], "ans": "B", "exp": ""}, {"q": "Where were markers placed?", "a": ["Random", "Bends, roots, narrow bridges", "Only start", "Only finish"], "ans": "B", "exp": ""}, {"q": "Who cycled ahead?", "a": ["Police", "Crew to switch lanterns on and check branches", "Parents", "Children"], "ans": "B", "exp": ""}, {"q": "What happened to finish times?", "a": ["Slower", "Tightened as fewer slowed", "Unchanged", "Random"], "ans": "B", "exp": ""}, {"q": "What did the decibel check show?", "a": ["More noise", "No increase; loudest at start/finish", "Silence", "Birdsong"], "ans": "B", "exp": ""}, {"q": "What fog fix worked?", "a": ["More lumens", "Lower post height and add reflectors", "Turn off all lights", "Blue lights"], "ans": "B", "exp": ""}, {"q": "How was neighbour’s concern addressed?", "a": ["Ignore", "Caps shading back half of lanterns", "Remove all", "Move event"], "ans": "B", "exp": ""}, {"q": "Why avoid bat roost with lights?", "a": ["Bats like light", "To protect wildlife", "To save power", "Decoration"], "ans": "B", "exp": ""}, {"q": "What mix did club vote for?", "a": ["Lanterns everywhere", "Lanterns on corners/bridges; reflectors on straights; chalk for mud", "Reflectors only", "No guide"], "ans": "B", "exp": ""}, {"q": "What time to collect gear?", "a": ["Anytime", "By 9:15 p.m.", "Midnight", "2 a.m."], "ans": "B", "exp": ""}, {"q": "What protected neighbours’ windows?", "a": ["Curtains", "Lantern caps", "Trees", "Fog"], "ans": "B", "exp": ""}, {"q": "What did reflectors replace in fog?", "a": ["People", "Extra lumens", "Bats", "Flags"], "ans": "B", "exp": ""}, {"q": "What is central idea?", "a": ["Brighter is always better", "Thoughtful, low-glare lighting improves safety while respecting wildlife and neighbours", "Running is risky", "Only daytime runs work"], "ans": "B", "exp": ""}, {"q": "Why warm white?", "a": ["Trendy", "Better night vision and lower wildlife impact", "Cheapest", "Bluest"], "ans": "B", "exp": ""}, {"q": "What gear did runners wear?", "a": ["Helmets", "Clip-on reflectors", "Capes", "Glow paint"], "ans": "B", "exp": ""}, {"q": "What remained dark after event?", "a": ["Park (after gear collected)", "Start line", "Bridge", "Town"], "ans": "A", "exp": ""}, {"q": "Which is inference?", "a": ["Finish times tightened", "Calmer feel helped confidence", "Caps were fitted", "Fog rolled in"], "ans": "B", "exp": ""}, {"q": "Why chalk marks?", "a": ["Art", "Temporary cues for mud patches", "Ads", "Games"], "ans": "B", "exp": ""}, {"q": "Who mapped bat crossings?", "a": ["Police", "Organisers", "Bats", "Neighbours"], "ans": "B", "exp": ""}, {"q": "Where not to place lights?", "a": ["Near bat roost", "On bridges", "On corners", "On straights"], "ans": "A", "exp": ""}, {"q": "What reduced halo effect?", "a": ["Higher posts", "Lower posts and use reflectors", "Colder colour", "Louder music"], "ans": "B", "exp": ""}, {"q": "What habit does guide enforce?", "a": ["Leave lights out", "Charge, cap-check, collect on time", "Shout loudly", "Ignore neighbours"], "ans": "B", "exp": ""}, {"q": "Who worried about light spill?", "a": ["Runner", "Neighbour", "Coach", "Mayor"], "ans": "B", "exp": ""}, {"q": "What is a roost?", "a": ["Tree type", "Resting site for bats", "Bridge", "Lamp"], "ans": "B", "exp": ""}, {"q": "Why use reflectors at ankle height?", "a": ["Decoration", "Seen in torch/lantern light without glare", "Trip people", "Warm feet"], "ans": "B", "exp": ""}, {"q": "What instrument measured noise?", "a": ["Thermometer", "Decibel meter", "Compass", "Scale"], "ans": "B", "exp": ""}, {"q": "What did crew check besides lights?", "a": ["Snacks", "Fallen branches", "Shoes", "Tickets"], "ans": "B", "exp": ""}, {"q": "What kind of path used reflectors mainly?", "a": ["Corners", "Straight paths", "Start line only", "Finish only"], "ans": "B", "exp": ""}, {"q": "What time did lanterns switch off?", "a": ["9 p.m.", "9:15", "10 p.m.", "8 p.m."], "ans": "A", "exp": ""}, {"q": "What wildlife constraint?", "a": ["Bird nest", "Bat roost area", "Fish pond", "Fox den"], "ans": "B", "exp": ""}, {"q": "What was loop length?", "a": ["1 km", "3 km", "5 km", "10 km"], "ans": "B", "exp": ""}, {"q": "What effect on neighbours was reduced?", "a": ["Heat", "Light spill", "Smell", "Noise"], "ans": "B", "exp": ""}, {"q": "What best title fits?", "a": ["Night Lights Done Right", "Flood the Park", "Run Away", "Fog Forever"], "ans": "A", "exp": ""}];
+
+const container = document.getElementById('questions');
+DATA.forEach((item, idx)=>{
+  const n = idx + 1;
+  const block = document.createElement('div');
+  block.className = 'q';
+  block.innerHTML = `
+    <h3>${n}. ${item.q}</h3>
+    <div class="opts">
+      ${['A','B','C','D'].map((k,i)=>{
+        const text = item.a[i];
+        const name = 'q'+n;
+        const id = name + '_' + k;
+        return `
+        <label for="${id}">
+          <input type="radio" name="${name}" id="${id}" value="${k}" />
+          <span>(${k}) ${text}</span>
+        </label>`
+      }).join('')}
+    </div>
+    <div id="fb_${n}" class="ans"></div>
+  `;
+  container.appendChild(block);
+});
+
+function grade(){
+  let score = 0;
+  DATA.forEach((item, idx)=>{
+    const n = idx + 1;
+    const picked = document.querySelector(`input[name='q${n}']:checked`);
+    const fb = document.getElementById('fb_'+n);
+    if(!picked){
+      fb.innerHTML = "<span class='bad'>Not answered</span>";
+      return;
+    }
+    if(picked.value === item.ans){
+      score++;
+      fb.innerHTML = "<span class='ok'>✔ Correct</span>";
+    }else{
+      fb.innerHTML = "<span class='bad'>✘ Incorrect</span>. Correct: " + item.ans;
+    }
+  });
+  document.getElementById('score').textContent = `Score: ${score} / ${DATA.length}`;
+}
+
+function resetAll(){
+  document.querySelectorAll("input[type='radio']").forEach(r=>r.checked=false);
+  document.getElementById('score').textContent = "";
+  DATA.forEach((_,i)=>{
+    const fb = document.getElementById('fb_'+(i+1));
+    fb.textContent = "";
+  });
+}
+
+const ansList = document.getElementById('answerList');
+DATA.forEach((item, idx)=>{
+  const li = document.createElement('li');
+  li.textContent = `${idx+1}. ${item.ans}`;
+  ansList.appendChild(li);
+});
+</script>
+</body>
+</html>

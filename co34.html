@@ -1,0 +1,135 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>11+ Comprehension — CO34</title>
+  <style>
+    :root{--bg:#f7fafc;--card:#ffffff;--ink:#1a202c;--muted:#4a5568;--accent:#2b6cb0;--ok:#2f855a;--bad:#c53030;}
+    html,body{margin:0;padding:0;background:var(--bg);color:var(--ink);font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,"Noto Sans",sans-serif;line-height:1.6}
+    .wrap{max-width:1000px;margin:24px auto;padding:0 16px}
+    header{display:flex;gap:12px;align-items:center;flex-wrap:wrap}
+    header h1{font-size:1.6rem;margin:.2rem 0}
+    header .tag{background:#ebf8ff;color:var(--accent);border:1px solid #bee3f8;padding:2px 8px;border-radius:999px;font-size:.85rem}
+    .card{background:var(--card);border:1px solid #e2e8f0;border-radius:16px;box-shadow:0 4px 16px rgba(0,0,0,.06);padding:20px;margin:16px 0}
+    .story{font-size:1.05rem;white-space:pre-wrap}
+    .q{margin:14px 0}
+    .q h3{margin:0 0 6px 0;font-size:1.02rem}
+    .opts{display:grid;grid-template-columns:1fr;gap:6px}
+    @media (min-width:700px){.opts{grid-template-columns:1fr 1fr}}
+    label{display:flex;gap:8px;align-items:flex-start;border:1px solid #e2e8f0;border-radius:12px;padding:8px 10px;background:#fff;cursor:pointer}
+    .actions{display:flex;gap:8px;flex-wrap:wrap;align-items:center}
+    button{border:none;border-radius:999px;padding:10px 14px;cursor:pointer}
+    .primary{background:var(--accent);color:#fff}
+    .ghost{background:#edf2f7;color:var(--ink)}
+    .ok{color:var(--ok)}
+    .bad{color:var(--bad)}
+    .score{font-size:1.2rem;font-weight:700}
+    .footer{color:var(--muted);font-size:.9rem}
+    .ans{font-size:.95rem;color:var(--muted)}
+  </style>
+</head>
+<body>
+  <div class="wrap">
+    <header>
+      <h1>11+ Comprehension (CO34)</h1>
+      <span class="tag">Time allowed: 30 minutes</span>
+    </header>
+
+    <div class="card">
+      <h2>Passage</h2>
+      <p class="story" id="story">
+
+The canteen used dried herbs for most dishes. Our gardening club wondered whether we could grow enough fresh flavour in a small patch by the kitchen door. We measured a rectangle barely three metres long and planned a staggered bed with thyme, parsley, chives, mint in tubs to contain it, and basil under a cold frame for cooler nights. The chef agreed to try any harvest if we brought it washed and labelled by Monday morning.
+
+We built the bed from reclaimed bricks and filled it with compost from the school heaps. A timetable put Year 6 on watering duty during hot weeks, with a simple rule: check soil first, then water to the roots. We added a rain gauge and a small sign asking students not to pick leaves before lunch. The first harvest was tiny—just a handful of chives and a sprig of thyme—but the potato soup tasted brighter and the chef wrote “garden” next to it on the menu board.
+
+By midterm, the bed grew thick. Mint reached for the path, so we lifted runners back into tubs. Basil sulked in a cold snap; the frame kept most leaves green. We dried a surplus of thyme on racks in the art room and crumbled it into jars for winter. Students voted for “herb butter day,” and the kitchen let them mix chopped parsley and chives into pats that melted on steamed carrots.
+
+We made a chart of which dishes changed with herbs—soups, pasta, roast chicken—and which didn’t—curry needed its spice blend, porridge remained plain. The head teacher asked us to write a one-sheet guide: which herb with which dish, how to wash and store, and how to avoid bitter stems. The patch didn’t feed the school, but it fed the idea that flavour can be grown a few steps from the pot.
+</p>
+    </div>
+
+    <div class="card">
+      <h2>Multiple-Choice Questions (Single Answer)</h2>
+      <div id="questions"></div>
+      <div class="actions">
+        <button class="primary" onclick="grade()">Check answers & score</button>
+        <button class="ghost" onclick="resetAll()">Reset</button>
+        <span id="score" class="score"></span>
+      </div>
+      <details>
+        <summary>Answer key (view after checking)</summary>
+        <ol id="answerList" class="ans"></ol>
+      </details>
+    </div>
+
+    <div class="footer">© 2025 Miss K | For classroom practice only.</div>
+  </div>
+
+<script>
+const DATA = [{"q": "What problem did the club address?", "a": ["Too much meat", "Using dried herbs instead of fresh", "No plates", "No chef"], "ans": "B", "exp": ""}, {"q": "Where was the herb bed?", "a": ["Far field", "By the kitchen door", "Roof", "Gym"], "ans": "B", "exp": ""}, {"q": "Which herbs were planted?", "a": ["Only basil", "Thyme, parsley, chives, mint in tubs, basil under cold frame", "Coriander only", "Trees"], "ans": "B", "exp": ""}, {"q": "What condition did the chef set?", "a": ["Cook everything", "Bring harvest washed and labelled by Monday", "Pay for herbs", "Weekly meetings"], "ans": "B", "exp": ""}, {"q": "Who watered in hot weeks?", "a": ["Teachers", "Year 6 by timetable", "Parents", "Robots"], "ans": "B", "exp": ""}, {"q": "What rule guided watering?", "a": ["Water daily", "Check soil; water to roots", "Flood bed", "Spray leaves only"], "ans": "B", "exp": ""}, {"q": "What did first harvest change?", "a": ["Nothing", "Potato soup tasted brighter; menu said 'garden'", "Long queues", "Prices"], "ans": "B", "exp": ""}, {"q": "How was mint controlled?", "a": ["Let it spread", "Kept in tubs; runners lifted back", "Cut all", "Sprayed"], "ans": "B", "exp": ""}, {"q": "What protected basil?", "a": ["Shade only", "Cold frame against cool nights", "Hot lights", "Plastic bag"], "ans": "B", "exp": ""}, {"q": "Where was thyme dried?", "a": ["Library", "Art room racks", "Car park", "Canteen floor"], "ans": "B", "exp": ""}, {"q": "What did students mix for a special day?", "a": ["Tomato sauce", "Herb butter with parsley and chives", "Chocolate", "Jam"], "ans": "B", "exp": ""}, {"q": "Which dishes changed most?", "a": ["Soups, pasta, roast chicken", "Porridge", "Ice cream", "Curry only"], "ans": "A", "exp": ""}, {"q": "What stayed the same?", "a": ["Curry spice blend stayed central; porridge plain", "Everything changed", "Milk", "Salads"], "ans": "A", "exp": ""}, {"q": "What did the head ask for?", "a": ["A party", "One-sheet guide for herbs and storage", "More salt", "Less water"], "ans": "B", "exp": ""}, {"q": "What is the central idea?", "a": ["Fresh herbs can improve school meals with small space and planning", "Herbs are useless", "Only chefs can grow", "It’s too hard"], "ans": "A", "exp": ""}, {"q": "Why label harvests?", "a": ["Ownership", "Kitchen needs clarity on what’s what", "Art", "Selling"], "ans": "B", "exp": ""}, {"q": "Why mint in tubs?", "a": ["Looks good", "Stops spreading into bed", "Smell", "Taste"], "ans": "B", "exp": ""}, {"q": "What measured rain?", "a": ["Thermometer", "Rain gauge", "Clock", "Scale"], "ans": "B", "exp": ""}, {"q": "Why dry thyme?", "a": ["Waste time", "Store flavour for winter", "Make pillows", "Paint"], "ans": "B", "exp": ""}, {"q": "What shows student engagement?", "a": ["Complaints", "Voting for herb butter day", "Skipping", "Breaking bricks"], "ans": "B", "exp": ""}, {"q": "Which is inference?", "a": ["Bed was 3 metres", "Chef support encouraged project", "Mint runners lifted", "Basil sulked"], "ans": "B", "exp": ""}, {"q": "What does 'sulked' imply?", "a": ["Basil struggled in cold", "Plant laughed", "Plant slept", "Plant grew fast"], "ans": "A", "exp": ""}, {"q": "Why avoid bitter stems?", "a": ["Taste issue in dishes", "Safety", "Allergy", "Colour"], "ans": "A", "exp": ""}, {"q": "What does cold frame do?", "a": ["Warm microclimate for tender herbs", "Make wind", "Block rain", "Glow"], "ans": "A", "exp": ""}, {"q": "Who wrote 'garden' on the menu?", "a": ["Caretaker", "Chef", "Students", "Parents"], "ans": "B", "exp": ""}, {"q": "What did chart compare?", "a": ["Sports", "Dishes that improved vs unchanged", "Books", "Exams"], "ans": "B", "exp": ""}, {"q": "What habit does project teach?", "a": ["Waste water", "Grow a little, use a little, plan ahead", "Buy only dried", "Avoid kitchens"], "ans": "B", "exp": ""}, {"q": "Why ask students not to pick before lunch?", "a": ["Safety and fairness", "Plants ugly", "Rules", "Noise"], "ans": "A", "exp": ""}, {"q": "What material built the bed?", "a": ["New plastic", "Reclaimed bricks and compost", "Metal", "Sand only"], "ans": "B", "exp": ""}, {"q": "What remained plain?", "a": ["Porridge", "Roast chicken", "Pasta", "Soup"], "ans": "A", "exp": ""}, {"q": "Which title fits best?", "a": ["Herbs from the Doorstep", "Mint Everywhere", "Curry Crisis", "Cold Frame Fails"], "ans": "A", "exp": ""}, {"q": "What did surplus thyme become?", "a": ["Waste", "Jars of dried thyme", "Compost only", "Tea"], "ans": "B", "exp": ""}, {"q": "Who benefits from the guide?", "a": ["Only chef", "Kitchen staff and students learning use", "Nobody", "Gardeners only"], "ans": "B", "exp": ""}, {"q": "How big was the bed?", "a": ["3 metres long (approx)", "30 metres", "1 metre", "Unknown"], "ans": "A", "exp": ""}];
+
+const container = document.getElementById('questions');
+DATA.forEach((item, idx)=>{
+  const n = idx + 1;
+  const block = document.createElement('div');
+  block.className = 'q';
+  block.innerHTML = `
+    <h3>${n}. ${item.q}</h3>
+    <div class="opts">
+      ${['A','B','C','D'].map((k,i)=>{
+        const text = item.a[i];
+        const name = 'q'+n;
+        const id = name + '_' + k;
+        return `
+        <label for="${id}">
+          <input type="radio" name="${name}" id="${id}" value="${k}" />
+          <span>(${k}) ${text}</span>
+        </label>`
+      }).join('')}
+    </div>
+    <div id="fb_${n}" class="ans"></div>
+  `;
+  container.appendChild(block);
+});
+
+function grade(){
+  let score = 0;
+  DATA.forEach((item, idx)=>{
+    const n = idx + 1;
+    const picked = document.querySelector(`input[name='q${n}']:checked`);
+    const fb = document.getElementById('fb_'+n);
+    if(!picked){
+      fb.innerHTML = "<span class='bad'>Not answered</span>";
+      return;
+    }
+    if(picked.value === item.ans){
+      score++;
+      fb.innerHTML = "<span class='ok'>✔ Correct</span>";
+    }else{
+      fb.innerHTML = "<span class='bad'>✘ Incorrect</span>. Correct: " + item.ans;
+    }
+  });
+  document.getElementById('score').textContent = `Score: ${score} / ${DATA.length}`;
+}
+
+function resetAll(){
+  document.querySelectorAll("input[type='radio']").forEach(r=>r.checked=false);
+  document.getElementById('score').textContent = "";
+  DATA.forEach((_,i)=>{
+    const fb = document.getElementById('fb_'+(i+1));
+    fb.textContent = "";
+  });
+}
+
+const ansList = document.getElementById('answerList');
+DATA.forEach((item, idx)=>{
+  const li = document.createElement('li');
+  li.textContent = `${idx+1}. ${item.ans}`;
+  ansList.appendChild(li);
+});
+</script>
+</body>
+</html>
