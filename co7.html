@@ -1,0 +1,137 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>11+ Comprehension — CO7</title>
+  <style>
+    :root{--bg:#f7fafc;--card:#ffffff;--ink:#1a202c;--muted:#4a5568;--accent:#2b6cb0;--ok:#2f855a;--bad:#c53030;}
+    html,body{margin:0;padding:0;background:var(--bg);color:var(--ink);font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,"Noto Sans",sans-serif;line-height:1.6}
+    .wrap{max-width:1000px;margin:24px auto;padding:0 16px}
+    header{display:flex;gap:12px;align-items:center;flex-wrap:wrap}
+    header h1{font-size:1.6rem;margin:.2rem 0}
+    header .tag{background:#ebf8ff;color:var(--accent);border:1px solid #bee3f8;padding:2px 8px;border-radius:999px;font-size:.85rem}
+    .card{background:var(--card);border:1px solid #e2e8f0;border-radius:16px;box-shadow:0 4px 16px rgba(0,0,0,.06);padding:20px;margin:16px 0}
+    .story{font-size:1.05rem;white-space:pre-wrap}
+    .q{margin:14px 0}
+    .q h3{margin:0 0 6px 0;font-size:1.02rem}
+    .opts{display:grid;grid-template-columns:1fr;gap:6px}
+    @media (min-width:700px){.opts{grid-template-columns:1fr 1fr}}
+    label{display:flex;gap:8px;align-items:flex-start;border:1px solid #e2e8f0;border-radius:12px;padding:8px 10px;background:#fff;cursor:pointer}
+    .actions{display:flex;gap:8px;flex-wrap:wrap;align-items:center}
+    button{border:none;border-radius:999px;padding:10px 14px;cursor:pointer}
+    .primary{background:var(--accent);color:#fff}
+    .ghost{background:#edf2f7;color:var(--ink)}
+    .ok{color:var(--ok)}
+    .bad{color:var(--bad)}
+    .score{font-size:1.2rem;font-weight:700}
+    .footer{color:var(--muted);font-size:.9rem}
+    .ans{font-size:.95rem;color:var(--muted)}
+  </style>
+</head>
+<body>
+  <div class="wrap">
+    <header>
+      <h1>11+ Comprehension (CO7)</h1>
+      <span class="tag">Time allowed: 30 minutes</span>
+    </header>
+
+    <div class="card">
+      <h2>Passage</h2>
+      <p class="story" id="story">
+
+When three bike racks appeared outside our school, most of us treated them as decoration. Only a few students rode in, and they usually took the flattest route along River Way, even though buses idled near the depot there each morning. In September, our geography teacher proposed a project called “Clear Paths” to map safer, cleaner journeys to school. We would not campaign first and measure later. We would measure first.
+
+The equipment looked like pencil cases with straps: low-cost sensors that recorded nitrogen dioxide and fine particles every minute. Over two weeks, volunteer teams clipped the boxes to rucksacks and cycled different routes in pairs. We left at the same time each day so our data would be comparable. Our teacher asked us to write field notes—where we waited at traffic lights, where cars queued, where the smells changed from bread at the bakery to diesel near the depot.
+
+Back in class, we uploaded the numbers and turned them into lines on a map. The River Way path was fast but regularly spiked with pollution during bus warm‑ups. A longer route, up Elm Street and past the library, showed lower peaks except on rainy days when drivers crowded the hill. The surprise champion was a zigzag through side streets with speed bumps; it looked messy on the map but kept levels steady and low. Our science club borrowed a portable noise meter, and we added decibels to the map as a second layer. The side-street route was quieter too.
+
+We didn’t stop at dots and lines. We tried interventions. One group tested whether leaving ten minutes later avoided the depot spike, and the graph dipped exactly where we hoped. Another group asked the bakery if we could place a poster by the door showing the library route; on the first Friday, six new riders followed it. We wrote a short report for the city council proposing two things: a painted lane on Elm Street near the pinch point, and a “no idling” sign by the depot gates between 7:30 and 8:15.
+
+At assembly, some students complained the zigzag felt slower. “It is slower,” our map team admitted, “by three minutes on average.” But the next slide showed the three‑minute trade: steadier air and less noise. The head teacher agreed to place the bike racks closer to the side‑street entrance, and the bus company manager visited to discuss a trial of later warm‑ups. We didn’t declare victory. We said that noticing, testing, and changing routes had already turned the racks from decoration into an invitation—and that invitations work best when someone answers them.
+</p>
+    </div>
+
+    <div class="card">
+      <h2>Multiple-Choice Questions (Single Answer)</h2>
+      <div id="questions"></div>
+      <div class="actions">
+        <button class="primary" onclick="grade()">Check answers & score</button>
+        <button class="ghost" onclick="resetAll()">Reset</button>
+        <span id="score" class="score"></span>
+      </div>
+      <details>
+        <summary>Answer key (view after checking)</summary>
+        <ol id="answerList" class="ans"></ol>
+      </details>
+    </div>
+
+    <div class="footer">© 2025 Miss K | For classroom practice only.</div>
+  </div>
+
+<script>
+const DATA = [{"q": "What was the main goal of the 'Clear Paths' project?", "a": ["To buy more bikes", "To map safer, cleaner routes to school using data", "To close the bus depot", "To decorate bike racks"], "ans": "B", "exp": ""}, {"q": "What did most students originally think of the new bike racks?", "a": ["Useful and busy", "Decoration only", "Too expensive", "Unsafe"], "ans": "B", "exp": ""}, {"q": "Which route did early riders usually choose before the project?", "a": ["Elm Street past the library", "Side‑street zigzag", "River Way along the depot", "Through the park"], "ans": "C", "exp": ""}, {"q": "What kind of equipment did students use?", "a": ["Compasses and rulers", "Low‑cost air sensors recording NO₂ and fine particles", "Walkie‑talkies", "GPS watches only"], "ans": "B", "exp": ""}, {"q": "Why did teams leave at the same time each day?", "a": ["To avoid rain", "To make data comparable", "To beat traffic", "To meet the bus manager"], "ans": "B", "exp": ""}, {"q": "What did field notes include?", "a": ["Lunch menus", "Where lights, queues, and smells changed", "Homework schedules", "Weather forecasts for the month"], "ans": "B", "exp": ""}, {"q": "What did the River Way route show on the map?", "a": ["Low steady levels", "Regular spikes during bus warm‑ups", "No data", "The quietest noise readings"], "ans": "B", "exp": ""}, {"q": "Which route was the surprise 'champion'?", "a": ["River Way", "Elm Street", "Zigzag side streets with speed bumps", "The hill by the depot"], "ans": "C", "exp": ""}, {"q": "What extra measurement did the science club add?", "a": ["Temperature", "Humidity", "Noise levels in decibels", "Wind speed"], "ans": "C", "exp": ""}, {"q": "How did rain affect Elm Street?", "a": ["Lowered traffic", "Closed the road", "Increased car crowding and peaks", "No effect"], "ans": "C", "exp": ""}, {"q": "What time-based intervention reduced the depot spike?", "a": ["Leaving ten minutes earlier", "Leaving ten minutes later", "Riding at night", "Skipping breakfast"], "ans": "B", "exp": ""}, {"q": "How did the bakery support the project?", "a": ["Gave out free bread", "Allowed a poster showing the library route", "Closed during mornings", "Provided bikes"], "ans": "B", "exp": ""}, {"q": "What two proposals were sent to the city council?", "a": ["New buses and a bridge", "Painted lane near Elm Street pinch point, and 'no idling' sign at depot gates", "Bike giveaways and parking fees", "Longer school days and fines"], "ans": "B", "exp": ""}, {"q": "What complaint did some students make at assembly?", "a": ["The maps were confusing", "The zigzag felt slower", "Sensors were broken", "The racks were removed"], "ans": "B", "exp": ""}, {"q": "How much slower was the zigzag route on average?", "a": ["One minute", "Three minutes", "Ten minutes", "It wasn’t slower"], "ans": "B", "exp": ""}, {"q": "What did the head teacher decide about bike racks?", "a": ["Remove them", "Move them closer to the side‑street entrance", "Lock them during mornings", "Paint them red"], "ans": "B", "exp": ""}, {"q": "Who visited to discuss later bus warm‑ups?", "a": ["The mayor", "The bus company manager", "The librarian", "A parent group"], "ans": "B", "exp": ""}, {"q": "Which sentence best captures the project’s method?", "a": ["Campaign first, measure later", "Measure first, then test changes", "Ignore data and rely on opinion", "Ride only in summer"], "ans": "B", "exp": ""}, {"q": "What is the central idea of the passage?", "a": ["Speed is everything", "Small, data‑driven changes can make routes cleaner and safer", "Cycling is dangerous", "Maps are unnecessary"], "ans": "B", "exp": ""}, {"q": "What does the word 'interventions' most nearly mean here?", "a": ["Arguments", "Actions tested to change outcomes", "Mistakes", "Games"], "ans": "B", "exp": ""}, {"q": "Why was the side‑street route recommended despite being slower?", "a": ["It had more shops", "It was prettier", "It kept pollution and noise steadier and lower", "It avoided hills entirely"], "ans": "C", "exp": ""}, {"q": "What design feature helped the side‑street route stay quieter?", "a": ["Speed bumps", "Open motorway", "Tunnel", "Bridge"], "ans": "A", "exp": ""}, {"q": "What pattern did the data reveal about River Way?", "a": ["Safest and cleanest", "Only noisy, not polluted", "Pollution spikes matched bus warm‑ups", "Always empty"], "ans": "C", "exp": ""}, {"q": "Which detail shows community partnership?", "a": ["Students riding alone", "A poster at the bakery and a meeting with the bus manager", "Bikes locked indoors", "Private maps"], "ans": "B", "exp": ""}, {"q": "What did the class add to make routes comparable?", "a": ["Random start times", "Same daily start time", "Different bikes", "Night rides"], "ans": "B", "exp": ""}, {"q": "Why include field notes about smells?", "a": ["Smells are fun facts only", "They can signal sources like bakery ovens or diesel exhaust", "They replace sensor data", "They raise money"], "ans": "B", "exp": ""}, {"q": "Which is an inference rather than a stated fact?", "a": ["Side‑street route had lower noise", "Some students value speed over air quality", "Sensors recorded every minute", "The council received a report"], "ans": "B", "exp": ""}, {"q": "What does 'pinch point' refer to on Elm Street?", "a": ["A wide open section", "A narrow part needing a painted lane", "A park entrance", "A river crossing"], "ans": "B", "exp": ""}, {"q": "What habit does the passage encourage?", "a": ["Riding without helmets", "Guessing about safety", "Noticing, testing, and adjusting based on evidence", "Avoiding maps"], "ans": "C", "exp": ""}, {"q": "Which title best fits the passage?", "a": ["Faster Than the Bus", "Clear Paths: Mapping Cleaner Routes to School", "Adventures at the Bakery", "How to Repair a Bike"], "ans": "B", "exp": ""}, {"q": "Why did the teacher refuse to campaign first?", "a": ["Campaigning is banned", "Measuring first avoids arguments based on guesses", "Data is boring", "There was no time"], "ans": "B", "exp": ""}, {"q": "What change did the school consider for the racks?", "a": ["Adding locks for a fee", "Moving them nearer to the recommended route entrance", "Selling them", "Painting murals"], "ans": "B", "exp": ""}, {"q": "What did the team say about 'victory' at the end?", "a": ["They declared victory", "They admitted the work continues, but progress is real", "They gave up", "They blamed the council"], "ans": "B", "exp": ""}, {"q": "Which group’s schedule most influenced River Way pollution?", "a": ["Dog walkers", "Delivery cyclists", "Bus depot warm‑ups between 7:30 and 8:15", "Street cleaners"], "ans": "C", "exp": ""}, {"q": "What role did noise data play?", "a": ["None", "It provided a second layer showing the side‑street route was quieter", "It replaced air data", "It measured speed"], "ans": "B", "exp": ""}, {"q": "What does the final metaphor about invitations suggest?", "a": ["Racks are only art", "Infrastructure encourages action when people respond", "Only staff should cycle", "Invitations must be printed"], "ans": "B", "exp": ""}];
+
+const container = document.getElementById('questions');
+DATA.forEach((item, idx)=>{
+  const n = idx + 1;
+  const block = document.createElement('div');
+  block.className = 'q';
+  block.innerHTML = `
+    <h3>${n}. ${item.q}</h3>
+    <div class="opts">
+      ${['A','B','C','D'].map((k,i)=>{
+        const text = item.a[i];
+        const name = 'q'+n;
+        const id = name + '_' + k;
+        return `
+        <label for="${id}">
+          <input type="radio" name="${name}" id="${id}" value="${k}" />
+          <span>(${k}) ${text}</span>
+        </label>`
+      }).join('')}
+    </div>
+    <div id="fb_${n}" class="ans"></div>
+  `;
+  container.appendChild(block);
+});
+
+function grade(){
+  let score = 0;
+  DATA.forEach((item, idx)=>{
+    const n = idx + 1;
+    const picked = document.querySelector(`input[name='q${n}']:checked`);
+    const fb = document.getElementById('fb_'+n);
+    if(!picked){
+      fb.innerHTML = "<span class='bad'>Not answered</span>";
+      return;
+    }
+    if(picked.value === item.ans){
+      score++;
+      fb.innerHTML = "<span class='ok'>✔ Correct</span>";
+    }else{
+      fb.innerHTML = "<span class='bad'>✘ Incorrect</span>. Correct: " + item.ans;
+    }
+  });
+  document.getElementById('score').textContent = `Score: ${score} / ${DATA.length}`;
+}
+
+function resetAll(){
+  document.querySelectorAll("input[type='radio']").forEach(r=>r.checked=false);
+  document.getElementById('score').textContent = "";
+  DATA.forEach((_,i)=>{
+    const fb = document.getElementById('fb_'+(i+1));
+    fb.textContent = "";
+  });
+}
+
+const ansList = document.getElementById('answerList');
+DATA.forEach((item, idx)=>{
+  const li = document.createElement('li');
+  li.textContent = `${idx+1}. ${item.ans}`;
+  ansList.appendChild(li);
+});
+</script>
+</body>
+</html>
