@@ -1,0 +1,135 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>11+ Comprehension — CO40</title>
+  <style>
+    :root{--bg:#f7fafc;--card:#ffffff;--ink:#1a202c;--muted:#4a5568;--accent:#2b6cb0;--ok:#2f855a;--bad:#c53030;}
+    html,body{margin:0;padding:0;background:var(--bg);color:var(--ink);font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,"Noto Sans",sans-serif;line-height:1.6}
+    .wrap{max-width:1000px;margin:24px auto;padding:0 16px}
+    header{display:flex;gap:12px;align-items:center;flex-wrap:wrap}
+    header h1{font-size:1.6rem;margin:.2rem 0}
+    header .tag{background:#ebf8ff;color:var(--accent);border:1px solid #bee3f8;padding:2px 8px;border-radius:999px;font-size:.85rem}
+    .card{background:var(--card);border:1px solid #e2e8f0;border-radius:16px;box-shadow:0 4px 16px rgba(0,0,0,.06);padding:20px;margin:16px 0}
+    .story{font-size:1.05rem;white-space:pre-wrap}
+    .q{margin:14px 0}
+    .q h3{margin:0 0 6px 0;font-size:1.02rem}
+    .opts{display:grid;grid-template-columns:1fr;gap:6px}
+    @media (min-width:700px){.opts{grid-template-columns:1fr 1fr}}
+    label{display:flex;gap:8px;align-items:flex-start;border:1px solid #e2e8f0;border-radius:12px;padding:8px 10px;background:#fff;cursor:pointer}
+    .actions{display:flex;gap:8px;flex-wrap:wrap;align-items:center}
+    button{border:none;border-radius:999px;padding:10px 14px;cursor:pointer}
+    .primary{background:var(--accent);color:#fff}
+    .ghost{background:#edf2f7;color:var(--ink)}
+    .ok{color:var(--ok)}
+    .bad{color:var(--bad)}
+    .score{font-size:1.2rem;font-weight:700}
+    .footer{color:var(--muted);font-size:.9rem}
+    .ans{font-size:.95rem;color:var(--muted)}
+  </style>
+</head>
+<body>
+  <div class="wrap">
+    <header>
+      <h1>11+ Comprehension (CO40)</h1>
+      <span class="tag">Time allowed: 30 minutes</span>
+    </header>
+
+    <div class="card">
+      <h2>Passage</h2>
+      <p class="story" id="story">
+
+A new night market brought colour and music to the riverbank—and bins that overflowed by ten. Our eco committee worked with stallholders to design a waste plan that would keep the path clear and the river clean. The rule was that no stall could hide bags behind it; all waste had to go to labelled points watched by volunteers.
+
+We began with a walk-through at setup. Food stalls received lidded tubs for compostables; drink stalls got stackable crates for returnable cups; and general waste points sat near exits with a bright sign: “Last chance bin.” We taped arrows on the ground leading to each point and drew a map for the steward briefing. A local canoe club offered to patrol the water for floating cups.
+
+The first weekend was messy. The wind flipped crate stacks and chased napkins. We added bungee cords and a “napkin net” — a lightweight frame with mesh that sat behind tables. A guitarist’s amplifier hid a waste sign; we raised signs on poles above head height. Volunteers gave out a “thank-you token” to any customer who returned a cup; tokens could be swapped for a discount on a stall of their choice at the end of the night.
+
+By the third market, the path looked passable even at closing. Canoeists reported fewer cups, and the riverbank flower beds were free of chip trays. Stallholders signed a rota: ten minutes before each music set, two of them walked the line with grabbers. We posted totals—bags by type and number of returned cups—on a chalkboard near the bus stop. The market still glittered; it no longer shed its shine into the river.
+</p>
+    </div>
+
+    <div class="card">
+      <h2>Multiple-Choice Questions (Single Answer)</h2>
+      <div id="questions"></div>
+      <div class="actions">
+        <button class="primary" onclick="grade()">Check answers & score</button>
+        <button class="ghost" onclick="resetAll()">Reset</button>
+        <span id="score" class="score"></span>
+      </div>
+      <details>
+        <summary>Answer key (view after checking)</summary>
+        <ol id="answerList" class="ans"></ol>
+      </details>
+    </div>
+
+    <div class="footer">© 2025 Miss K | For classroom practice only.</div>
+  </div>
+
+<script>
+const DATA = [{"q": "What problem did the night market face?", "a": ["No visitors", "Overflowing bins and litter by the river", "Too quiet", "No music"], "ans": "B", "exp": ""}, {"q": "What rule applied to stalls?", "a": ["Hide bags", "Dump anywhere", "Use labelled waste points; no hiding bags", "Close early"], "ans": "C", "exp": ""}, {"q": "How were waste points signposted?", "a": ["None", "Bright signs and taped arrows", "Whispers", "Text only"], "ans": "B", "exp": ""}, {"q": "Who patrolled the water?", "a": ["Police", "Local canoe club", "Fishermen", "Lifeguards"], "ans": "B", "exp": ""}, {"q": "What containers did food stalls get?", "a": ["Open baskets", "Lidded tubs for compostables", "Buckets only", "Boxes"], "ans": "B", "exp": ""}, {"q": "What was given to drink stalls?", "a": ["Stackable crates for returnable cups", "Nothing", "Glass bins", "Sinks"], "ans": "A", "exp": ""}, {"q": "What happened first weekend?", "a": ["Perfect", "Wind flipped crates; napkins escaped", "Rain stopped market", "No music"], "ans": "B", "exp": ""}, {"q": "What fixed flying napkins?", "a": ["Glue", "Napkin net behind tables", "Fans", "Heavier cups"], "ans": "B", "exp": ""}, {"q": "Why raise signs on poles?", "a": ["Decoration", "Amplifier blocked low signs", "More shade", "For lights"], "ans": "B", "exp": ""}, {"q": "What rewarded cup returns?", "a": ["Money", "Thank-you token for stall discount", "Stickers only", "Claps"], "ans": "B", "exp": ""}, {"q": "What did canoeists report later?", "a": ["More cups", "Fewer floating cups", "More boats", "No change"], "ans": "B", "exp": ""}, {"q": "What rota did stallholders sign?", "a": ["Music roster", "Litter walk with grabbers before sets", "Cooking schedule", "None"], "ans": "B", "exp": ""}, {"q": "Where were totals posted?", "a": ["Online only", "Chalkboard near bus stop", "On radio", "On stage"], "ans": "B", "exp": ""}, {"q": "What is central idea?", "a": ["Markets must close", "Simple design + incentives keep public spaces clean", "Bins are useless", "Canoes are decoration"], "ans": "B", "exp": ""}, {"q": "Why place 'last chance bin' at exits?", "a": ["Jokes", "Capture waste before leaving", "Block doors", "Hide bins"], "ans": "B", "exp": ""}, {"q": "What caused crate problem?", "a": ["Snow", "Wind flipping stacks", "Heat", "Crowds"], "ans": "B", "exp": ""}, {"q": "What is a token good for?", "a": ["Nothing", "Discount at a stall", "Bus fare", "Water"], "ans": "B", "exp": ""}, {"q": "Why tape arrows on ground?", "a": ["Art", "Guide people to waste points", "Trip people", "Hide bins"], "ans": "B", "exp": ""}, {"q": "Which group briefed with a map?", "a": ["Stewards", "Musicians", "Police only", "Drivers"], "ans": "A", "exp": ""}, {"q": "What does compostable mean?", "a": ["Plastic only", "Biodegradable food/pack waste", "Metal", "Glass"], "ans": "B", "exp": ""}, {"q": "What kept path passable by closing?", "a": ["More bins only", "Rota litter walks and better signs", "Closing stalls", "Police"], "ans": "B", "exp": ""}, {"q": "Which is inference?", "a": ["Fewer cups reported", "Tokens motivated returns", "Arrows taped", "Canoe patrol"], "ans": "B", "exp": ""}, {"q": "What hid a sign?", "a": ["A tree", "Guitar amplifier", "Truck", "Boat"], "ans": "B", "exp": ""}, {"q": "What sat near exits?", "a": ["Band", "Last chance bin", "Police stand", "Bus"], "ans": "B", "exp": ""}, {"q": "What kept crates from flipping?", "a": ["Glue", "Bungee cords", "Tape only", "Ropes only"], "ans": "B", "exp": ""}, {"q": "What did the chalkboard show?", "a": ["Prices", "Bags by type and returned cups", "Songs", "Timetable"], "ans": "B", "exp": ""}, {"q": "Who walked line before music sets?", "a": ["Two stallholders on rota", "Police", "Teachers", "Children"], "ans": "A", "exp": ""}, {"q": "What stayed the same?", "a": ["Market glitter and music", "Nothing", "No bins", "No canoeists"], "ans": "A", "exp": ""}, {"q": "What is the benefit of canoe patrol?", "a": ["Fun only", "Catches litter before it floats away", "Fishing practice", "Exercise"], "ans": "B", "exp": ""}, {"q": "Where did flower beds clear of chip trays show improvement?", "a": ["Riverbank beds", "Car park", "Stage", "Road"], "ans": "A", "exp": ""}, {"q": "What avoided bag piles behind stalls?", "a": ["Rule against hiding and central points", "Bigger stalls", "More police", "Higher prices"], "ans": "A", "exp": ""}, {"q": "Why lidded tubs for food stalls?", "a": ["Noise", "Keep smells down and pests out", "Style", "Weight"], "ans": "B", "exp": ""}, {"q": "When were litter walks timed?", "a": ["After closing", "Ten minutes before each music set", "Morning", "Random"], "ans": "B", "exp": ""}, {"q": "What overall approach worked?", "a": ["Punishment only", "Design, signage, incentives, shared rota", "Close market", "More music"], "ans": "B", "exp": ""}];
+
+const container = document.getElementById('questions');
+DATA.forEach((item, idx)=>{
+  const n = idx + 1;
+  const block = document.createElement('div');
+  block.className = 'q';
+  block.innerHTML = `
+    <h3>${n}. ${item.q}</h3>
+    <div class="opts">
+      ${['A','B','C','D'].map((k,i)=>{
+        const text = item.a[i];
+        const name = 'q'+n;
+        const id = name + '_' + k;
+        return `
+        <label for="${id}">
+          <input type="radio" name="${name}" id="${id}" value="${k}" />
+          <span>(${k}) ${text}</span>
+        </label>`
+      }).join('')}
+    </div>
+    <div id="fb_${n}" class="ans"></div>
+  `;
+  container.appendChild(block);
+});
+
+function grade(){
+  let score = 0;
+  DATA.forEach((item, idx)=>{
+    const n = idx + 1;
+    const picked = document.querySelector(`input[name='q${n}']:checked`);
+    const fb = document.getElementById('fb_'+n);
+    if(!picked){
+      fb.innerHTML = "<span class='bad'>Not answered</span>";
+      return;
+    }
+    if(picked.value === item.ans){
+      score++;
+      fb.innerHTML = "<span class='ok'>✔ Correct</span>";
+    }else{
+      fb.innerHTML = "<span class='bad'>✘ Incorrect</span>. Correct: " + item.ans;
+    }
+  });
+  document.getElementById('score').textContent = `Score: ${score} / ${DATA.length}`;
+}
+
+function resetAll(){
+  document.querySelectorAll("input[type='radio']").forEach(r=>r.checked=false);
+  document.getElementById('score').textContent = "";
+  DATA.forEach((_,i)=>{
+    const fb = document.getElementById('fb_'+(i+1));
+    fb.textContent = "";
+  });
+}
+
+const ansList = document.getElementById('answerList');
+DATA.forEach((item, idx)=>{
+  const li = document.createElement('li');
+  li.textContent = `${idx+1}. ${item.ans}`;
+  ansList.appendChild(li);
+});
+</script>
+</body>
+</html>

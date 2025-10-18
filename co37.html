@@ -1,0 +1,135 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>11+ Comprehension — CO37</title>
+  <style>
+    :root{--bg:#f7fafc;--card:#ffffff;--ink:#1a202c;--muted:#4a5568;--accent:#2b6cb0;--ok:#2f855a;--bad:#c53030;}
+    html,body{margin:0;padding:0;background:var(--bg);color:var(--ink);font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,"Noto Sans",sans-serif;line-height:1.6}
+    .wrap{max-width:1000px;margin:24px auto;padding:0 16px}
+    header{display:flex;gap:12px;align-items:center;flex-wrap:wrap}
+    header h1{font-size:1.6rem;margin:.2rem 0}
+    header .tag{background:#ebf8ff;color:var(--accent);border:1px solid #bee3f8;padding:2px 8px;border-radius:999px;font-size:.85rem}
+    .card{background:var(--card);border:1px solid #e2e8f0;border-radius:16px;box-shadow:0 4px 16px rgba(0,0,0,.06);padding:20px;margin:16px 0}
+    .story{font-size:1.05rem;white-space:pre-wrap}
+    .q{margin:14px 0}
+    .q h3{margin:0 0 6px 0;font-size:1.02rem}
+    .opts{display:grid;grid-template-columns:1fr;gap:6px}
+    @media (min-width:700px){.opts{grid-template-columns:1fr 1fr}}
+    label{display:flex;gap:8px;align-items:flex-start;border:1px solid #e2e8f0;border-radius:12px;padding:8px 10px;background:#fff;cursor:pointer}
+    .actions{display:flex;gap:8px;flex-wrap:wrap;align-items:center}
+    button{border:none;border-radius:999px;padding:10px 14px;cursor:pointer}
+    .primary{background:var(--accent);color:#fff}
+    .ghost{background:#edf2f7;color:var(--ink)}
+    .ok{color:var(--ok)}
+    .bad{color:var(--bad)}
+    .score{font-size:1.2rem;font-weight:700}
+    .footer{color:var(--muted);font-size:.9rem}
+    .ans{font-size:.95rem;color:var(--muted)}
+  </style>
+</head>
+<body>
+  <div class="wrap">
+    <header>
+      <h1>11+ Comprehension (CO37)</h1>
+      <span class="tag">Time allowed: 30 minutes</span>
+    </header>
+
+    <div class="card">
+      <h2>Passage</h2>
+      <p class="story" id="story">
+
+Behind the sports hall, three tin sheds baked in summer and dripped in winter. Our eco team proposed fitting gutters and barrels to catch rain for the garden beds instead of dragging hoses across the car park. The caretaker agreed if we designed overflow paths so water would not flood the path or seep under the doors.
+
+We measured roof lengths and used a simple rule of thumb: 1 mm of rain on 1 square metre gives 1 litre. With chalk and string we marked gutter lines and chose two downpipes per shed into linked barrels. We added fine leaf guards and mosquito-proof mesh over the barrel lids. A maths group sized overflows to a gravel soakaway made from an old crate filled with stones.
+
+The first storm showed two flaws. Wind pushed rain past a warped roof edge on Shed B, and one barrel leaned on soft ground. We added a drip flashing strip along the edge and set the barrel on a level paving slab. We painted a clear mark on each barrel that read “Stop filling here—check overflow.” A sign above the tap showed pictures: watering can low, bucket high, hose not allowed.
+
+By the end of term, the garden team filled cans without trekked hoses. We logged volumes after big showers and found that the linked barrels filled fastest on Shed A facing the prevailing wind. The caretaker smiled at a dry threshold and asked for one more improvement: a winter drain bung so barrels could be emptied before frost. We wrote a one-page guide and left a spare mesh roll labelled “For leaves and summer midges.”
+</p>
+    </div>
+
+    <div class="card">
+      <h2>Multiple-Choice Questions (Single Answer)</h2>
+      <div id="questions"></div>
+      <div class="actions">
+        <button class="primary" onclick="grade()">Check answers & score</button>
+        <button class="ghost" onclick="resetAll()">Reset</button>
+        <span id="score" class="score"></span>
+      </div>
+      <details>
+        <summary>Answer key (view after checking)</summary>
+        <ol id="answerList" class="ans"></ol>
+      </details>
+    </div>
+
+    <div class="footer">© 2025 Miss K | For classroom practice only.</div>
+  </div>
+
+<script>
+const DATA = [{"q": "What was the goal of the project?", "a": ["Cool sheds", "Collect rainwater for garden beds", "Wash cars", "Make ponds"], "ans": "B", "exp": ""}, {"q": "What condition did the caretaker set?", "a": ["No gutters", "Design safe overflows to avoid flooding/door seepage", "Work at night", "Paint sheds"], "ans": "B", "exp": ""}, {"q": "What rule of thumb was used?", "a": ["1 mm rain on 1 m² = 1 litre", "1 cm = 1 litre", "It never rains", "Always sunny"], "ans": "A", "exp": ""}, {"q": "How many downpipes per shed?", "a": ["One", "Two into linked barrels", "Three", "None"], "ans": "B", "exp": ""}, {"q": "What protected barrels from insects?", "a": ["Nothing", "Mesh over lids", "Paint", "Soap"], "ans": "B", "exp": ""}, {"q": "What handled overflow?", "a": ["Ignore", "Gravel soakaway in a crate", "Into classroom", "Onto path"], "ans": "B", "exp": ""}, {"q": "What flaw did the storm reveal on Shed B?", "a": ["Leaks at door", "Warped edge blew rain past gutter", "No roof", "Broken barrel"], "ans": "B", "exp": ""}, {"q": "How was leaning barrel fixed?", "a": ["Left it", "Level paving slab base", "More water", "Tape"], "ans": "B", "exp": ""}, {"q": "What label was painted on barrels?", "a": ["No water", "Stop filling here—check overflow", "Danger", "Private"], "ans": "B", "exp": ""}, {"q": "Which filling option was discouraged?", "a": ["Watering can", "Bucket", "Hose", "Small jug"], "ans": "C", "exp": ""}, {"q": "Which shed filled fastest?", "a": ["Shed A facing prevailing wind", "Shed B", "Shed C", "None"], "ans": "A", "exp": ""}, {"q": "What winter feature was requested?", "a": ["Heater", "Drain bung to empty before frost", "Lights", "Paint"], "ans": "B", "exp": ""}, {"q": "What did leaf guards do?", "a": ["Look pretty", "Keep debris out of gutters", "Add weight", "Make noise"], "ans": "B", "exp": ""}, {"q": "Why linked barrels?", "a": ["Decoration", "Increase storage and balance flow", "Sound", "Sale"], "ans": "B", "exp": ""}, {"q": "What is central idea?", "a": ["Rain is useless", "Simple gutters + safe overflow save effort and water", "Hoses are best", "Sheds need paint"], "ans": "B", "exp": ""}, {"q": "What did the sign above the tap show?", "a": ["Text only", "Pictures of can/bucket/hose rules", "Prices", "Cartoons"], "ans": "B", "exp": ""}, {"q": "What did drip flashing fix?", "a": ["Roof colour", "Wind-driven spill over edge", "Noise", "Birds"], "ans": "B", "exp": ""}, {"q": "Why mesh roll spare?", "a": ["Sell", "Future repairs for leaves/midges", "Decoration", "Weights"], "ans": "B", "exp": ""}, {"q": "Where were volumes logged?", "a": ["Never", "After big showers", "Daily only", "Only winter"], "ans": "B", "exp": ""}, {"q": "What habit does project promote?", "a": ["Waste water", "Design, test in storms, iterate", "Avoid maths", "Ban barrels"], "ans": "B", "exp": ""}, {"q": "Which is inference?", "a": ["Caretaker smiled at dry threshold", "Linked barrels imply less hose dragging", "Storm revealed issues", "Mesh on lids"], "ans": "B", "exp": ""}, {"q": "Why avoid hoses from tap?", "a": ["Trip hazard/usage rules", "Because heavy", "Because expensive", "Because loud"], "ans": "A", "exp": ""}, {"q": "What tool marked gutter lines?", "a": ["Paint", "Chalk and string", "Spray", "Pens"], "ans": "B", "exp": ""}, {"q": "What filled barrels faster?", "a": ["Calm", "Facing prevailing wind", "Snow", "Shade"], "ans": "B", "exp": ""}, {"q": "What goes in soakaway crate?", "a": ["Soil", "Stones/gravel", "Leaves", "Water only"], "ans": "B", "exp": ""}, {"q": "Who sized overflows?", "a": ["Caretaker", "Maths group", "Parents", "Shop"], "ans": "B", "exp": ""}, {"q": "What happens in frost?", "a": ["Barrels burst if full", "Nothing", "More rain", "Leaves grow"], "ans": "A", "exp": ""}, {"q": "Why two downpipes?", "a": ["Symmetry only", "Share flow/redundancy", "Noise", "Look"], "ans": "B", "exp": ""}, {"q": "What was discouraged at tap?", "a": ["Watering can use", "Bucket fill", "Using a hose", "Checking overflow"], "ans": "C", "exp": ""}, {"q": "What shows success?", "a": ["Longer hose treks", "Garden team used cans at barrels", "No water", "Dry garden"], "ans": "B", "exp": ""}, {"q": "Which title fits best?", "a": ["Soggy Doors to Smart Soakaways", "Windy Shed", "Paint the Roof", "Hose Day"], "ans": "A", "exp": ""}, {"q": "What protected doors from seepage?", "a": ["Paint", "Overflow paths and soakaway", "Stickers", "Locks"], "ans": "B", "exp": ""}, {"q": "What was warped?", "a": ["Window", "Roof edge on Shed B", "Barrel lid", "Tap"], "ans": "B", "exp": ""}, {"q": "What is a soakaway?", "a": ["A pump", "Gravel pit for water absorption", "A bucket", "A sponge"], "ans": "B", "exp": ""}, {"q": "What does 'prevailing wind' mean?", "a": ["Random breeze", "Usual wind direction", "Storm name", "Fan"], "ans": "B", "exp": ""}];
+
+const container = document.getElementById('questions');
+DATA.forEach((item, idx)=>{
+  const n = idx + 1;
+  const block = document.createElement('div');
+  block.className = 'q';
+  block.innerHTML = `
+    <h3>${n}. ${item.q}</h3>
+    <div class="opts">
+      ${['A','B','C','D'].map((k,i)=>{
+        const text = item.a[i];
+        const name = 'q'+n;
+        const id = name + '_' + k;
+        return `
+        <label for="${id}">
+          <input type="radio" name="${name}" id="${id}" value="${k}" />
+          <span>(${k}) ${text}</span>
+        </label>`
+      }).join('')}
+    </div>
+    <div id="fb_${n}" class="ans"></div>
+  `;
+  container.appendChild(block);
+});
+
+function grade(){
+  let score = 0;
+  DATA.forEach((item, idx)=>{
+    const n = idx + 1;
+    const picked = document.querySelector(`input[name='q${n}']:checked`);
+    const fb = document.getElementById('fb_'+n);
+    if(!picked){
+      fb.innerHTML = "<span class='bad'>Not answered</span>";
+      return;
+    }
+    if(picked.value === item.ans){
+      score++;
+      fb.innerHTML = "<span class='ok'>✔ Correct</span>";
+    }else{
+      fb.innerHTML = "<span class='bad'>✘ Incorrect</span>. Correct: " + item.ans;
+    }
+  });
+  document.getElementById('score').textContent = `Score: ${score} / ${DATA.length}`;
+}
+
+function resetAll(){
+  document.querySelectorAll("input[type='radio']").forEach(r=>r.checked=false);
+  document.getElementById('score').textContent = "";
+  DATA.forEach((_,i)=>{
+    const fb = document.getElementById('fb_'+(i+1));
+    fb.textContent = "";
+  });
+}
+
+const ansList = document.getElementById('answerList');
+DATA.forEach((item, idx)=>{
+  const li = document.createElement('li');
+  li.textContent = `${idx+1}. ${item.ans}`;
+  ansList.appendChild(li);
+});
+</script>
+</body>
+</html>

@@ -1,0 +1,135 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>11+ Comprehension — CO36</title>
+  <style>
+    :root{--bg:#f7fafc;--card:#ffffff;--ink:#1a202c;--muted:#4a5568;--accent:#2b6cb0;--ok:#2f855a;--bad:#c53030;}
+    html,body{margin:0;padding:0;background:var(--bg);color:var(--ink);font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,"Noto Sans",sans-serif;line-height:1.6}
+    .wrap{max-width:1000px;margin:24px auto;padding:0 16px}
+    header{display:flex;gap:12px;align-items:center;flex-wrap:wrap}
+    header h1{font-size:1.6rem;margin:.2rem 0}
+    header .tag{background:#ebf8ff;color:var(--accent);border:1px solid #bee3f8;padding:2px 8px;border-radius:999px;font-size:.85rem}
+    .card{background:var(--card);border:1px solid #e2e8f0;border-radius:16px;box-shadow:0 4px 16px rgba(0,0,0,.06);padding:20px;margin:16px 0}
+    .story{font-size:1.05rem;white-space:pre-wrap}
+    .q{margin:14px 0}
+    .q h3{margin:0 0 6px 0;font-size:1.02rem}
+    .opts{display:grid;grid-template-columns:1fr;gap:6px}
+    @media (min-width:700px){.opts{grid-template-columns:1fr 1fr}}
+    label{display:flex;gap:8px;align-items:flex-start;border:1px solid #e2e8f0;border-radius:12px;padding:8px 10px;background:#fff;cursor:pointer}
+    .actions{display:flex;gap:8px;flex-wrap:wrap;align-items:center}
+    button{border:none;border-radius:999px;padding:10px 14px;cursor:pointer}
+    .primary{background:var(--accent);color:#fff}
+    .ghost{background:#edf2f7;color:var(--ink)}
+    .ok{color:var(--ok)}
+    .bad{color:var(--bad)}
+    .score{font-size:1.2rem;font-weight:700}
+    .footer{color:var(--muted);font-size:.9rem}
+    .ans{font-size:.95rem;color:var(--muted)}
+  </style>
+</head>
+<body>
+  <div class="wrap">
+    <header>
+      <h1>11+ Comprehension (CO36)</h1>
+      <span class="tag">Time allowed: 30 minutes</span>
+    </header>
+
+    <div class="card">
+      <h2>Passage</h2>
+      <p class="story" id="story">
+
+Our town hall hosted a monthly Repair Café where volunteers fixed lamps, toasters, and torn jackets for free. The tables were always full, but the rota was chaos: three people soldered at once while no one stitched, or a crowd came with bicycles when the only mechanic was away. Our computing club offered to design a fair rota and a booking system that would not scare walk-ins.
+
+We started by interviewing volunteers about their skills and limits. One retired electrician preferred two short shifts; a student tailor could come only on alternate Saturdays; the bike mechanic loved mornings but had to leave by noon. We mapped likely demand from last year’s sign-in sheets and added a “surge buffer”—two flexible slots each hour for whatever walked in. The rule was simple: half the tables bookable in advance, half kept for drop-ins.
+
+At the first trial we placed a chalkboard by the door with three columns—Electrical, Fabric, Bikes—and sticky tags that visitors could move as they queued. A bell rang every 20 minutes to nudge progress, not hurry it. Bottlenecks shrank, but we noticed a problem: people with small fixes waited behind big jobs. We added a “triage” stool where a volunteer could tighten a screw or replace a plug without claiming a full slot.
+
+By the third month, the rota felt like a rhythm: green tags for booked slots, orange for drop-ins, and blue for the surge buffer. The tailor asked for a second lamp at her table; stitches went straighter. The café sold more tea because queues were shorter and calmer. Our last chart showed that average wait fell by a third without turning anyone away. We didn’t fix everything; we fixed the way of fixing.
+</p>
+    </div>
+
+    <div class="card">
+      <h2>Multiple-Choice Questions (Single Answer)</h2>
+      <div id="questions"></div>
+      <div class="actions">
+        <button class="primary" onclick="grade()">Check answers & score</button>
+        <button class="ghost" onclick="resetAll()">Reset</button>
+        <span id="score" class="score"></span>
+      </div>
+      <details>
+        <summary>Answer key (view after checking)</summary>
+        <ol id="answerList" class="ans"></ol>
+      </details>
+    </div>
+
+    <div class="footer">© 2025 Miss K | For classroom practice only.</div>
+  </div>
+
+<script>
+const DATA = [{"q": "What problem did the Repair Café have?", "a": ["Too few visitors", "Chaotic rota causing mismatched skills and demand", "No tables", "No power"], "ans": "B", "exp": ""}, {"q": "What did the computing club design?", "a": ["A poster", "Fair rota and booking system keeping walk-ins", "A robot", "A new café"], "ans": "B", "exp": ""}, {"q": "How were volunteers’ constraints gathered?", "a": ["Guessing", "Interviews about skills and limits", "Emails only", "Surveys of customers"], "ans": "B", "exp": ""}, {"q": "What was the rule for tables?", "a": ["All bookable", "All drop-in", "Half bookable, half for drop-ins", "Closed"], "ans": "C", "exp": ""}, {"q": "What is the 'surge buffer'?", "a": ["Snacks", "Two flexible slots each hour for unexpected demand", "A power strip", "A toolbox"], "ans": "B", "exp": ""}, {"q": "What tool managed queues at the door?", "a": ["App only", "Chalkboard with columns and sticky tags", "Megaphone", "Tickets only"], "ans": "B", "exp": ""}, {"q": "How often did the bell ring?", "a": ["Every hour", "Every 20 minutes", "Never", "Every minute"], "ans": "B", "exp": ""}, {"q": "What issue appeared at first trial?", "a": ["No electricians", "Small fixes stuck behind big jobs", "Too many lamps", "Silent room"], "ans": "B", "exp": ""}, {"q": "What solved small-fix delays?", "a": ["More bells", "A triage stool for quick fixes", "Closing doors", "Raising prices"], "ans": "B", "exp": ""}, {"q": "What did tag colours mean?", "a": ["Random", "Green booked, orange drop-in, blue buffer", "All blue", "Weather"], "ans": "B", "exp": ""}, {"q": "What request improved stitching?", "a": ["Bigger table", "Second lamp for the tailor", "More bells", "New door"], "ans": "B", "exp": ""}, {"q": "What happened to average wait?", "a": ["Increased", "Fell by a third", "Stayed same", "Unknown"], "ans": "B", "exp": ""}, {"q": "What is the central idea?", "a": ["Fix objects fast", "Scheduling and triage improve community repairs", "Ban bikes", "Charge fees"], "ans": "B", "exp": ""}, {"q": "Why keep some drop-in tables?", "a": ["To scare people", "To welcome walk-ins without internet bookings", "For decoration", "Because empty"], "ans": "B", "exp": ""}, {"q": "Who preferred mornings?", "a": ["Tailor", "Bike mechanic", "Electrician", "Barista"], "ans": "B", "exp": ""}, {"q": "Which is an inference?", "a": ["Shorter queues sold more tea", "Bell rang every 20 minutes", "Three columns on board", "Half tables bookable"], "ans": "A", "exp": ""}, {"q": "Why map last year’s demand?", "a": ["Nostalgia", "Predict likely needs for rota", "For art", "Ignore data"], "ans": "B", "exp": ""}, {"q": "Who could only come alternate Saturdays?", "a": ["Student tailor", "Retired electrician", "Mechanic", "Barista"], "ans": "A", "exp": ""}, {"q": "What does triage mean here?", "a": ["Medical only", "Quickly assessing and handling small jobs", "Tea tasting", "Bike racing"], "ans": "B", "exp": ""}, {"q": "What shows fairness?", "a": ["Booked only", "Mix of booked and walk-in slots", "VIP line", "No buffer"], "ans": "B", "exp": ""}, {"q": "What was not fixed?", "a": ["The way of fixing", "Objects", "Skills list", "Bell"], "ans": "A", "exp": ""}, {"q": "Where was chalkboard placed?", "a": ["Back room", "By the door", "Kitchen", "Car park"], "ans": "B", "exp": ""}, {"q": "Why include a surge buffer?", "a": ["For noise", "Handle unpredictable arrivals", "To decorate", "To rest"], "ans": "B", "exp": ""}, {"q": "What did green tags indicate?", "a": ["Drop-ins", "Booked slots", "Buffer", "Snacks"], "ans": "B", "exp": ""}, {"q": "What habit does the passage promote?", "a": ["Ignore queues", "Design for fairness and flexibility", "Ban walk-ins", "Charge entry"], "ans": "B", "exp": ""}, {"q": "What caused calmer queues?", "a": ["More chairs", "Better rota, triage, clear signs", "Silence", "Rain"], "ans": "B", "exp": ""}, {"q": "Who left by noon?", "a": ["Electrician", "Bike mechanic", "Tailor", "Manager"], "ans": "B", "exp": ""}, {"q": "What did sticky tags allow visitors to do?", "a": ["Draw", "Move themselves between columns", "Vote", "Sing"], "ans": "B", "exp": ""}, {"q": "What does 'we fixed the way of fixing' imply?", "a": ["No repairs", "Improved process improved outcomes", "Closed café", "Sold tools"], "ans": "B", "exp": ""}, {"q": "Which title fits best?", "a": ["Chaos to Calm: Rota for a Repair Café", "Tea and Tickets", "Lamp Parade", "Bell Blues"], "ans": "A", "exp": ""}, {"q": "Why a bell every 20 minutes?", "a": ["Rude", "Gentle pacing of sessions", "Alarm", "Dance"], "ans": "B", "exp": ""}, {"q": "What limited tailor’s schedule?", "a": ["Sports", "Alternate Saturdays only", "Weather", "Nothing"], "ans": "B", "exp": ""}, {"q": "What visible items coded status?", "a": ["Stickers", "Coloured tags", "Hats", "Shoes"], "ans": "B", "exp": ""}, {"q": "What ensured fairness to small jobs?", "a": ["Long slots", "Triage stool for quick wins", "Ignore them", "Price"], "ans": "B", "exp": ""}, {"q": "What were the three chalkboard columns?", "a": ["Food, bikes, lamps", "Electrical, Fabric, Bikes", "Math, music, art", "None"], "ans": "B", "exp": ""}];
+
+const container = document.getElementById('questions');
+DATA.forEach((item, idx)=>{
+  const n = idx + 1;
+  const block = document.createElement('div');
+  block.className = 'q';
+  block.innerHTML = `
+    <h3>${n}. ${item.q}</h3>
+    <div class="opts">
+      ${['A','B','C','D'].map((k,i)=>{
+        const text = item.a[i];
+        const name = 'q'+n;
+        const id = name + '_' + k;
+        return `
+        <label for="${id}">
+          <input type="radio" name="${name}" id="${id}" value="${k}" />
+          <span>(${k}) ${text}</span>
+        </label>`
+      }).join('')}
+    </div>
+    <div id="fb_${n}" class="ans"></div>
+  `;
+  container.appendChild(block);
+});
+
+function grade(){
+  let score = 0;
+  DATA.forEach((item, idx)=>{
+    const n = idx + 1;
+    const picked = document.querySelector(`input[name='q${n}']:checked`);
+    const fb = document.getElementById('fb_'+n);
+    if(!picked){
+      fb.innerHTML = "<span class='bad'>Not answered</span>";
+      return;
+    }
+    if(picked.value === item.ans){
+      score++;
+      fb.innerHTML = "<span class='ok'>✔ Correct</span>";
+    }else{
+      fb.innerHTML = "<span class='bad'>✘ Incorrect</span>. Correct: " + item.ans;
+    }
+  });
+  document.getElementById('score').textContent = `Score: ${score} / ${DATA.length}`;
+}
+
+function resetAll(){
+  document.querySelectorAll("input[type='radio']").forEach(r=>r.checked=false);
+  document.getElementById('score').textContent = "";
+  DATA.forEach((_,i)=>{
+    const fb = document.getElementById('fb_'+(i+1));
+    fb.textContent = "";
+  });
+}
+
+const ansList = document.getElementById('answerList');
+DATA.forEach((item, idx)=>{
+  const li = document.createElement('li');
+  li.textContent = `${idx+1}. ${item.ans}`;
+  ansList.appendChild(li);
+});
+</script>
+</body>
+</html>
