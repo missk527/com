@@ -1,0 +1,137 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>11+ Comprehension — CO13</title>
+  <style>
+    :root{--bg:#f7fafc;--card:#ffffff;--ink:#1a202c;--muted:#4a5568;--accent:#2b6cb0;--ok:#2f855a;--bad:#c53030;}
+    html,body{margin:0;padding:0;background:var(--bg);color:var(--ink);font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,"Noto Sans",sans-serif;line-height:1.6}
+    .wrap{max-width:1000px;margin:24px auto;padding:0 16px}
+    header{display:flex;gap:12px;align-items:center;flex-wrap:wrap}
+    header h1{font-size:1.6rem;margin:.2rem 0}
+    header .tag{background:#ebf8ff;color:var(--accent);border:1px solid #bee3f8;padding:2px 8px;border-radius:999px;font-size:.85rem}
+    .card{background:var(--card);border:1px solid #e2e8f0;border-radius:16px;box-shadow:0 4px 16px rgba(0,0,0,.06);padding:20px;margin:16px 0}
+    .story{font-size:1.05rem;white-space:pre-wrap}
+    .q{margin:14px 0}
+    .q h3{margin:0 0 6px 0;font-size:1.02rem}
+    .opts{display:grid;grid-template-columns:1fr;gap:6px}
+    @media (min-width:700px){.opts{grid-template-columns:1fr 1fr}}
+    label{display:flex;gap:8px;align-items:flex-start;border:1px solid #e2e8f0;border-radius:12px;padding:8px 10px;background:#fff;cursor:pointer}
+    .actions{display:flex;gap:8px;flex-wrap:wrap;align-items:center}
+    button{border:none;border-radius:999px;padding:10px 14px;cursor:pointer}
+    .primary{background:var(--accent);color:#fff}
+    .ghost{background:#edf2f7;color:var(--ink)}
+    .ok{color:var(--ok)}
+    .bad{color:var(--bad)}
+    .score{font-size:1.2rem;font-weight:700}
+    .footer{color:var(--muted);font-size:.9rem}
+    .ans{font-size:.95rem;color:var(--muted)}
+  </style>
+</head>
+<body>
+  <div class="wrap">
+    <header>
+      <h1>11+ Comprehension (CO13)</h1>
+      <span class="tag">Time allowed: 30 minutes</span>
+    </header>
+
+    <div class="card">
+      <h2>Passage</h2>
+      <p class="story" id="story">
+
+The old flagpole platform behind the science block had been empty for years, so our physics teacher asked if we wanted to turn it into a weather station. Not a shiny tower with spinning cups and wires—at least, not at first. We would begin with instruments we could build, calibrate, and explain. If we could prove the data was reliable for a month, the head teacher would pay for a rain gauge with a tipping bucket and a proper mount for an anemometer.
+
+We started by drawing a site plan. Trees to the west could shelter the platform; the brick wall on the east might reflect heat in the morning. We agreed to place the thermometer in a shaded box called a Stevenson screen, painted white, with vents to let air pass through. For rainfall, we used a straight-sided cylinder set level on a paving slab. Wind direction would be marked by a simple vane cut from aluminium, balanced on a nail over a bearing scavenged from a broken fidget spinner. The school caretaker inspected our mounts and insisted we tighten every bolt.
+
+Calibration took longer than we expected. For temperature, we compared our thermometer with two digital kitchen probes in a sealed bag of ice water, then in room air. For rain, we poured measured jugs of water through the cylinder and checked that one millimetre on the ruler matched one litre per square metre in the maths teacher’s notes. We logged wind changes by standing at the four corners of the playground and calling directions over walkie‑talkies while the vane spun. Our records included time, cloud type, and any notes about shade or gusts.
+
+After two weeks, patterns appeared. Temperatures jumped at 8:40 a.m. when sun hit the east wall, then settled after the shadow of the roof crossed the platform. Afternoon breezes usually arrived before the final bell, strongest on days with tall, fast‑moving clouds. Rain fell twice: a steady eight millimetres overnight and a noisy burst of four millimetres in twenty minutes that left chalky puddles along the path. Our geography class compared the readings with the nearest airport’s report and found we were close, but slightly warmer on still, sunny mornings—likely due to the wall’s heat.
+
+We shared the graphs at assembly and asked for two additions: the tipping‑bucket gauge and a better mount for the anemometer above roof level. The head teacher agreed, on the condition that we also publish a “Reading Day” guide for younger classes. We wrote simple steps—check the screen is closed, read at eye level, empty the cylinder carefully—and added a space to note “something the instruments can’t show,” like the smell of wet leaves or the sound of the first drops under the eaves. On the first Monday with the new equipment installed, rain tapped the bucket in even clicks. We could watch the line rise in near‑real time, a reminder that numbers tell a story best when someone is listening.
+</p>
+    </div>
+
+    <div class="card">
+      <h2>Multiple-Choice Questions (Single Answer)</h2>
+      <div id="questions"></div>
+      <div class="actions">
+        <button class="primary" onclick="grade()">Check answers & score</button>
+        <button class="ghost" onclick="resetAll()">Reset</button>
+        <span id="score" class="score"></span>
+      </div>
+      <details>
+        <summary>Answer key (view after checking)</summary>
+        <ol id="answerList" class="ans"></ol>
+      </details>
+    </div>
+
+    <div class="footer">© 2025 Miss K | For classroom practice only.</div>
+  </div>
+
+<script>
+const DATA = [{"q": "What did the class decide to build on the old platform?", "a": ["A garden", "A student weather station", "A bird feeder", "A playground"], "ans": "B", "exp": ""}, {"q": "What was the initial approach to equipment?", "a": ["Buy everything new", "Start with instruments they could build and calibrate", "Hire professionals", "Use only phone apps"], "ans": "B", "exp": ""}, {"q": "What condition did the head teacher set for funding better instruments?", "a": ["Get high grades", "Prove reliable data for a month", "Win a competition", "Hold a bake sale"], "ans": "B", "exp": ""}, {"q": "Where was the thermometer placed?", "a": ["In direct sun", "In a Stevenson screen, painted white and vented", "Inside a classroom", "Next to a heater"], "ans": "B", "exp": ""}, {"q": "How was rainfall measured at first?", "a": ["A tipping-bucket gauge", "A straight-sided cylinder on a level slab", "A plastic bag", "By guessing"], "ans": "B", "exp": ""}, {"q": "What was used to make the wind vane pivot?", "a": ["A spoon", "A bearing from a broken fidget spinner", "A string", "A magnet"], "ans": "B", "exp": ""}, {"q": "Who checked the mounts and asked for tighter bolts?", "a": ["The mayor", "The school caretaker", "A parent", "A police officer"], "ans": "B", "exp": ""}, {"q": "How did students calibrate temperature readings?", "a": ["Only by feeling air", "By comparing with two digital probes in ice water and room air", "By looking at clouds", "By using a barometer"], "ans": "B", "exp": ""}, {"q": "How did they verify the rain gauge scale?", "a": ["Asked the airport", "Poured measured jugs and used maths to match mm to litres per square metre", "Used a stopwatch", "Assumed it was correct"], "ans": "B", "exp": ""}, {"q": "How were wind directions recorded?", "a": ["By a camera", "Students at playground corners called directions over walkie‑talkies", "Only from memory", "With a compass app only"], "ans": "B", "exp": ""}, {"q": "What extra notes were added to each record?", "a": ["Homework list", "Cloud type and shade/gust notes", "Lunch menu", "Book titles"], "ans": "B", "exp": ""}, {"q": "What caused the temperature jump at 8:40 a.m.?", "a": ["A cold front", "Sun hitting the east wall before shade returned", "A broken sensor", "Wind from buses"], "ans": "B", "exp": ""}, {"q": "When were afternoon breezes usually strongest?", "a": ["Before sunrise", "Before the final bell, on days with tall, fast-moving clouds", "At midnight", "During exams only"], "ans": "B", "exp": ""}, {"q": "How much rain fell in the overnight event?", "a": ["Two millimetres", "Eight millimetres", "Four millimetres", "None"], "ans": "B", "exp": ""}, {"q": "How intense was the short burst of rain?", "a": ["Four millimetres in twenty minutes", "Eight millimetres in a day", "One millimetre in an hour", "Ten millimetres in ten hours"], "ans": "A", "exp": ""}, {"q": "What comparison site did geography class use?", "a": ["A mountain station", "The nearest airport’s report", "A different school far away", "A ship at sea"], "ans": "B", "exp": ""}, {"q": "Why were readings slightly warmer on still, sunny mornings?", "a": ["A faulty thermometer", "Heat reflected from the east wall (microclimate)", "Too many clouds", "Wind errors"], "ans": "B", "exp": ""}, {"q": "What two additions did the students request after sharing graphs?", "a": ["More umbrellas and boots", "Tipping-bucket rain gauge and higher anemometer mount", "A greenhouse and pond", "A sound system and lights"], "ans": "B", "exp": ""}, {"q": "What condition came with approval for new equipment?", "a": ["Clean the roof", "Publish a simple 'Reading Day' guide for younger classes", "Shorten lunch", "Stop using the old gauge"], "ans": "B", "exp": ""}, {"q": "What did the guide ask students to record beyond numbers?", "a": ["Nothing extra", "A sensory note the instruments can’t show", "Homework marks", "Phone model"], "ans": "B", "exp": ""}, {"q": "What happened on the first Monday with new equipment?", "a": ["No rain fell", "The bucket clicked steadily and the line rose in near‑real time", "The wind vane broke", "The website crashed"], "ans": "B", "exp": ""}, {"q": "Which sentence best states the central idea of the passage?", "a": ["Weather can’t be measured at school", "Careful setup and calibration turn simple instruments into useful data", "Only airports make real observations", "Numbers replace observation"], "ans": "B", "exp": ""}, {"q": "Why use a Stevenson screen?", "a": ["To make it pretty", "To shield the thermometer from sun and rain while allowing airflow", "To lock the gauge", "To weigh instruments"], "ans": "B", "exp": ""}, {"q": "What habit does the passage encourage?", "a": ["Guessing results", "Measuring carefully, comparing, and sharing", "Ignoring calibration", "Copying other stations"], "ans": "B", "exp": ""}, {"q": "Which detail shows data validation?", "a": ["Posting on social media", "Comparing with airport reports", "Painting the box", "Adding a logo"], "ans": "B", "exp": ""}, {"q": "What is implied by 'numbers tell a story best when someone is listening'?", "a": ["Data is useless", "Data gains meaning when observed and interpreted", "Only teachers read graphs", "Silence is better"], "ans": "B", "exp": ""}, {"q": "Which tool was used for rain verification?", "a": ["A ruler only", "Measured jugs and maths", "A thermometer", "A stopwatch"], "ans": "B", "exp": ""}, {"q": "Which statement is an inference rather than a direct fact?", "a": ["Chalky puddles were left after the burst", "The wall created a small heat effect", "The caretaker inspected mounts", "Rain fell twice"], "ans": "B", "exp": ""}, {"q": "Why place the anemometer higher later?", "a": ["To catch more leaves", "To avoid roof turbulence and get cleaner wind readings", "To be seen from the road", "To keep birds away"], "ans": "B", "exp": ""}, {"q": "What best title fits the passage?", "a": ["Forecasting Without Numbers", "From Platform to Station: Measuring Our Own Weather", "How to Build a Rocket", "The Storm That Broke the Roof"], "ans": "B", "exp": ""}, {"q": "Which measurement unit is used for rainfall in the passage?", "a": ["Inches", "Millimetres", "Centimetres", "Litres only"], "ans": "B", "exp": ""}, {"q": "What sign of quality control appears during calibration?", "a": ["Guessing the scale", "Comparing with reference thermometers and known volumes", "Skipping tests", "Only watching clouds"], "ans": "B", "exp": ""}, {"q": "Which community audience did the guide target?", "a": ["Younger classes learning to read instruments", "Only teachers", "Only parents", "Tourists"], "ans": "A", "exp": ""}, {"q": "What environmental factor did the site plan consider?", "a": ["Music noise", "Nearby heat-reflecting wall and sheltering trees", "Bird migration", "Exam timetable"], "ans": "B", "exp": ""}, {"q": "What secondary observation layer did records include?", "a": ["Sound levels", "Cloud types alongside numbers", "Traffic counts", "Bird species"], "ans": "B", "exp": ""}];
+
+const container = document.getElementById('questions');
+DATA.forEach((item, idx)=>{
+  const n = idx + 1;
+  const block = document.createElement('div');
+  block.className = 'q';
+  block.innerHTML = `
+    <h3>${n}. ${item.q}</h3>
+    <div class="opts">
+      ${['A','B','C','D'].map((k,i)=>{
+        const text = item.a[i];
+        const name = 'q'+n;
+        const id = name + '_' + k;
+        return `
+        <label for="${id}">
+          <input type="radio" name="${name}" id="${id}" value="${k}" />
+          <span>(${k}) ${text}</span>
+        </label>`
+      }).join('')}
+    </div>
+    <div id="fb_${n}" class="ans"></div>
+  `;
+  container.appendChild(block);
+});
+
+function grade(){
+  let score = 0;
+  DATA.forEach((item, idx)=>{
+    const n = idx + 1;
+    const picked = document.querySelector(`input[name='q${n}']:checked`);
+    const fb = document.getElementById('fb_'+n);
+    if(!picked){
+      fb.innerHTML = "<span class='bad'>Not answered</span>";
+      return;
+    }
+    if(picked.value === item.ans){
+      score++;
+      fb.innerHTML = "<span class='ok'>✔ Correct</span>";
+    }else{
+      fb.innerHTML = "<span class='bad'>✘ Incorrect</span>. Correct: " + item.ans;
+    }
+  });
+  document.getElementById('score').textContent = `Score: ${score} / ${DATA.length}`;
+}
+
+function resetAll(){
+  document.querySelectorAll("input[type='radio']").forEach(r=>r.checked=false);
+  document.getElementById('score').textContent = "";
+  DATA.forEach((_,i)=>{
+    const fb = document.getElementById('fb_'+(i+1));
+    fb.textContent = "";
+  });
+}
+
+const ansList = document.getElementById('answerList');
+DATA.forEach((item, idx)=>{
+  const li = document.createElement('li');
+  li.textContent = `${idx+1}. ${item.ans}`;
+  ansList.appendChild(li);
+});
+</script>
+</body>
+</html>
