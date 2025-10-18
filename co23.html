@@ -1,0 +1,135 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>11+ Comprehension — CO23</title>
+  <style>
+    :root{--bg:#f7fafc;--card:#ffffff;--ink:#1a202c;--muted:#4a5568;--accent:#2b6cb0;--ok:#2f855a;--bad:#c53030;}
+    html,body{margin:0;padding:0;background:var(--bg);color:var(--ink);font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,"Noto Sans",sans-serif;line-height:1.6}
+    .wrap{max-width:1000px;margin:24px auto;padding:0 16px}
+    header{display:flex;gap:12px;align-items:center;flex-wrap:wrap}
+    header h1{font-size:1.6rem;margin:.2rem 0}
+    header .tag{background:#ebf8ff;color:var(--accent);border:1px solid #bee3f8;padding:2px 8px;border-radius:999px;font-size:.85rem}
+    .card{background:var(--card);border:1px solid #e2e8f0;border-radius:16px;box-shadow:0 4px 16px rgba(0,0,0,.06);padding:20px;margin:16px 0}
+    .story{font-size:1.05rem;white-space:pre-wrap}
+    .q{margin:14px 0}
+    .q h3{margin:0 0 6px 0;font-size:1.02rem}
+    .opts{display:grid;grid-template-columns:1fr;gap:6px}
+    @media (min-width:700px){.opts{grid-template-columns:1fr 1fr}}
+    label{display:flex;gap:8px;align-items:flex-start;border:1px solid #e2e8f0;border-radius:12px;padding:8px 10px;background:#fff;cursor:pointer}
+    .actions{display:flex;gap:8px;flex-wrap:wrap;align-items:center}
+    button{border:none;border-radius:999px;padding:10px 14px;cursor:pointer}
+    .primary{background:var(--accent);color:#fff}
+    .ghost{background:#edf2f7;color:var(--ink)}
+    .ok{color:var(--ok)}
+    .bad{color:var(--bad)}
+    .score{font-size:1.2rem;font-weight:700}
+    .footer{color:var(--muted);font-size:.9rem}
+    .ans{font-size:.95rem;color:var(--muted)}
+  </style>
+</head>
+<body>
+  <div class="wrap">
+    <header>
+      <h1>11+ Comprehension (CO23)</h1>
+      <span class="tag">Time allowed: 30 minutes</span>
+    </header>
+
+    <div class="card">
+      <h2>Passage</h2>
+      <p class="story" id="story">
+
+The new playground had two gates and one popular slide. At break, the queue tangled like spaghetti, and small children were squeezed by older ones turning back for a second go. Our design club taped chalked lines into a “line maze”: two lanes in, one lane out, and short bypasses to step aside if you changed your mind. We asked the head teacher to let us test it for three days with volunteer monitors wearing bright sashes.
+
+We measured three things: time from gate to slide, number of bumps reported by monitors, and how often children cut across lines. Day one felt strict but smooth; time fell by a third. Day two brought rain. The chalk blurred, and the out lane vanished; bumps rose again. We adjusted: thicker tape over chalk, cones at the gate, and a rule that after sliding you walked through an “exit arch” before rejoining.
+
+Day three worked best. Children learned the pattern and started helping each other: “Stay in your lane,” a tall Year 6 said, opening a bypass for a Reception pupil who had second thoughts. We posted results on the notice board with a simple map. The monitors recommended two permanent changes: paint the exit arch on the tarmac and add a sign with a cartoon of the maze so new pupils could read the rules without reading words.
+
+At the Friday assembly, the head asked if we wanted barriers. We said no—lines, signs, and habits beat fences if people understand them. We didn’t eliminate queue-jumping forever, but the maze reduced bumps and sulks. The slide was still fun; it was now fairer fun.
+</p>
+    </div>
+
+    <div class="card">
+      <h2>Multiple-Choice Questions (Single Answer)</h2>
+      <div id="questions"></div>
+      <div class="actions">
+        <button class="primary" onclick="grade()">Check answers & score</button>
+        <button class="ghost" onclick="resetAll()">Reset</button>
+        <span id="score" class="score"></span>
+      </div>
+      <details>
+        <summary>Answer key (view after checking)</summary>
+        <ol id="answerList" class="ans"></ol>
+      </details>
+    </div>
+
+    <div class="footer">© 2025 Miss K | For classroom practice only.</div>
+  </div>
+
+<script>
+const DATA = [{"q": "What problem did the playground have?", "a": ["Broken slide", "Tangling queues that squeezed small children", "Too many gates", "Closed school"], "ans": "B", "exp": ""}, {"q": "What was the 'line maze' design?", "a": ["Random cones", "Two lanes in, one out, with bypasses", "One lane only", "Barbed wire"], "ans": "B", "exp": ""}, {"q": "How long did the test run?", "a": ["One day", "Three days", "Two weeks", "A term"], "ans": "B", "exp": ""}, {"q": "What did monitors wear?", "a": ["Hats", "Bright sashes", "Badges", "Capes"], "ans": "B", "exp": ""}, {"q": "Which three metrics were measured?", "a": ["Food, music, books", "Time, bumps, cut-acrosses", "Height, weight, age", "Votes, likes, shares"], "ans": "B", "exp": ""}, {"q": "What happened on rainy day two?", "a": ["Faster lines", "Chalk blurred; out lane vanished; bumps rose", "School closed", "New slide"], "ans": "B", "exp": ""}, {"q": "What fix was added after day two?", "a": ["Music", "Thicker tape, cones, and exit-arch rule", "More slides", "Snacks"], "ans": "B", "exp": ""}, {"q": "Who helped a Reception pupil?", "a": ["Caretaker", "Year 6 student", "Police", "Parent"], "ans": "B", "exp": ""}, {"q": "What two permanent changes were recommended?", "a": ["Barriers and guards", "Painted exit arch and cartoon sign of maze", "Tickets and scanners", "Fence"], "ans": "B", "exp": ""}, {"q": "What did the club say about barriers?", "a": ["Wanted fences", "Lines/signs/habits are better than fences if understood", "Wanted walls", "Wanted gates closed"], "ans": "B", "exp": ""}, {"q": "What is the central idea?", "a": ["Rules ruin fun", "Simple flow design can reduce bumps and make play fairer", "Slides are dangerous", "Rain helps queues"], "ans": "B", "exp": ""}, {"q": "Why use bypasses?", "a": ["Decoration", "Let children step aside safely if they change their mind", "Punishment", "Race lanes"], "ans": "B", "exp": ""}, {"q": "What showed learning by day three?", "a": ["No one queued", "Children guided each other to stay in lanes", "Slide closed", "Monitors left"], "ans": "B", "exp": ""}, {"q": "Why add cones at the gate?", "a": ["Colour", "Mark start and prevent cutting", "Trip people", "Hold banners"], "ans": "B", "exp": ""}, {"q": "Which is an inference?", "a": ["Time fell by a third", "Some sulks came from unfair cutting earlier", "Rain blurred chalk", "Monitors wore sashes"], "ans": "B", "exp": ""}, {"q": "Why print a cartoon sign?", "a": ["Humour", "Help younger pupils understand rules without reading text", "Advertising", "Art class"], "ans": "B", "exp": ""}, {"q": "What did the exit arch rule do?", "a": ["Nothing", "Separated outflow before rejoining, reducing bumps", "Made lines longer", "Blocked path"], "ans": "B", "exp": ""}, {"q": "Why avoid barriers?", "a": ["Expensive and less friendly", "Because cones are heavy", "Because tape is fun", "Because fences melt"], "ans": "A", "exp": ""}, {"q": "What habit does the story encourage?", "a": ["Push ahead", "Measure, adjust, teach patterns", "Ignore rules", "Add fences first"], "ans": "B", "exp": ""}, {"q": "What weather factor affected success?", "a": ["Wind", "Rain that blurred chalk lines", "Fog", "Snow"], "ans": "B", "exp": ""}, {"q": "What did monitors count besides time?", "a": ["Leaves", "Bumps and cut-acrosses", "Birds", "Steps"], "ans": "B", "exp": ""}, {"q": "Who decided to test for three days?", "a": ["Council", "Design club with head’s permission", "Police", "PTA"], "ans": "B", "exp": ""}, {"q": "What remained despite improvements?", "a": ["No fun", "Some queue-jumping", "Closed gates", "Broken slide"], "ans": "B", "exp": ""}, {"q": "What colour were the sashes?", "a": ["Bright (unspecified)", "Blue", "Red", "Green"], "ans": "A", "exp": ""}, {"q": "What best title fits?", "a": ["Fence the Fun", "Lines that Help: A Playground Flow Test", "Rainy Day Blues", "Slide Closed"], "ans": "B", "exp": ""}, {"q": "What did the notice board show?", "a": ["Only photos", "Results and a map of maze", "Detentions", "Lunch menu"], "ans": "B", "exp": ""}, {"q": "Why thicker tape over chalk?", "a": ["More durable and visible in wet", "Prettier", "Cheaper", "Heavier"], "ans": "B", "exp": ""}, {"q": "Who are Reception pupils?", "a": ["Oldest", "Youngest", "Teachers", "Visitors"], "ans": "B", "exp": ""}, {"q": "What indicates fairness improved?", "a": ["Fewer sulks and bumps", "Higher fences", "Longer lines", "No monitors"], "ans": "A", "exp": ""}, {"q": "What phrase sums up the approach?", "a": ["Guessing game", "Design, test, and teach", "Punish and post", "Fence and forget"], "ans": "B", "exp": ""}, {"q": "What was the popular feature?", "a": ["Roundabout", "Slide", "Swings", "Sandpit"], "ans": "B", "exp": ""}, {"q": "Why two gates relevant?", "a": ["More exits to manage flow", "Decoration", "Locked", "For cars"], "ans": "A", "exp": ""}, {"q": "Who proposed painting the exit arch?", "a": ["Monitors", "Design club", "Caretaker", "Parents"], "ans": "A", "exp": ""}, {"q": "Which habit should schools adopt?", "a": ["Barriers first", "Data-informed tweaks to behaviour flow", "Ignore younger pupils", "Never test"], "ans": "B", "exp": ""}, {"q": "What caused squeezing earlier?", "a": ["Food", "Older pupils turning back for second go in chaotic queue", "Rain", "Teachers"], "ans": "B", "exp": ""}];
+
+const container = document.getElementById('questions');
+DATA.forEach((item, idx)=>{
+  const n = idx + 1;
+  const block = document.createElement('div');
+  block.className = 'q';
+  block.innerHTML = `
+    <h3>${n}. ${item.q}</h3>
+    <div class="opts">
+      ${['A','B','C','D'].map((k,i)=>{
+        const text = item.a[i];
+        const name = 'q'+n;
+        const id = name + '_' + k;
+        return `
+        <label for="${id}">
+          <input type="radio" name="${name}" id="${id}" value="${k}" />
+          <span>(${k}) ${text}</span>
+        </label>`
+      }).join('')}
+    </div>
+    <div id="fb_${n}" class="ans"></div>
+  `;
+  container.appendChild(block);
+});
+
+function grade(){
+  let score = 0;
+  DATA.forEach((item, idx)=>{
+    const n = idx + 1;
+    const picked = document.querySelector(`input[name='q${n}']:checked`);
+    const fb = document.getElementById('fb_'+n);
+    if(!picked){
+      fb.innerHTML = "<span class='bad'>Not answered</span>";
+      return;
+    }
+    if(picked.value === item.ans){
+      score++;
+      fb.innerHTML = "<span class='ok'>✔ Correct</span>";
+    }else{
+      fb.innerHTML = "<span class='bad'>✘ Incorrect</span>. Correct: " + item.ans;
+    }
+  });
+  document.getElementById('score').textContent = `Score: ${score} / ${DATA.length}`;
+}
+
+function resetAll(){
+  document.querySelectorAll("input[type='radio']").forEach(r=>r.checked=false);
+  document.getElementById('score').textContent = "";
+  DATA.forEach((_,i)=>{
+    const fb = document.getElementById('fb_'+(i+1));
+    fb.textContent = "";
+  });
+}
+
+const ansList = document.getElementById('answerList');
+DATA.forEach((item, idx)=>{
+  const li = document.createElement('li');
+  li.textContent = `${idx+1}. ${item.ans}`;
+  ansList.appendChild(li);
+});
+</script>
+</body>
+</html>

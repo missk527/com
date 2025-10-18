@@ -1,0 +1,135 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>11+ Comprehension — CO24</title>
+  <style>
+    :root{--bg:#f7fafc;--card:#ffffff;--ink:#1a202c;--muted:#4a5568;--accent:#2b6cb0;--ok:#2f855a;--bad:#c53030;}
+    html,body{margin:0;padding:0;background:var(--bg);color:var(--ink);font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,"Noto Sans",sans-serif;line-height:1.6}
+    .wrap{max-width:1000px;margin:24px auto;padding:0 16px}
+    header{display:flex;gap:12px;align-items:center;flex-wrap:wrap}
+    header h1{font-size:1.6rem;margin:.2rem 0}
+    header .tag{background:#ebf8ff;color:var(--accent);border:1px solid #bee3f8;padding:2px 8px;border-radius:999px;font-size:.85rem}
+    .card{background:var(--card);border:1px solid #e2e8f0;border-radius:16px;box-shadow:0 4px 16px rgba(0,0,0,.06);padding:20px;margin:16px 0}
+    .story{font-size:1.05rem;white-space:pre-wrap}
+    .q{margin:14px 0}
+    .q h3{margin:0 0 6px 0;font-size:1.02rem}
+    .opts{display:grid;grid-template-columns:1fr;gap:6px}
+    @media (min-width:700px){.opts{grid-template-columns:1fr 1fr}}
+    label{display:flex;gap:8px;align-items:flex-start;border:1px solid #e2e8f0;border-radius:12px;padding:8px 10px;background:#fff;cursor:pointer}
+    .actions{display:flex;gap:8px;flex-wrap:wrap;align-items:center}
+    button{border:none;border-radius:999px;padding:10px 14px;cursor:pointer}
+    .primary{background:var(--accent);color:#fff}
+    .ghost{background:#edf2f7;color:var(--ink)}
+    .ok{color:var(--ok)}
+    .bad{color:var(--bad)}
+    .score{font-size:1.2rem;font-weight:700}
+    .footer{color:var(--muted);font-size:.9rem}
+    .ans{font-size:.95rem;color:var(--muted)}
+  </style>
+</head>
+<body>
+  <div class="wrap">
+    <header>
+      <h1>11+ Comprehension (CO24)</h1>
+      <span class="tag">Time allowed: 30 minutes</span>
+    </header>
+
+    <div class="card">
+      <h2>Passage</h2>
+      <p class="story" id="story">
+
+The bus stop outside school had a bench but no shelter. On windy days, umbrellas became kites. Our product design class proposed a low-cost shelter we could build with community help. The council allowed a trial if we used recycled materials, kept sight lines clear for drivers, and posted a maintenance rota. We measured the space and noticed two constraints: a tree root that lifted the paving and a drain cover where puddles formed.
+
+We sketched three frames: a curved polycarbonate roof on timber posts; a flat roof with gutter into a barrel; and a modular frame made from steel scaffold offcuts with clear panels. We rated each for cost, wind resistance, and ease of assembly. The scaffold frame won—strong, bolt-together, and easy to adjust around the root. A local builder donated clips; the art department offered to sand the panels so they’d be clear but slightly frosted for privacy without blocking views.
+
+Build day felt like a barn raising. Teams sorted bolts, checked levels, and set rubber feet to protect the paving. We angled the roof to shed rain away from the queue and added a short gutter that fed the drain instead of the barrel to avoid mosquitoes. A small plaque listed the rota for sweeping leaves and checking bolts monthly. We also painted a thin yellow line to guide the bus’s stopping point and added a “mind the puddle” grate over the low spot.
+
+During the first week, students reported drier shoulders and fewer tangled umbrellas. One driver said the frosted panels reduced headlight glare. A neighbour worried the shelter might become a billboard for posters; we added a small cork board labelled “Community notices only” and set a monthly clean-off rule. At Friday assembly we shared the budget, the rota, and a request: if a bolt loosens, write the date on the plaque next to the maintenance tick-box and tell reception. The council extended the trial for the year, and the queue learned where to stand without blocking the path.
+</p>
+    </div>
+
+    <div class="card">
+      <h2>Multiple-Choice Questions (Single Answer)</h2>
+      <div id="questions"></div>
+      <div class="actions">
+        <button class="primary" onclick="grade()">Check answers & score</button>
+        <button class="ghost" onclick="resetAll()">Reset</button>
+        <span id="score" class="score"></span>
+      </div>
+      <details>
+        <summary>Answer key (view after checking)</summary>
+        <ol id="answerList" class="ans"></ol>
+      </details>
+    </div>
+
+    <div class="footer">© 2025 Miss K | For classroom practice only.</div>
+  </div>
+
+<script>
+const DATA = [{"q": "What problem did the bus stop have?", "a": ["No bench", "No shelter from wind and rain", "No buses", "Too many trees"], "ans": "B", "exp": ""}, {"q": "What conditions did the council set?", "a": ["Expensive materials", "Use recycled materials, clear sight lines, maintenance rota", "No building", "Hire contractors"], "ans": "B", "exp": ""}, {"q": "What two site constraints were noticed?", "a": ["Noisy birds", "Tree root lifting paving and a drain cover with puddles", "Too much sun", "Snow"], "ans": "B", "exp": ""}, {"q": "Which frame was chosen?", "a": ["Curved timber", "Flat with barrel", "Modular scaffold offcuts with clear panels", "None"], "ans": "C", "exp": ""}, {"q": "Why choose the scaffold frame?", "a": ["Pretty only", "Strong, bolt-together, adjustable around root", "Cheapest wood", "Heaviest"], "ans": "B", "exp": ""}, {"q": "What finish did art department suggest for panels?", "a": ["Opaque paint", "Slightly frosted for privacy but clear enough", "Dark tint", "Stickers"], "ans": "B", "exp": ""}, {"q": "Where did the roof gutter drain?", "a": ["Into barrel", "Onto path", "Into existing drain to avoid mosquitoes", "Into tree"], "ans": "C", "exp": ""}, {"q": "What guided the bus to stop correctly?", "a": ["Big sign", "Thin yellow line on paving", "Cones", "Loudspeaker"], "ans": "B", "exp": ""}, {"q": "What addressed the puddle?", "a": ["Ignore it", "Installed grate over low spot", "More umbrellas", "Sponge"], "ans": "B", "exp": ""}, {"q": "What did the plaque list?", "a": ["Jokes", "Maintenance rota and tick-box", "Bus times only", "Council names"], "ans": "B", "exp": ""}, {"q": "What effect did shelter have in first week?", "a": ["Worse", "Drier shoulders, fewer tangled umbrellas", "No change", "More puddles"], "ans": "B", "exp": ""}, {"q": "What did a driver say about panels?", "a": ["Too dark", "Reduced headlight glare", "Too bright", "Shaky"], "ans": "B", "exp": ""}, {"q": "What concern did a neighbour raise?", "a": ["Noise", "Shelter becoming a poster billboard", "Height", "Colour"], "ans": "B", "exp": ""}, {"q": "What rule controlled notices?", "a": ["No notices", "Only council posters", "Small cork board 'Community notices only' with monthly clean", "Any posters allowed"], "ans": "C", "exp": ""}, {"q": "What is the central idea?", "a": ["DIY shelters are illegal", "Community-built, low-cost shelter solved local problem with maintenance", "Only councils can build", "Shelters must be expensive"], "ans": "B", "exp": ""}, {"q": "Why rubber feet?", "a": ["Colour", "Protect paving and level frame", "Make noise", "Hold posters"], "ans": "B", "exp": ""}, {"q": "Who donated clips?", "a": ["Police", "Local builder", "Bus company", "Shop"], "ans": "B", "exp": ""}, {"q": "Why angle the roof?", "a": ["Style", "Shed rain away from queue", "Catch leaves", "Look modern"], "ans": "B", "exp": ""}, {"q": "What should students do if a bolt loosens?", "a": ["Ignore", "Write date on plaque and tell reception", "Remove it", "Call police"], "ans": "B", "exp": ""}, {"q": "What habit does the story encourage?", "a": ["Complain only", "Design with constraints, maintain together", "Ban shelters", "Use new materials only"], "ans": "B", "exp": ""}, {"q": "Which is an inference?", "a": ["Driver reported less glare", "Frosted panels balance privacy with safety", "Tree root lifted paving", "Drain had puddles"], "ans": "B", "exp": ""}, {"q": "Why avoid the barrel?", "a": ["Heavy", "Could breed mosquitoes", "Too shiny", "Too small"], "ans": "B", "exp": ""}, {"q": "How was the queue position clarified?", "a": ["Tape", "People guessed", "Painted guide line", "Emails"], "ans": "C", "exp": ""}, {"q": "What extended the trial?", "a": ["Complaints", "Success and clear maintenance plan", "New buses", "Rain"], "ans": "B", "exp": ""}, {"q": "Which title fits best?", "a": ["Shelter at Last: A Bus Stop We Built", "Stormy Days", "Timber Tales", "Poster Problems"], "ans": "A", "exp": ""}, {"q": "What monthly action is required?", "a": ["Bake cakes", "Clean cork board and check bolts", "Paint panels", "Plant trees"], "ans": "B", "exp": ""}, {"q": "Who shared the budget and rota?", "a": ["Council", "Students at assembly", "Bus driver", "Shop owner"], "ans": "B", "exp": ""}, {"q": "What material were panels made from?", "a": ["Brick", "Clear sheets (polycarbonate/acrylic)", "Paper", "Steel"], "ans": "B", "exp": ""}, {"q": "What ensures sight lines?", "a": ["Opaque panels", "Clear/frosted panels and height placement", "Tall posters", "Trees"], "ans": "B", "exp": ""}, {"q": "What benefit did the grate provide?", "a": ["Trapped leaves", "Covered the low spot to avoid splashes", "Made noise", "Blocked drain"], "ans": "B", "exp": ""}, {"q": "Why a community notices board?", "a": ["To allow some posters without covering panels", "To advertise products", "To hide scratches", "To confuse"], "ans": "A", "exp": ""}, {"q": "What instruction appears on plaque?", "a": ["Bolt tightness drill", "Maintenance tick-box and report looseness", "No sitting", "No umbrellas"], "ans": "B", "exp": ""}, {"q": "What did teams do on build day?", "a": ["Argued", "Sorted bolts, checked levels, set rubber feet", "Played games", "Painted trees"], "ans": "B", "exp": ""}, {"q": "Which constraint guided frame choice?", "a": ["Beauty only", "Adjustability around root and strength", "Noise", "Colour"], "ans": "B", "exp": ""}, {"q": "What habit for future users?", "a": ["Stand anywhere", "Queue without blocking path using line", "Bring ladders", "Cover panels"], "ans": "B", "exp": ""}];
+
+const container = document.getElementById('questions');
+DATA.forEach((item, idx)=>{
+  const n = idx + 1;
+  const block = document.createElement('div');
+  block.className = 'q';
+  block.innerHTML = `
+    <h3>${n}. ${item.q}</h3>
+    <div class="opts">
+      ${['A','B','C','D'].map((k,i)=>{
+        const text = item.a[i];
+        const name = 'q'+n;
+        const id = name + '_' + k;
+        return `
+        <label for="${id}">
+          <input type="radio" name="${name}" id="${id}" value="${k}" />
+          <span>(${k}) ${text}</span>
+        </label>`
+      }).join('')}
+    </div>
+    <div id="fb_${n}" class="ans"></div>
+  `;
+  container.appendChild(block);
+});
+
+function grade(){
+  let score = 0;
+  DATA.forEach((item, idx)=>{
+    const n = idx + 1;
+    const picked = document.querySelector(`input[name='q${n}']:checked`);
+    const fb = document.getElementById('fb_'+n);
+    if(!picked){
+      fb.innerHTML = "<span class='bad'>Not answered</span>";
+      return;
+    }
+    if(picked.value === item.ans){
+      score++;
+      fb.innerHTML = "<span class='ok'>✔ Correct</span>";
+    }else{
+      fb.innerHTML = "<span class='bad'>✘ Incorrect</span>. Correct: " + item.ans;
+    }
+  });
+  document.getElementById('score').textContent = `Score: ${score} / ${DATA.length}`;
+}
+
+function resetAll(){
+  document.querySelectorAll("input[type='radio']").forEach(r=>r.checked=false);
+  document.getElementById('score').textContent = "";
+  DATA.forEach((_,i)=>{
+    const fb = document.getElementById('fb_'+(i+1));
+    fb.textContent = "";
+  });
+}
+
+const ansList = document.getElementById('answerList');
+DATA.forEach((item, idx)=>{
+  const li = document.createElement('li');
+  li.textContent = `${idx+1}. ${item.ans}`;
+  ansList.appendChild(li);
+});
+</script>
+</body>
+</html>

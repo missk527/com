@@ -1,0 +1,135 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>11+ Comprehension — CO21</title>
+  <style>
+    :root{--bg:#f7fafc;--card:#ffffff;--ink:#1a202c;--muted:#4a5568;--accent:#2b6cb0;--ok:#2f855a;--bad:#c53030;}
+    html,body{margin:0;padding:0;background:var(--bg);color:var(--ink);font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,"Noto Sans",sans-serif;line-height:1.6}
+    .wrap{max-width:1000px;margin:24px auto;padding:0 16px}
+    header{display:flex;gap:12px;align-items:center;flex-wrap:wrap}
+    header h1{font-size:1.6rem;margin:.2rem 0}
+    header .tag{background:#ebf8ff;color:var(--accent);border:1px solid #bee3f8;padding:2px 8px;border-radius:999px;font-size:.85rem}
+    .card{background:var(--card);border:1px solid #e2e8f0;border-radius:16px;box-shadow:0 4px 16px rgba(0,0,0,.06);padding:20px;margin:16px 0}
+    .story{font-size:1.05rem;white-space:pre-wrap}
+    .q{margin:14px 0}
+    .q h3{margin:0 0 6px 0;font-size:1.02rem}
+    .opts{display:grid;grid-template-columns:1fr;gap:6px}
+    @media (min-width:700px){.opts{grid-template-columns:1fr 1fr}}
+    label{display:flex;gap:8px;align-items:flex-start;border:1px solid #e2e8f0;border-radius:12px;padding:8px 10px;background:#fff;cursor:pointer}
+    .actions{display:flex;gap:8px;flex-wrap:wrap;align-items:center}
+    button{border:none;border-radius:999px;padding:10px 14px;cursor:pointer}
+    .primary{background:var(--accent);color:#fff}
+    .ghost{background:#edf2f7;color:var(--ink)}
+    .ok{color:var(--ok)}
+    .bad{color:var(--bad)}
+    .score{font-size:1.2rem;font-weight:700}
+    .footer{color:var(--muted);font-size:.9rem}
+    .ans{font-size:.95rem;color:var(--muted)}
+  </style>
+</head>
+<body>
+  <div class="wrap">
+    <header>
+      <h1>11+ Comprehension (CO21)</h1>
+      <span class="tag">Time allowed: 30 minutes</span>
+    </header>
+
+    <div class="card">
+      <h2>Passage</h2>
+      <p class="story" id="story">
+
+The technology club wanted a project that smelled like success—literally. We set ourselves a “Solar Cooker Challenge” for the spring fair: bake biscuits using only sunlight. No mains electricity, no gas, no secret kettle. We studied three designs: a shiny cardboard box with a clear lid, a panel cooker shaped like a flower, and a deep tube lined with foil. Our science teacher insisted on two rules: measure temperatures properly, and agree a safe recipe with nothing that spoils if underdone.
+
+We built prototypes from pizza boxes, foil, and glass from old picture frames. A black baking tray acted as a heat sink; a cheap oven thermometer peeped through a hole in the lid. We tried three biscuit mixes with different sugar levels to see which browned best at moderate heat. On cloudy days, the cooker sulked at 60°C; in full sun with a light breeze, it nudged 90°C. The panel design caught morning rays; the box design held heat longer; the tube warmed quickest but cooled fastest when wind picked up.
+
+The first batch tasted like warm dough with ambition. We adjusted: preheat for twenty minutes, insulate the box edges with pipe lagging, and tilt toward the sun at each break. A parent who repaired windows donated a roll of weather-strip to seal gaps. We logged data every ten minutes and drew tidy graphs. The panel cooker plus a darker tray gave the most even results. The tube did well if we shielded it from gusts with a cardboard screen.
+
+On fair day, the field looked like a garden of silver flowers. We set up a sign: “Solar biscuits—free sample when the thermometer reads 85°C.” Visitors asked whether it was worth the bother. We didn’t claim to replace ovens. We said that demonstrating heat capture helped people picture roofs full of panels, and that low-power cooking might matter in an outage. By mid-afternoon our best tray reached the target, and the biscuits tasted like sunlight meeting patience. The final poster showed a simple rule of thumb: shiny to reflect, black to absorb, clear to trap—and someone to mind the angle.
+</p>
+    </div>
+
+    <div class="card">
+      <h2>Multiple-Choice Questions (Single Answer)</h2>
+      <div id="questions"></div>
+      <div class="actions">
+        <button class="primary" onclick="grade()">Check answers & score</button>
+        <button class="ghost" onclick="resetAll()">Reset</button>
+        <span id="score" class="score"></span>
+      </div>
+      <details>
+        <summary>Answer key (view after checking)</summary>
+        <ol id="answerList" class="ans"></ol>
+      </details>
+    </div>
+
+    <div class="footer">© 2025 Miss K | For classroom practice only.</div>
+  </div>
+
+<script>
+const DATA = [{"q": "What was the goal of the Solar Cooker Challenge?", "a": ["Fry eggs", "Bake biscuits using only sunlight", "Build a robot", "Boil water with gas"], "ans": "B", "exp": ""}, {"q": "Which three cooker designs were tested?", "a": ["Microwave, grill, stove", "Box with clear lid, flower-shaped panel, foil-lined tube", "Kettle, pot, pan", "Stone oven only"], "ans": "B", "exp": ""}, {"q": "What two rules did the science teacher set?", "a": ["Be quick and loud", "Measure temperatures and use a safe recipe", "Invite a chef and sell tickets", "Cook meat"], "ans": "B", "exp": ""}, {"q": "What acted as a heat sink?", "a": ["White plate", "Black baking tray", "Aluminium spoon", "Plastic lid"], "ans": "B", "exp": ""}, {"q": "What ranged from 60°C to 90°C depending on sun?", "a": ["Ambient air", "Cooker temperatures", "Water temperature in river", "Classroom temp"], "ans": "B", "exp": ""}, {"q": "Which design held heat longer?", "a": ["Panel", "Box", "Tube", "None"], "ans": "B", "exp": ""}, {"q": "Which design warmed fastest but lost heat in wind?", "a": ["Box", "Panel", "Tube", "All equal"], "ans": "C", "exp": ""}, {"q": "What adjustment improved results?", "a": ["Removing thermometer", "Preheating, insulating edges, tilting toward sun", "Adding ice", "Shorter baking time only"], "ans": "B", "exp": ""}, {"q": "What item sealed gaps?", "a": ["Duct tape", "Weather-strip", "Glue", "String"], "ans": "B", "exp": ""}, {"q": "Which combo gave even results?", "a": ["Panel plus darker tray", "Box plus white tray", "Tube plus glass beads", "Panel plus ice"], "ans": "A", "exp": ""}, {"q": "How often was data logged?", "a": ["Every minute", "Every 10 minutes", "Hourly", "Never"], "ans": "B", "exp": ""}, {"q": "What wind fix helped the tube cooker?", "a": ["More foil", "Cardboard wind screen", "Open lid", "Add water"], "ans": "B", "exp": ""}, {"q": "What sign did they display on fair day?", "a": ["Closed", "Solar biscuits—sample at 85°C", "Microwave demo", "Danger"], "ans": "B", "exp": ""}, {"q": "What claim did the team avoid?", "a": ["Replacing ovens", "Demonstrating heat capture value", "Panels on roofs", "Outage cooking use"], "ans": "A", "exp": ""}, {"q": "What did the final poster summarise?", "a": ["Recipe only", "Rule of thumb: shiny reflect, black absorb, clear trap, mind the angle", "Weather report", "Ticket prices"], "ans": "B", "exp": ""}, {"q": "What is the central idea?", "a": ["Sunlight is useless", "Careful design and measurement make solar cooking possible", "Only experts can do it", "Biscuits must be baked at 200°C"], "ans": "B", "exp": ""}, {"q": "Why was a darker tray helpful?", "a": ["It glows", "It absorbs more heat", "It cools air", "It reflects light"], "ans": "B", "exp": ""}, {"q": "Why preheat for twenty minutes?", "a": ["To waste time", "To raise starting temperature for better baking", "To dry paint", "Because teacher said so"], "ans": "B", "exp": ""}, {"q": "Which is an inference rather than fact?", "a": ["Visitors asked if worth the bother", "Solar demos help people imagine rooftop panels", "We used pizza boxes", "Thermometer read 85°C"], "ans": "B", "exp": ""}, {"q": "What habit does the passage encourage?", "a": ["Guess and hope", "Prototype, measure, iterate", "Buy expensive ovens", "Avoid graphs"], "ans": "B", "exp": ""}, {"q": "Why tilt toward the sun?", "a": ["Decoration", "Maximise incoming radiation", "To make it pretty", "To avoid wind"], "ans": "B", "exp": ""}, {"q": "Who donated weather-strip?", "a": ["A chef", "Window repair parent", "Librarian", "Electrician"], "ans": "B", "exp": ""}, {"q": "Why choose a safe recipe?", "a": ["Avoid spoilage if undercooked", "To win prizes", "Because of taste", "For colour"], "ans": "A", "exp": ""}, {"q": "What did the panel design do best?", "a": ["Catch morning rays", "Work at night", "Boil water", "Nothing"], "ans": "A", "exp": ""}, {"q": "Which metric triggered free samples?", "a": ["Wind speed", "85°C thermometer reading", "Time of day", "Crowd size"], "ans": "B", "exp": ""}, {"q": "What does 'smelled like success' suggest?", "a": ["Project had aroma of biscuits", "Room was smoky", "Nothing worked", "They burned food"], "ans": "A", "exp": ""}, {"q": "What material trapped heat?", "a": ["Clear lid/glass", "Wood", "Steel", "Cardboard only"], "ans": "A", "exp": ""}, {"q": "What was recorded in tidy graphs?", "a": ["Jokes", "Temperature over time", "Attendance", "Recipes"], "ans": "B", "exp": ""}, {"q": "What broader use did the team mention?", "a": ["Heating classrooms", "Rooftop panels and outage cooking", "Air travel", "Car engines"], "ans": "B", "exp": ""}, {"q": "Which title fits best?", "a": ["Rainy Day Ovens", "Sun-Baked Biscuits: A School Challenge", "Wind Tunnel Tests", "Cloud Watching"], "ans": "B", "exp": ""}, {"q": "What risk affected the tube cooker most?", "a": ["Cold nights", "Wind cooling", "Too much sugar", "Too many thermometers"], "ans": "B", "exp": ""}, {"q": "Why line the cooker with foil?", "a": ["Reflect sunlight into the box", "Block heat", "Make it heavy", "Seal smells"], "ans": "A", "exp": ""}, {"q": "What role did the breeze play?", "a": ["Nothing", "Changed peak temperatures", "Broke glass", "Moved trays"], "ans": "B", "exp": ""}, {"q": "Why choose pizza boxes?", "a": ["Rigid, available, easy to cut", "Because they’re tasty", "They’re waterproof", "Teacher owned a pizzeria"], "ans": "A", "exp": ""}, {"q": "Which reading indicates moderate bake in this setup?", "a": ["85°C", "10°C", "200°C", "150°C"], "ans": "A", "exp": ""}];
+
+const container = document.getElementById('questions');
+DATA.forEach((item, idx)=>{
+  const n = idx + 1;
+  const block = document.createElement('div');
+  block.className = 'q';
+  block.innerHTML = `
+    <h3>${n}. ${item.q}</h3>
+    <div class="opts">
+      ${['A','B','C','D'].map((k,i)=>{
+        const text = item.a[i];
+        const name = 'q'+n;
+        const id = name + '_' + k;
+        return `
+        <label for="${id}">
+          <input type="radio" name="${name}" id="${id}" value="${k}" />
+          <span>(${k}) ${text}</span>
+        </label>`
+      }).join('')}
+    </div>
+    <div id="fb_${n}" class="ans"></div>
+  `;
+  container.appendChild(block);
+});
+
+function grade(){
+  let score = 0;
+  DATA.forEach((item, idx)=>{
+    const n = idx + 1;
+    const picked = document.querySelector(`input[name='q${n}']:checked`);
+    const fb = document.getElementById('fb_'+n);
+    if(!picked){
+      fb.innerHTML = "<span class='bad'>Not answered</span>";
+      return;
+    }
+    if(picked.value === item.ans){
+      score++;
+      fb.innerHTML = "<span class='ok'>✔ Correct</span>";
+    }else{
+      fb.innerHTML = "<span class='bad'>✘ Incorrect</span>. Correct: " + item.ans;
+    }
+  });
+  document.getElementById('score').textContent = `Score: ${score} / ${DATA.length}`;
+}
+
+function resetAll(){
+  document.querySelectorAll("input[type='radio']").forEach(r=>r.checked=false);
+  document.getElementById('score').textContent = "";
+  DATA.forEach((_,i)=>{
+    const fb = document.getElementById('fb_'+(i+1));
+    fb.textContent = "";
+  });
+}
+
+const ansList = document.getElementById('answerList');
+DATA.forEach((item, idx)=>{
+  const li = document.createElement('li');
+  li.textContent = `${idx+1}. ${item.ans}`;
+  ansList.appendChild(li);
+});
+</script>
+</body>
+</html>

@@ -1,0 +1,135 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>11+ Comprehension — CO22</title>
+  <style>
+    :root{--bg:#f7fafc;--card:#ffffff;--ink:#1a202c;--muted:#4a5568;--accent:#2b6cb0;--ok:#2f855a;--bad:#c53030;}
+    html,body{margin:0;padding:0;background:var(--bg);color:var(--ink);font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,"Noto Sans",sans-serif;line-height:1.6}
+    .wrap{max-width:1000px;margin:24px auto;padding:0 16px}
+    header{display:flex;gap:12px;align-items:center;flex-wrap:wrap}
+    header h1{font-size:1.6rem;margin:.2rem 0}
+    header .tag{background:#ebf8ff;color:var(--accent);border:1px solid #bee3f8;padding:2px 8px;border-radius:999px;font-size:.85rem}
+    .card{background:var(--card);border:1px solid #e2e8f0;border-radius:16px;box-shadow:0 4px 16px rgba(0,0,0,.06);padding:20px;margin:16px 0}
+    .story{font-size:1.05rem;white-space:pre-wrap}
+    .q{margin:14px 0}
+    .q h3{margin:0 0 6px 0;font-size:1.02rem}
+    .opts{display:grid;grid-template-columns:1fr;gap:6px}
+    @media (min-width:700px){.opts{grid-template-columns:1fr 1fr}}
+    label{display:flex;gap:8px;align-items:flex-start;border:1px solid #e2e8f0;border-radius:12px;padding:8px 10px;background:#fff;cursor:pointer}
+    .actions{display:flex;gap:8px;flex-wrap:wrap;align-items:center}
+    button{border:none;border-radius:999px;padding:10px 14px;cursor:pointer}
+    .primary{background:var(--accent);color:#fff}
+    .ghost{background:#edf2f7;color:var(--ink)}
+    .ok{color:var(--ok)}
+    .bad{color:var(--bad)}
+    .score{font-size:1.2rem;font-weight:700}
+    .footer{color:var(--muted);font-size:.9rem}
+    .ans{font-size:.95rem;color:var(--muted)}
+  </style>
+</head>
+<body>
+  <div class="wrap">
+    <header>
+      <h1>11+ Comprehension (CO22)</h1>
+      <span class="tag">Time allowed: 30 minutes</span>
+    </header>
+
+    <div class="card">
+      <h2>Passage</h2>
+      <p class="story" id="story">
+
+Our student newspaper wanted to run a story on a rumour that school lunches would be replaced by vending machines. Instead of publishing guesses, the editors announced a “fact-check week.” We listed claims on a whiteboard and divided tasks: interview the head teacher, read the council’s catering contract, and survey students about what they actually wanted from lunch. The rule was simple: cite sources, and colour-code confidence—green for confirmed, amber for uncertain, red for false or misleading.
+
+Interviews deflated the rumour quickly. The head teacher said the only change under discussion was a pilot for pre-ordering salads to reduce queues. The council confirmed that hot meals would continue under the existing contract for two more years. But the survey surprised us: many students wanted a faster line for simple items—soup, fruit cups, and bread—because they wasted time choosing. We also learned that students with clubs at lunch needed reliable timings more than new menu items.
+
+We checked our own bias. Two editors disliked the current curry and assumed others did too. The survey showed the opposite: curry days were popular if the spice level was marked clearly. We asked the kitchen for waste data and saw that unopened milk cartons remained a problem, echoing last term’s campaign. Our charts showed a small drop after the “take what you will drink” posters, but the carts still carried too many returns at the end of lunch.
+
+The final article didn’t shout. It began with a box titled “What’s true, what’s not.” It listed the rumour in red, the salad pre-order pilot in green, and two amber questions about timing and signage. Then it told a clearer story: long queues were a planning problem; the menu wasn’t vanishing; and small changes—like a separate quick line and clearer labels—might satisfy most students without drama. We added a promise to revisit the topic in a month with fresh data. Readers sent notes not about vending machines, but about soup flavours.
+</p>
+    </div>
+
+    <div class="card">
+      <h2>Multiple-Choice Questions (Single Answer)</h2>
+      <div id="questions"></div>
+      <div class="actions">
+        <button class="primary" onclick="grade()">Check answers & score</button>
+        <button class="ghost" onclick="resetAll()">Reset</button>
+        <span id="score" class="score"></span>
+      </div>
+      <details>
+        <summary>Answer key (view after checking)</summary>
+        <ol id="answerList" class="ans"></ol>
+      </details>
+    </div>
+
+    <div class="footer">© 2025 Miss K | For classroom practice only.</div>
+  </div>
+
+<script>
+const DATA = [{"q": "What triggered the fact-check week?", "a": ["A rumour about vending machines replacing lunches", "A sports event", "New uniforms", "An exam"], "ans": "A", "exp": ""}, {"q": "What rule guided reporting?", "a": ["Guess boldly", "Cite sources and colour-code confidence", "Use anonymous comments only", "Publish quickly"], "ans": "B", "exp": ""}, {"q": "What did the head teacher say about changes?", "a": ["All hot meals cancelled", "Only a salad pre-order pilot was discussed", "Vending machines installed tomorrow", "No comment"], "ans": "B", "exp": ""}, {"q": "What did the council confirm?", "a": ["Contract ending now", "Hot meals continue for two years", "Prices doubling", "Closing the kitchen"], "ans": "B", "exp": ""}, {"q": "What did the survey reveal students wanted?", "a": ["Only pizza", "Faster line for simple items", "No lunch", "Longer menus"], "ans": "B", "exp": ""}, {"q": "Who needed reliable timing most?", "a": ["Teachers", "Students with lunch clubs", "Visitors", "Janitors"], "ans": "B", "exp": ""}, {"q": "What bias did editors recognise?", "a": ["They loved curry", "They disliked curry but others liked it if labelled for spice", "They hated soup", "They avoided surveys"], "ans": "B", "exp": ""}, {"q": "What persistent waste issue remained?", "a": ["Bread", "Unopened milk cartons", "Plates", "Napkins"], "ans": "B", "exp": ""}, {"q": "What effect did posters have on milk waste?", "a": ["Increased", "Small drop but still high", "Eliminated", "Unknown"], "ans": "B", "exp": ""}, {"q": "How did the final article present facts?", "a": ["With jokes", "Box: what’s true/what’s not; then explanation", "Only photos", "Song lyrics"], "ans": "B", "exp": ""}, {"q": "What colour indicated confirmed facts?", "a": ["Red", "Green", "Amber", "Blue"], "ans": "B", "exp": ""}, {"q": "What colour marked uncertainty?", "a": ["Amber", "Green", "Red", "Purple"], "ans": "A", "exp": ""}, {"q": "What did readers write about afterward?", "a": ["Uniforms", "Soup flavours", "Rumours", "Sports"], "ans": "B", "exp": ""}, {"q": "What is the central idea?", "a": ["Rumours are fun", "Fact-checking with sources and data leads to better reporting", "Ignore surveys", "Publish quickly"], "ans": "B", "exp": ""}, {"q": "Why survey students?", "a": ["For gossip", "To learn real needs like quicker lines", "To test spelling", "To decorate walls"], "ans": "B", "exp": ""}, {"q": "What tone did the final article use?", "a": ["Shouting", "Calm and clear", "Angry", "Sarcastic"], "ans": "B", "exp": ""}, {"q": "Why include waste data?", "a": ["Irrelevant", "Context: ongoing milk issue informs lunch planning", "To embarrass staff", "To change subjects"], "ans": "B", "exp": ""}, {"q": "Which is an inference?", "a": ["Charts showed small drop in milk waste", "Students prefer clarity and speed over dramatic changes", "Council confirmed contract", "Editors had bias"], "ans": "B", "exp": ""}, {"q": "What habit does the passage promote?", "a": ["Spread rumours", "Check sources, disclose bias, revisit with data", "Ignore readers", "Hide errors"], "ans": "B", "exp": ""}, {"q": "What feature might address queues?", "a": ["Remove labels", "Separate quick line for simple items", "Less staff", "Louder music"], "ans": "B", "exp": ""}, {"q": "What does red mean in their system?", "a": ["False/misleading", "Confirmed", "Uncertain", "Irrelevant"], "ans": "A", "exp": ""}, {"q": "Why revisit in a month?", "a": ["To keep pressure on rumours", "To update with new data after pilots", "To change colours", "For exams"], "ans": "B", "exp": ""}, {"q": "What was not being replaced by machines?", "a": ["Hot meals", "Walls", "Tables", "Plates"], "ans": "A", "exp": ""}, {"q": "Which audience had strong opinions on spice?", "a": ["Editors only", "Students; curry days fine with clear spice labels", "Parents only", "Cooks only"], "ans": "B", "exp": ""}, {"q": "Why include a 'what’s true/what’s not' box?", "a": ["Dramatic effect", "Fast clarity for readers", "Space filler", "Required by law"], "ans": "B", "exp": ""}, {"q": "What tool helped show bias impact?", "a": ["Ruler", "Survey vs editor opinion comparison", "Paint", "Stopwatch"], "ans": "B", "exp": ""}, {"q": "What’s the likely effect of a separate quick line?", "a": ["Longer waits", "Shorter waits for simple items", "More rumours", "Less soup"], "ans": "B", "exp": ""}, {"q": "What earlier campaign did milk waste echo?", "a": ["Sports week", "Last term’s 'take what you will drink' posters", "Uniform drive", "Drama club"], "ans": "B", "exp": ""}, {"q": "Which title fits best?", "a": ["Lunch Replaced!", "Rumour Tested: What’s Really Changing in Our Canteen", "Spice Storm", "Machines Win"], "ans": "B", "exp": ""}, {"q": "Who were the primary sources?", "a": ["Anonymous", "Head teacher and council documents", "Aliens", "Competitors"], "ans": "B", "exp": ""}, {"q": "What did students want more than new dishes?", "a": ["Reliability and speed", "More rumours", "Vending machines", "Nothing"], "ans": "A", "exp": ""}, {"q": "What metric showed contract duration?", "a": ["Survey", "Council catering contract", "Poster", "Thermometer"], "ans": "B", "exp": ""}, {"q": "Which habit should school reporters adopt?", "a": ["Publish first, correct later", "Fact-check, colour-code confidence, share data", "Copy social media", "Use anonymous quotes"], "ans": "B", "exp": ""}, {"q": "What replaced shouting in the article?", "a": ["Whispering", "Clear, sourced explanations", "Memes", "Poems"], "ans": "B", "exp": ""}, {"q": "What follow-up content did readers request?", "a": ["Soup flavours", "Uniform colours", "Bus times", "Math puzzles"], "ans": "A", "exp": ""}];
+
+const container = document.getElementById('questions');
+DATA.forEach((item, idx)=>{
+  const n = idx + 1;
+  const block = document.createElement('div');
+  block.className = 'q';
+  block.innerHTML = `
+    <h3>${n}. ${item.q}</h3>
+    <div class="opts">
+      ${['A','B','C','D'].map((k,i)=>{
+        const text = item.a[i];
+        const name = 'q'+n;
+        const id = name + '_' + k;
+        return `
+        <label for="${id}">
+          <input type="radio" name="${name}" id="${id}" value="${k}" />
+          <span>(${k}) ${text}</span>
+        </label>`
+      }).join('')}
+    </div>
+    <div id="fb_${n}" class="ans"></div>
+  `;
+  container.appendChild(block);
+});
+
+function grade(){
+  let score = 0;
+  DATA.forEach((item, idx)=>{
+    const n = idx + 1;
+    const picked = document.querySelector(`input[name='q${n}']:checked`);
+    const fb = document.getElementById('fb_'+n);
+    if(!picked){
+      fb.innerHTML = "<span class='bad'>Not answered</span>";
+      return;
+    }
+    if(picked.value === item.ans){
+      score++;
+      fb.innerHTML = "<span class='ok'>✔ Correct</span>";
+    }else{
+      fb.innerHTML = "<span class='bad'>✘ Incorrect</span>. Correct: " + item.ans;
+    }
+  });
+  document.getElementById('score').textContent = `Score: ${score} / ${DATA.length}`;
+}
+
+function resetAll(){
+  document.querySelectorAll("input[type='radio']").forEach(r=>r.checked=false);
+  document.getElementById('score').textContent = "";
+  DATA.forEach((_,i)=>{
+    const fb = document.getElementById('fb_'+(i+1));
+    fb.textContent = "";
+  });
+}
+
+const ansList = document.getElementById('answerList');
+DATA.forEach((item, idx)=>{
+  const li = document.createElement('li');
+  li.textContent = `${idx+1}. ${item.ans}`;
+  ansList.appendChild(li);
+});
+</script>
+</body>
+</html>

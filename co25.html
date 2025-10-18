@@ -1,0 +1,135 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>11+ Comprehension — CO25</title>
+  <style>
+    :root{--bg:#f7fafc;--card:#ffffff;--ink:#1a202c;--muted:#4a5568;--accent:#2b6cb0;--ok:#2f855a;--bad:#c53030;}
+    html,body{margin:0;padding:0;background:var(--bg);color:var(--ink);font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,"Noto Sans",sans-serif;line-height:1.6}
+    .wrap{max-width:1000px;margin:24px auto;padding:0 16px}
+    header{display:flex;gap:12px;align-items:center;flex-wrap:wrap}
+    header h1{font-size:1.6rem;margin:.2rem 0}
+    header .tag{background:#ebf8ff;color:var(--accent);border:1px solid #bee3f8;padding:2px 8px;border-radius:999px;font-size:.85rem}
+    .card{background:var(--card);border:1px solid #e2e8f0;border-radius:16px;box-shadow:0 4px 16px rgba(0,0,0,.06);padding:20px;margin:16px 0}
+    .story{font-size:1.05rem;white-space:pre-wrap}
+    .q{margin:14px 0}
+    .q h3{margin:0 0 6px 0;font-size:1.02rem}
+    .opts{display:grid;grid-template-columns:1fr;gap:6px}
+    @media (min-width:700px){.opts{grid-template-columns:1fr 1fr}}
+    label{display:flex;gap:8px;align-items:flex-start;border:1px solid #e2e8f0;border-radius:12px;padding:8px 10px;background:#fff;cursor:pointer}
+    .actions{display:flex;gap:8px;flex-wrap:wrap;align-items:center}
+    button{border:none;border-radius:999px;padding:10px 14px;cursor:pointer}
+    .primary{background:var(--accent);color:#fff}
+    .ghost{background:#edf2f7;color:var(--ink)}
+    .ok{color:var(--ok)}
+    .bad{color:var(--bad)}
+    .score{font-size:1.2rem;font-weight:700}
+    .footer{color:var(--muted);font-size:.9rem}
+    .ans{font-size:.95rem;color:var(--muted)}
+  </style>
+</head>
+<body>
+  <div class="wrap">
+    <header>
+      <h1>11+ Comprehension (CO25)</h1>
+      <span class="tag">Time allowed: 30 minutes</span>
+    </header>
+
+    <div class="card">
+      <h2>Passage</h2>
+      <p class="story" id="story">
+
+Our town runs a spring river clean-up each year. This time, our eco club added a data twist: count what we collected, not just bag it. We printed waterproof tally sheets with five categories—plastic bottles, cans, food wrappers, fishing line, and “other.” Teams walked different stretches with grabbers and buckets. We agreed on two rules: keep feet on paths near the bank, and leave anything that looked like a nest or a home alone.
+
+The first hour filled buckets fast. Wrappers blew into brambles like flags. We found five fishing lines tangled around a branch and cut them free after checking no nests were nearby. A parent brought a luggage scale so we could weigh full bags before adding them to the council’s skip. We also photographed any branded clusters to send to companies that sponsored the event. A sudden shower tested our waterproof sheets; the pencil marks held.
+
+Numbers shaped the afternoon. One bend near the picnic tables produced most cans. The underpass collected bottles after every rain. A quiet stretch by the reeds had almost nothing until we spotted a single tyre half sunk in the mud; we marked the location for the council’s grab truck. We added a column for glass when we noticed shards by a bench, then sent someone for a broom and a hard container so sharp pieces wouldn’t tear bags.
+
+At day’s end, we laid the sheets on a picnic table and tallied totals. We posted a bar chart and three requests: add covered bins near the picnic bend; place a net boom before the underpass during storms; and put a sign by the reeds asking people to report tyres instead of rolling them deeper. The mayor thanked volunteers and promised to try the bin change immediately. Our hands smelled of river and soap, and our map had fewer blank spots where litter had been hiding.
+</p>
+    </div>
+
+    <div class="card">
+      <h2>Multiple-Choice Questions (Single Answer)</h2>
+      <div id="questions"></div>
+      <div class="actions">
+        <button class="primary" onclick="grade()">Check answers & score</button>
+        <button class="ghost" onclick="resetAll()">Reset</button>
+        <span id="score" class="score"></span>
+      </div>
+      <details>
+        <summary>Answer key (view after checking)</summary>
+        <ol id="answerList" class="ans"></ol>
+      </details>
+    </div>
+
+    <div class="footer">© 2025 Miss K | For classroom practice only.</div>
+  </div>
+
+<script>
+const DATA = [{"q": "What new element did the eco club add to the clean-up?", "a": ["More bags", "Counting and categorising litter with tally sheets", "Music", "Prizes"], "ans": "B", "exp": ""}, {"q": "What were the five initial categories?", "a": ["Paper, wood, metal, glass, stone", "Plastic bottles, cans, food wrappers, fishing line, other", "Leaves, sticks, mud, sand, water", "Tyres, bikes, carts, shoes, hats"], "ans": "B", "exp": ""}, {"q": "What two safety rules were set?", "a": ["Swim and climb", "Stay on paths and avoid disturbing nests/homes", "Run fast and shout", "Work at night"], "ans": "B", "exp": ""}, {"q": "What tool weighed bags?", "a": ["Thermometer", "Luggage scale", "Barometer", "Tape measure"], "ans": "B", "exp": ""}, {"q": "Why photograph branded clusters?", "a": ["For social media only", "To contact sponsoring companies about hotspots", "To make posters", "To win prizes"], "ans": "B", "exp": ""}, {"q": "What happened during the shower?", "a": ["Sheets smeared", "Waterproof sheets held pencil marks", "Event stopped", "Everything blew away"], "ans": "B", "exp": ""}, {"q": "Where were most cans found?", "a": ["Underpass", "Bend near picnic tables", "Reeds", "Playground"], "ans": "B", "exp": ""}, {"q": "Which area trapped bottles after rain?", "a": ["Underpass", "Picnic bend", "Reeds", "Car park"], "ans": "A", "exp": ""}, {"q": "What did the team do about the tyre?", "a": ["Rolled it deeper", "Left it unmarked", "Marked location for council grab truck", "Kicked it"], "ans": "C", "exp": ""}, {"q": "Why add a glass column?", "a": ["Pretty", "Noticed shards by a bench", "To make five items", "Random"], "ans": "B", "exp": ""}, {"q": "How were sharp pieces handled?", "a": ["Loose in bags", "Broom and hard container to avoid tearing", "Left there", "In pockets"], "ans": "B", "exp": ""}, {"q": "What three requests were posted?", "a": ["No fishing, no dogs, no bikes", "Covered bins at picnic bend, net boom before underpass, sign near reeds", "More parties", "Paint river"], "ans": "B", "exp": ""}, {"q": "What did the mayor promise to try immediately?", "a": ["Net boom", "Covered bins near picnic bend", "New bridge", "Ban picnics"], "ans": "B", "exp": ""}, {"q": "What is the central idea?", "a": ["Counting is pointless", "Data-guided clean-ups target causes and spots", "Only adults can help", "Rivers clean themselves"], "ans": "B", "exp": ""}, {"q": "Why leave nests alone?", "a": ["Illegal", "Respect habitats and avoid harm", "Too high", "Dirty"], "ans": "B", "exp": ""}, {"q": "Which is an inference?", "a": ["Tyre was marked for pickup", "Map had fewer blank spots where litter had been hiding implies cleaner river", "Underpass trapped bottles", "Shower occurred"], "ans": "B", "exp": ""}, {"q": "What tool grabbed litter?", "a": ["Bare hands", "Grabbers", "Nets only", "Magnets"], "ans": "B", "exp": ""}, {"q": "Why use waterproof sheets?", "a": ["Colourful", "Rain-proof recording", "Heavier", "Shiny"], "ans": "B", "exp": ""}, {"q": "What pattern did numbers reveal?", "a": ["Random", "Specific hotspots like picnic bend and underpass", "Everywhere same", "No litter"], "ans": "B", "exp": ""}, {"q": "Why ask for a net boom before the underpass?", "a": ["Decoration", "Catch floating bottles during storms", "Fishing", "Photos"], "ans": "B", "exp": ""}, {"q": "What did volunteers’ hands smell like at the end?", "a": ["Soap and river", "Paint", "Perfume", "Nothing"], "ans": "A", "exp": ""}, {"q": "Who provided the skip for bags?", "a": ["Council", "School", "Shop", "Police"], "ans": "A", "exp": ""}, {"q": "What category included fishing line initially?", "a": ["Other", "Fishing line", "Glass", "Wood"], "ans": "B", "exp": ""}, {"q": "Why a sign by the reeds?", "a": ["Discourage birds", "Ask people to report tyres instead of rolling them", "Hide reeds", "Invite swimmers"], "ans": "B", "exp": ""}, {"q": "What did teams carry besides buckets?", "a": ["Grabbers and tally sheets", "Speakers", "Laptops", "TVs"], "ans": "A", "exp": ""}, {"q": "What did the luggage scale measure?", "a": ["Distance", "Weight of full bags", "Water depth", "Air pressure"], "ans": "B", "exp": ""}, {"q": "Which area had little litter at first?", "a": ["Reeds stretch", "Underpass", "Picnic bend", "Car park"], "ans": "A", "exp": ""}, {"q": "What change did the team make to sheets?", "a": ["Removed categories", "Added a glass column after noticing shards", "Changed paper size", "Used pens"], "ans": "B", "exp": ""}, {"q": "Which title fits best?", "a": ["Counting the River’s Rubbish: A Smarter Clean-up", "River Games", "Mud Day", "The Tyre Mystery"], "ans": "A", "exp": ""}, {"q": "What habit does the story encourage?", "a": ["Pick up only", "Measure, map, and suggest fixes", "Blame others", "Stop cleaning"], "ans": "B", "exp": ""}, {"q": "What did teams do with fishing lines?", "a": ["Left them", "Cut free after checking for nests", "Sold them", "Burned them"], "ans": "B", "exp": ""}, {"q": "What was done with full bags?", "a": ["Left by path", "Weighed then added to skip", "Thrown back", "Hidden"], "ans": "B", "exp": ""}, {"q": "Why include 'other' as a category?", "a": ["Catch items not listed", "For style", "Reduce thinking", "To ignore data"], "ans": "A", "exp": ""}, {"q": "Who sponsored the event?", "a": ["Companies (some sponsors) and council involved", "Only school", "Sports clubs", "Unknown aliens"], "ans": "A", "exp": ""}, {"q": "What time of year?", "a": ["Winter", "Spring", "Autumn", "Summer"], "ans": "B", "exp": ""}, {"q": "What causes more bottles at underpass?", "a": ["Magic", "Runoff during rain carries them there", "Wind only", "Boats"], "ans": "B", "exp": ""}];
+
+const container = document.getElementById('questions');
+DATA.forEach((item, idx)=>{
+  const n = idx + 1;
+  const block = document.createElement('div');
+  block.className = 'q';
+  block.innerHTML = `
+    <h3>${n}. ${item.q}</h3>
+    <div class="opts">
+      ${['A','B','C','D'].map((k,i)=>{
+        const text = item.a[i];
+        const name = 'q'+n;
+        const id = name + '_' + k;
+        return `
+        <label for="${id}">
+          <input type="radio" name="${name}" id="${id}" value="${k}" />
+          <span>(${k}) ${text}</span>
+        </label>`
+      }).join('')}
+    </div>
+    <div id="fb_${n}" class="ans"></div>
+  `;
+  container.appendChild(block);
+});
+
+function grade(){
+  let score = 0;
+  DATA.forEach((item, idx)=>{
+    const n = idx + 1;
+    const picked = document.querySelector(`input[name='q${n}']:checked`);
+    const fb = document.getElementById('fb_'+n);
+    if(!picked){
+      fb.innerHTML = "<span class='bad'>Not answered</span>";
+      return;
+    }
+    if(picked.value === item.ans){
+      score++;
+      fb.innerHTML = "<span class='ok'>✔ Correct</span>";
+    }else{
+      fb.innerHTML = "<span class='bad'>✘ Incorrect</span>. Correct: " + item.ans;
+    }
+  });
+  document.getElementById('score').textContent = `Score: ${score} / ${DATA.length}`;
+}
+
+function resetAll(){
+  document.querySelectorAll("input[type='radio']").forEach(r=>r.checked=false);
+  document.getElementById('score').textContent = "";
+  DATA.forEach((_,i)=>{
+    const fb = document.getElementById('fb_'+(i+1));
+    fb.textContent = "";
+  });
+}
+
+const ansList = document.getElementById('answerList');
+DATA.forEach((item, idx)=>{
+  const li = document.createElement('li');
+  li.textContent = `${idx+1}. ${item.ans}`;
+  ansList.appendChild(li);
+});
+</script>
+</body>
+</html>
