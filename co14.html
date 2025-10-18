@@ -1,0 +1,137 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>11+ Comprehension — CO14</title>
+  <style>
+    :root{--bg:#f7fafc;--card:#ffffff;--ink:#1a202c;--muted:#4a5568;--accent:#2b6cb0;--ok:#2f855a;--bad:#c53030;}
+    html,body{margin:0;padding:0;background:var(--bg);color:var(--ink);font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,"Noto Sans",sans-serif;line-height:1.6}
+    .wrap{max-width:1000px;margin:24px auto;padding:0 16px}
+    header{display:flex;gap:12px;align-items:center;flex-wrap:wrap}
+    header h1{font-size:1.6rem;margin:.2rem 0}
+    header .tag{background:#ebf8ff;color:var(--accent);border:1px solid #bee3f8;padding:2px 8px;border-radius:999px;font-size:.85rem}
+    .card{background:var(--card);border:1px solid #e2e8f0;border-radius:16px;box-shadow:0 4px 16px rgba(0,0,0,.06);padding:20px;margin:16px 0}
+    .story{font-size:1.05rem;white-space:pre-wrap}
+    .q{margin:14px 0}
+    .q h3{margin:0 0 6px 0;font-size:1.02rem}
+    .opts{display:grid;grid-template-columns:1fr;gap:6px}
+    @media (min-width:700px){.opts{grid-template-columns:1fr 1fr}}
+    label{display:flex;gap:8px;align-items:flex-start;border:1px solid #e2e8f0;border-radius:12px;padding:8px 10px;background:#fff;cursor:pointer}
+    .actions{display:flex;gap:8px;flex-wrap:wrap;align-items:center}
+    button{border:none;border-radius:999px;padding:10px 14px;cursor:pointer}
+    .primary{background:var(--accent);color:#fff}
+    .ghost{background:#edf2f7;color:var(--ink)}
+    .ok{color:var(--ok)}
+    .bad{color:var(--bad)}
+    .score{font-size:1.2rem;font-weight:700}
+    .footer{color:var(--muted);font-size:.9rem}
+    .ans{font-size:.95rem;color:var(--muted)}
+  </style>
+</head>
+<body>
+  <div class="wrap">
+    <header>
+      <h1>11+ Comprehension (CO14)</h1>
+      <span class="tag">Time allowed: 30 minutes</span>
+    </header>
+
+    <div class="card">
+      <h2>Passage</h2>
+      <p class="story" id="story">
+
+Our town liked being called “the stargazing valley,” but the name had become a story more than a truth. On clear nights, the football ground glowed like a small sun, and the supermarket’s car park shone as if noon could be switched on. For science week, our astronomy club ran a “Light Audit” to measure how much skyglow we had and what could be changed without turning the town dark.
+
+We borrowed meters that recorded sky brightness and simple lux readers for ground light. Pairs of students walked preset routes after homework on three evenings: one before moonrise, one with a half-moon, and one after a rain that washed the air clean. At each stop—library corner, riverside path, the hill behind school, and the football ground—we took two readings: up at the sky and down at the pavement. We also noted the lamp type: bare bulb, full shield, or decorative globe. A parent who worked as an electrician explained that shields direct light downward; globes throw it everywhere.
+
+Patterns appeared even before we made charts. The hill behind school had the darkest sky reading and the lowest ground light; walkers there used head torches and didn’t linger. The riverside path had bright, white globes that lit branches as well as benches, and moths circled them in glittering swarms. The supermarket car park used bright LEDs that never dimmed, even after midnight. Outside the football ground, lamps on tall poles spilled light beyond the fence; during practice, the beams reached the clouds like pale ladders.
+
+We tested small fixes. On the quietest evening, the club fitted cardboard “trial shields” to two globes on the riverside path with the council’s permission. The next reading showed the ground was just as visible, while the sky reading improved slightly. We tried a timer on a portable floodlight at the school steps; the meter rose darker when it clicked off at 9:30. We emailed a simple table to the council: site, lamp type, current reading, and “what-if” reading with our trial. We also added notes about safety: shields reduce glare and can actually help people see faces and steps more clearly.
+
+At the community meeting on Friday, not everyone agreed. A shopkeeper liked the bright car park for customers who arrived late. A runner said the riverside path felt safer with glow all around. Our club didn’t ask for blackouts. We proposed three changes: full shields for globes along the river, timers for low-traffic car-park areas after midnight, and angled fixtures at the football ground to keep beams on the pitch. The council agreed to test two of the ideas for a month. On our walk home, the clouds were thin and the first stars appeared early. We could still read the street signs, and we could finally count Orion’s belt without squinting.
+</p>
+    </div>
+
+    <div class="card">
+      <h2>Multiple-Choice Questions (Single Answer)</h2>
+      <div id="questions"></div>
+      <div class="actions">
+        <button class="primary" onclick="grade()">Check answers & score</button>
+        <button class="ghost" onclick="resetAll()">Reset</button>
+        <span id="score" class="score"></span>
+      </div>
+      <details>
+        <summary>Answer key (view after checking)</summary>
+        <ol id="answerList" class="ans"></ol>
+      </details>
+    </div>
+
+    <div class="footer">© 2025 Miss K | For classroom practice only.</div>
+  </div>
+
+<script>
+const DATA = [{"q": "What was the purpose of the astronomy club’s Light Audit?", "a": ["To turn off all lights", "To measure skyglow and suggest practical changes", "To buy telescopes", "To close the football ground"], "ans": "B", "exp": ""}, {"q": "Which tools did students use during the audit?", "a": ["Lux readers and sky brightness meters", "Thermometers only", "Noise meters only", "Cameras only"], "ans": "A", "exp": ""}, {"q": "How many evening conditions did the team plan for?", "a": ["One", "Two", "Three (before moonrise, half-moon, after rain)", "Four"], "ans": "C", "exp": ""}, {"q": "Where were readings taken?", "a": ["Random places only", "Preset stops like the library corner, riverside path, hill behind school, and football ground", "Inside classrooms", "Only at home"], "ans": "B", "exp": ""}, {"q": "What two readings were taken at each stop?", "a": ["Temperature and humidity", "Sky brightness and ground light", "Wind speed and cloud height", "Noise and traffic"], "ans": "B", "exp": ""}, {"q": "What did the electrician parent explain about lamp shields?", "a": ["They are decorative", "They direct light downward and reduce scatter", "They make lights brighter", "They change the colour to blue"], "ans": "B", "exp": ""}, {"q": "Which site had the darkest sky reading?", "a": ["Riverside path", "Hill behind school", "Supermarket car park", "Football ground"], "ans": "B", "exp": ""}, {"q": "What was notable about the riverside lamps?", "a": ["They were all broken", "They were bright globes lighting branches and benches, attracting moths", "They were red", "They were solar only"], "ans": "B", "exp": ""}, {"q": "How did the supermarket car park behave after midnight?", "a": ["Lights dimmed automatically", "Lights stayed bright and never dimmed", "Lights turned red", "Lights switched off hourly"], "ans": "B", "exp": ""}, {"q": "What effect did the football ground lights have?", "a": ["No effect beyond the pitch", "Beams spilled beyond the fence and reached the clouds", "They were always off", "They were underground"], "ans": "B", "exp": ""}, {"q": "What was the result of fitting cardboard trial shields to two globes?", "a": ["Ground became hard to see", "Ground visibility stayed, sky reading improved slightly", "Lights failed", "Area was unsafe"], "ans": "B", "exp": ""}, {"q": "What happened when a timer turned off a portable floodlight at 9:30?", "a": ["The meter showed darker sky reading", "Nothing changed", "It got noisier", "The lamp broke"], "ans": "A", "exp": ""}, {"q": "What did the club send to the council?", "a": ["A photo album only", "A table of sites, lamp types, current and 'what-if' readings, plus safety notes", "A complaint letter", "A bill"], "ans": "B", "exp": ""}, {"q": "What safety point did the club make about shields?", "a": ["They reduce glare and can help visibility of faces and steps", "They make areas look scarier", "They hide signs", "They make lights flicker"], "ans": "A", "exp": ""}, {"q": "Why did some people resist the changes?", "a": ["They disliked astronomy", "They preferred very bright areas for customers or personal safety", "They wanted more stars", "They loved cardboard"], "ans": "B", "exp": ""}, {"q": "What three changes did the club propose?", "a": ["Turn off all lights, paint poles black, plant trees", "Full shields for river globes, timers for low-traffic car parks after midnight, angled fixtures at the football ground", "Dim everything to 10%", "Use only candles"], "ans": "B", "exp": ""}, {"q": "What did the council agree to do?", "a": ["Reject the plan", "Test two of the ideas for a month", "Install nothing", "Buy new stadium lights immediately"], "ans": "B", "exp": ""}, {"q": "What happened on the walk home after the meeting?", "a": ["It rained heavily", "Stars appeared earlier; Orion’s belt was easy to count", "All lights were off", "A blackout occurred"], "ans": "B", "exp": ""}, {"q": "What is the central idea of the passage?", "a": ["Darkness is dangerous", "Targeted lighting changes can reduce skyglow while keeping safety", "Only astronomers care about light", "Shields are expensive"], "ans": "B", "exp": ""}, {"q": "Why include multiple evenings with different conditions?", "a": ["To make it take longer", "To compare effects of moonlight and clear air on readings", "To get permission from parents", "To confuse the council"], "ans": "B", "exp": ""}, {"q": "Which site likely added most to skyglow during practice?", "a": ["Library corner", "Football ground with tall poles", "Hill behind school", "Riverside path after midnight"], "ans": "B", "exp": ""}, {"q": "Which statement is an inference rather than a direct fact?", "a": ["Moths circled the globes", "Some residents value brightness for perceived safety", "The hill had the darkest reading", "Car park LEDs never dimmed"], "ans": "B", "exp": ""}, {"q": "What habit does the passage encourage?", "a": ["Complain first, measure later", "Measure first, test small fixes, then propose changes", "Ignore safety", "Ban all LEDs"], "ans": "B", "exp": ""}, {"q": "How do shields help both astronomy and safety?", "a": ["By making lights colourful", "By directing light downward and reducing glare", "By raising poles higher", "By adding noise"], "ans": "B", "exp": ""}, {"q": "What additional information did students record about lamps?", "a": ["Serial numbers", "Lamp type: bare bulb, full shield, or globe", "Store brand", "Price"], "ans": "B", "exp": ""}, {"q": "Why did the club use cardboard for trial shields?", "a": ["Permanent solution", "A quick, permitted test to estimate benefits", "To decorate", "To block signs"], "ans": "B", "exp": ""}, {"q": "Which metric improved when the floodlight timer switched off?", "a": ["Ground lux", "Sky brightness (darker reading)", "Temperature", "Noise level"], "ans": "B", "exp": ""}, {"q": "Which title best fits the passage?", "a": ["Lights Out Forever", "A Valley of Stars Again: Auditing Our Town’s Night Lights", "The Stadium Mystery", "Moon Hunters"], "ans": "B", "exp": ""}, {"q": "What compromise does the club aim for?", "a": ["Total darkness", "Balanced lighting that protects the night sky and keeps paths useful", "More advertising signs", "Brighter colours"], "ans": "B", "exp": ""}, {"q": "What does 'pale ladders' metaphorically describe?", "a": ["Clouds falling", "Light beams reaching up to the clouds", "Actual ladders", "Tree branches"], "ans": "B", "exp": ""}, {"q": "Which audience did the club communicate with formally?", "a": ["Only parents", "The town council via email and meeting", "Tourists", "A national TV show"], "ans": "B", "exp": ""}, {"q": "Why include a rainy-night route?", "a": ["To cancel the walk", "Because rain cleans the air, affecting brightness readings", "To test umbrellas", "For fun"], "ans": "B", "exp": ""}, {"q": "What tool did walkers on the hill use?", "a": ["Head torches", "Candles", "Phones in airplane mode", "None"], "ans": "A", "exp": ""}, {"q": "What change would most reduce wasted light at the football ground?", "a": ["Angled fixtures to keep beams on the pitch", "Brighter bulbs", "More poles", "Coloured lights"], "ans": "A", "exp": ""}, {"q": "Which detail shows data-driven persuasion?", "a": ["Telling scary stories", "Sending a table with current vs 'what-if' readings", "Posting memes", "Drawing cartoons only"], "ans": "B", "exp": ""}, {"q": "What habit should readers take from the club’s approach?", "a": ["Measure, test, share, and iterate", "Decide by opinion", "Refuse compromise", "Use brighter lights everywhere"], "ans": "A", "exp": ""}];
+
+const container = document.getElementById('questions');
+DATA.forEach((item, idx)=>{
+  const n = idx + 1;
+  const block = document.createElement('div');
+  block.className = 'q';
+  block.innerHTML = `
+    <h3>${n}. ${item.q}</h3>
+    <div class="opts">
+      ${['A','B','C','D'].map((k,i)=>{
+        const text = item.a[i];
+        const name = 'q'+n;
+        const id = name + '_' + k;
+        return `
+        <label for="${id}">
+          <input type="radio" name="${name}" id="${id}" value="${k}" />
+          <span>(${k}) ${text}</span>
+        </label>`
+      }).join('')}
+    </div>
+    <div id="fb_${n}" class="ans"></div>
+  `;
+  container.appendChild(block);
+});
+
+function grade(){
+  let score = 0;
+  DATA.forEach((item, idx)=>{
+    const n = idx + 1;
+    const picked = document.querySelector(`input[name='q${n}']:checked`);
+    const fb = document.getElementById('fb_'+n);
+    if(!picked){
+      fb.innerHTML = "<span class='bad'>Not answered</span>";
+      return;
+    }
+    if(picked.value === item.ans){
+      score++;
+      fb.innerHTML = "<span class='ok'>✔ Correct</span>";
+    }else{
+      fb.innerHTML = "<span class='bad'>✘ Incorrect</span>. Correct: " + item.ans;
+    }
+  });
+  document.getElementById('score').textContent = `Score: ${score} / ${DATA.length}`;
+}
+
+function resetAll(){
+  document.querySelectorAll("input[type='radio']").forEach(r=>r.checked=false);
+  document.getElementById('score').textContent = "";
+  DATA.forEach((_,i)=>{
+    const fb = document.getElementById('fb_'+(i+1));
+    fb.textContent = "";
+  });
+}
+
+const ansList = document.getElementById('answerList');
+DATA.forEach((item, idx)=>{
+  const li = document.createElement('li');
+  li.textContent = `${idx+1}. ${item.ans}`;
+  ansList.appendChild(li);
+});
+</script>
+</body>
+</html>
