@@ -1,0 +1,137 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>11+ Comprehension — CO16</title>
+  <style>
+    :root{--bg:#f7fafc;--card:#ffffff;--ink:#1a202c;--muted:#4a5568;--accent:#2b6cb0;--ok:#2f855a;--bad:#c53030;}
+    html,body{margin:0;padding:0;background:var(--bg);color:var(--ink);font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,"Noto Sans",sans-serif;line-height:1.6}
+    .wrap{max-width:1000px;margin:24px auto;padding:0 16px}
+    header{display:flex;gap:12px;align-items:center;flex-wrap:wrap}
+    header h1{font-size:1.6rem;margin:.2rem 0}
+    header .tag{background:#ebf8ff;color:var(--accent);border:1px solid #bee3f8;padding:2px 8px;border-radius:999px;font-size:.85rem}
+    .card{background:var(--card);border:1px solid #e2e8f0;border-radius:16px;box-shadow:0 4px 16px rgba(0,0,0,.06);padding:20px;margin:16px 0}
+    .story{font-size:1.05rem;white-space:pre-wrap}
+    .q{margin:14px 0}
+    .q h3{margin:0 0 6px 0;font-size:1.02rem}
+    .opts{display:grid;grid-template-columns:1fr;gap:6px}
+    @media (min-width:700px){.opts{grid-template-columns:1fr 1fr}}
+    label{display:flex;gap:8px;align-items:flex-start;border:1px solid #e2e8f0;border-radius:12px;padding:8px 10px;background:#fff;cursor:pointer}
+    .actions{display:flex;gap:8px;flex-wrap:wrap;align-items:center}
+    button{border:none;border-radius:999px;padding:10px 14px;cursor:pointer}
+    .primary{background:var(--accent);color:#fff}
+    .ghost{background:#edf2f7;color:var(--ink)}
+    .ok{color:var(--ok)}
+    .bad{color:var(--bad)}
+    .score{font-size:1.2rem;font-weight:700}
+    .footer{color:var(--muted);font-size:.9rem}
+    .ans{font-size:.95rem;color:var(--muted)}
+  </style>
+</head>
+<body>
+  <div class="wrap">
+    <header>
+      <h1>11+ Comprehension (CO16)</h1>
+      <span class="tag">Time allowed: 30 minutes</span>
+    </header>
+
+    <div class="card">
+      <h2>Passage</h2>
+      <p class="story" id="story">
+
+Our history teacher loved exhibits that people could touch, so the school foyer became a “Pop-up Museum of Local Inventions” for one week. We didn’t have famous patents to display. We had everyday problem-solvers: a bricklayer’s line-holder from the 1960s, a midwife’s hand-written birth log, and a bicycle lamp that a grandfather rewired with parts from an old radio. The plan was to invite the inventors—or their families—to stand by each object at lunchtime and tell short stories.
+
+We created object labels with four fields: the problem, the idea, the first test, and the change after feedback. The bricklayer’s holder kept the line taut across uneven ground; the first version split in the rain until he rounded the corners and used a different wood. The birth log showed how the midwife mapped addresses to save time when bicycles were the fastest transport in town. The lamp’s label included a small circuit sketch and a photo of the original radio.
+
+Crowds surprised us on day one. Primary pupils pressed close to the lamp and asked why radio parts could power a light. We built a demo with a hand-cranked generator and a tiny bulb so they could try. A teenage visitor asked whether the bricklayer’s tool counted as an invention if it wasn’t patented. We added a note to the label: “An invention is a useful, new way of solving a problem—patents are one way to protect some ideas, not the only sign of invention.” We also taped a QR code to each stand that linked to a two-minute audio clip of the owner telling a memory about the object in their own voice.
+
+Feedback changed the layout midweek. People crowded the popular table; others were missed. We tested a timed loop: every ten minutes, a small bell rang, and presenters swapped places. This spread attention and gave voices a rest. We also placed a “design a fix” table with pencils and sticky notes. By Friday, the board was full of sketches—shoe grips for icy steps, a cup that clicks onto a book so you don’t spill tea, a fold-flat carrier for shopping on bikes. The foyer felt like a workshop that remembered as it invented.
+
+On the last afternoon, we made a booklet with photos, label texts, and one sentence from each owner: “What lesson would you pass on?” Many wrote about testing, listening, and changing. The head teacher asked if the booklet could become a yearly tradition. We said yes—on one condition: that each year’s pop-up includes room for new hands to try an old idea and for old hands to welcome new ones.
+</p>
+    </div>
+
+    <div class="card">
+      <h2>Multiple-Choice Questions (Single Answer)</h2>
+      <div id="questions"></div>
+      <div class="actions">
+        <button class="primary" onclick="grade()">Check answers & score</button>
+        <button class="ghost" onclick="resetAll()">Reset</button>
+        <span id="score" class="score"></span>
+      </div>
+      <details>
+        <summary>Answer key (view after checking)</summary>
+        <ol id="answerList" class="ans"></ol>
+      </details>
+    </div>
+
+    <div class="footer">© 2025 Miss K | For classroom practice only.</div>
+  </div>
+
+<script>
+const DATA = [{"q": "What was the main purpose of the pop-up museum?", "a": ["To sell antiques", "To showcase local problem-solving inventions and stories", "To host a concert", "To display only patents"], "ans": "B", "exp": ""}, {"q": "Where did the museum take place?", "a": ["Town hall", "School foyer", "Library basement", "Sports centre"], "ans": "B", "exp": ""}, {"q": "What kinds of objects were displayed?", "a": ["Famous national patents only", "Everyday inventions like a line-holder, birth log, and rewired lamp", "Paintings", "Coins"], "ans": "B", "exp": ""}, {"q": "How were labels structured?", "a": ["Date and price", "Problem, idea, first test, change after feedback", "Owner’s name only", "A poem"], "ans": "B", "exp": ""}, {"q": "What issue did the bricklayer fix after the first test?", "a": ["Too heavy", "Split in rain; rounded corners and changed wood", "Too bright", "Too small"], "ans": "B", "exp": ""}, {"q": "What did the birth log demonstrate?", "a": ["Map of addresses to save time by bicycle", "A list of baby names", "A patent drawing", "A recipe"], "ans": "A", "exp": ""}, {"q": "What question did primary pupils ask about the lamp?", "a": ["Why it was red", "Why radio parts could power a light", "Who owned it", "How to buy it"], "ans": "B", "exp": ""}, {"q": "What demo did students build for the lamp?", "a": ["Solar panel", "Hand-cranked generator with tiny bulb", "Water wheel", "Steam engine"], "ans": "B", "exp": ""}, {"q": "What question about invention arose from a teenager?", "a": ["Can inventions be blue?", "Does a tool count if not patented?", "Is tea allowed?", "Do radios sing?"], "ans": "B", "exp": ""}, {"q": "What note was added to labels about invention?", "a": ["Only patents matter", "Invention is a useful, new solution; patents protect some ideas", "Invention is random", "Ideas should be secret"], "ans": "B", "exp": ""}, {"q": "What did QR codes link to?", "a": ["Shopping sites", "Two-minute audio clips by the owners", "Games", "Maps"], "ans": "B", "exp": ""}, {"q": "Why did organisers ring a bell every ten minutes?", "a": ["To end the show", "To swap presenters and spread attention", "To play music", "To test alarms"], "ans": "B", "exp": ""}, {"q": "What was the purpose of the 'design a fix' table?", "a": ["Sell pencils", "Let visitors sketch their own ideas", "Collect money", "Write essays"], "ans": "B", "exp": ""}, {"q": "What types of sketches appeared by Friday?", "a": ["Portraits", "Practical ideas like shoe grips, cup clip, fold-flat carrier", "Cartoons only", "Buildings"], "ans": "B", "exp": ""}, {"q": "How did the foyer feel by the end of the week?", "a": ["Silent gallery", "Workshop that remembered as it invented", "Empty", "Chaotic market"], "ans": "B", "exp": ""}, {"q": "What did the final booklet include?", "a": ["Only photos", "Photos, label texts, and a lesson from each owner", "Only prices", "Maps"], "ans": "B", "exp": ""}, {"q": "What lesson did many owners emphasise?", "a": ["Copying", "Testing, listening, and changing", "Secrecy", "Speed"], "ans": "B", "exp": ""}, {"q": "What condition did students set for making the booklet a tradition?", "a": ["Charge a fee", "Include space for new hands to try old ideas and vice versa", "Limit entries to patents", "Only students may present"], "ans": "B", "exp": ""}, {"q": "What is the central idea of the passage?", "a": ["Invention belongs only to labs", "Hands-on stories show everyday invention and invite participation", "Patents are required for value", "Museums must be silent"], "ans": "B", "exp": ""}, {"q": "Which detail shows accessibility?", "a": ["Long essays", "Short audio clips via QR codes", "Locked cases", "Invitation-only entry"], "ans": "B", "exp": ""}, {"q": "Which is an inference rather than a direct fact?", "a": ["Crowds surprised organisers", "Bell swaps reduced strain on presenters", "Some visitors value trying over just looking", "Labels had four fields"], "ans": "C", "exp": ""}, {"q": "How did feedback change layout midweek?", "a": ["Fewer objects", "Timed presenter swaps", "Closed tables", "Removed labels"], "ans": "B", "exp": ""}, {"q": "What question format did labels encourage?", "a": ["Problem-first inquiry", "Price-first", "Owner-first", "Patent-first"], "ans": "A", "exp": ""}, {"q": "What habit does the event encourage?", "a": ["Judging quickly", "Iterate based on tests and feedback", "Fearing failure", "Hiding ideas"], "ans": "B", "exp": ""}, {"q": "Why include the circuit sketch on the lamp’s label?", "a": ["Decoration only", "To show thinking behind the fix", "To confuse", "To hide details"], "ans": "B", "exp": ""}, {"q": "What transport context did the birth log reflect?", "a": ["Cars", "Bicycles were fastest locally", "Boats", "Trains"], "ans": "B", "exp": ""}, {"q": "Which strategy spread attention more fairly?", "a": ["One long queue", "Bell-timed rotation", "Random walking", "Silent viewing"], "ans": "B", "exp": ""}, {"q": "Why is calling it a 'pop-up museum' fitting?", "a": ["It moves and adapts for a short time", "It is a permanent building", "It sells popcorn", "It has rides"], "ans": "A", "exp": ""}, {"q": "Which title fits best?", "a": ["Locked Cabinet", "Try, Test, Tweak: A Pop-up of Everyday Inventions", "Patent Parade", "Silent Tools"], "ans": "B", "exp": ""}, {"q": "Which audience did the event actively involve?", "a": ["Only teachers", "Owners, families, and visitors of all ages", "Only engineers", "Only historians"], "ans": "B", "exp": ""}, {"q": "What evidence shows inclusivity of younger pupils?", "a": ["They were kept away", "They tried a hand-cranked demo", "They read legal texts", "They paid fees"], "ans": "B", "exp": ""}, {"q": "What’s implied by the foyer feeling like a workshop?", "a": ["No learning happened", "People made and discussed ideas actively", "The space was messy only", "It was noisy without purpose"], "ans": "B", "exp": ""}, {"q": "Why add the 'design a fix' board?", "a": ["To grade visitors", "To capture community creativity", "To store coats", "To count pencils"], "ans": "B", "exp": ""}, {"q": "What role did the bell play besides rotation?", "a": ["None", "Created a rhythm that balanced crowds", "Made noise only", "Signalled fire drill"], "ans": "B", "exp": ""}, {"q": "Which habit should readers take away?", "a": ["Wait for perfect ideas", "Start small, share, learn from feedback", "Hide mistakes", "Only experts invent"], "ans": "B", "exp": ""}];
+
+const container = document.getElementById('questions');
+DATA.forEach((item, idx)=>{
+  const n = idx + 1;
+  const block = document.createElement('div');
+  block.className = 'q';
+  block.innerHTML = `
+    <h3>${n}. ${item.q}</h3>
+    <div class="opts">
+      ${['A','B','C','D'].map((k,i)=>{
+        const text = item.a[i];
+        const name = 'q'+n;
+        const id = name + '_' + k;
+        return `
+        <label for="${id}">
+          <input type="radio" name="${name}" id="${id}" value="${k}" />
+          <span>(${k}) ${text}</span>
+        </label>`
+      }).join('')}
+    </div>
+    <div id="fb_${n}" class="ans"></div>
+  `;
+  container.appendChild(block);
+});
+
+function grade(){
+  let score = 0;
+  DATA.forEach((item, idx)=>{
+    const n = idx + 1;
+    const picked = document.querySelector(`input[name='q${n}']:checked`);
+    const fb = document.getElementById('fb_'+n);
+    if(!picked){
+      fb.innerHTML = "<span class='bad'>Not answered</span>";
+      return;
+    }
+    if(picked.value === item.ans){
+      score++;
+      fb.innerHTML = "<span class='ok'>✔ Correct</span>";
+    }else{
+      fb.innerHTML = "<span class='bad'>✘ Incorrect</span>. Correct: " + item.ans;
+    }
+  });
+  document.getElementById('score').textContent = `Score: ${score} / ${DATA.length}`;
+}
+
+function resetAll(){
+  document.querySelectorAll("input[type='radio']").forEach(r=>r.checked=false);
+  document.getElementById('score').textContent = "";
+  DATA.forEach((_,i)=>{
+    const fb = document.getElementById('fb_'+(i+1));
+    fb.textContent = "";
+  });
+}
+
+const ansList = document.getElementById('answerList');
+DATA.forEach((item, idx)=>{
+  const li = document.createElement('li');
+  li.textContent = `${idx+1}. ${item.ans}`;
+  ansList.appendChild(li);
+});
+</script>
+</body>
+</html>

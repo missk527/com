@@ -1,0 +1,137 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>11+ Comprehension — CO17</title>
+  <style>
+    :root{--bg:#f7fafc;--card:#ffffff;--ink:#1a202c;--muted:#4a5568;--accent:#2b6cb0;--ok:#2f855a;--bad:#c53030;}
+    html,body{margin:0;padding:0;background:var(--bg);color:var(--ink);font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,"Noto Sans",sans-serif;line-height:1.6}
+    .wrap{max-width:1000px;margin:24px auto;padding:0 16px}
+    header{display:flex;gap:12px;align-items:center;flex-wrap:wrap}
+    header h1{font-size:1.6rem;margin:.2rem 0}
+    header .tag{background:#ebf8ff;color:var(--accent);border:1px solid #bee3f8;padding:2px 8px;border-radius:999px;font-size:.85rem}
+    .card{background:var(--card);border:1px solid #e2e8f0;border-radius:16px;box-shadow:0 4px 16px rgba(0,0,0,.06);padding:20px;margin:16px 0}
+    .story{font-size:1.05rem;white-space:pre-wrap}
+    .q{margin:14px 0}
+    .q h3{margin:0 0 6px 0;font-size:1.02rem}
+    .opts{display:grid;grid-template-columns:1fr;gap:6px}
+    @media (min-width:700px){.opts{grid-template-columns:1fr 1fr}}
+    label{display:flex;gap:8px;align-items:flex-start;border:1px solid #e2e8f0;border-radius:12px;padding:8px 10px;background:#fff;cursor:pointer}
+    .actions{display:flex;gap:8px;flex-wrap:wrap;align-items:center}
+    button{border:none;border-radius:999px;padding:10px 14px;cursor:pointer}
+    .primary{background:var(--accent);color:#fff}
+    .ghost{background:#edf2f7;color:var(--ink)}
+    .ok{color:var(--ok)}
+    .bad{color:var(--bad)}
+    .score{font-size:1.2rem;font-weight:700}
+    .footer{color:var(--muted);font-size:.9rem}
+    .ans{font-size:.95rem;color:var(--muted)}
+  </style>
+</head>
+<body>
+  <div class="wrap">
+    <header>
+      <h1>11+ Comprehension (CO17)</h1>
+      <span class="tag">Time allowed: 30 minutes</span>
+    </header>
+
+    <div class="card">
+      <h2>Passage</h2>
+      <p class="story" id="story">
+
+Our island’s little ferry could carry twelve cars and forty foot passengers. On summer Saturdays, the queue snaked past the bakery by 9 a.m., and tempers rose with the temperature. The council wanted a bigger boat one day; our maths club suggested a smaller idea now: redesign the timetable and loading order using observations from two weekends.
+
+We counted arrivals in ten-minute blocks, recorded the mix of cars, bikes, and walkers, and timed how long the ramp stayed idle between sailings. We drew chalk lines to mark where the twelfth car should stop so late arrivals didn’t block the bakery door. We also tested two loading sequences under the crew’s supervision: cars first then walkers, and walkers first with bikes alongside. A parent who ran the café offered tokens for anyone willing to try the early 8:20 sailing.
+
+The numbers told a clear story. Demand peaked between 9:10 and 10:00, but the ramp sat empty for three minutes after several unloads. When walkers boarded first, cars moved in one smooth line with fewer handbrake pauses. Bikes loaded with walkers reduced wobbling near the ramp. The chalk line cut arguments by giving latecomers a visible rule. The tokens nudged twenty people to take the 8:20 boat, which returned before the rush with space to spare.
+
+We sketched a new timetable with two early sailings fifteen minutes closer together, then a steady half-hour rhythm. We proposed a loud, simple board at the queue: “Next departures: 8:20, 8:35, 9:05…; Cars stop at the second cone; Walkers line left; Bikes with walkers.” We also asked the council to try a “walk-on express” at 9:20 on the busiest days, with a staffer counting forty people quickly while the deck crew prepped cars for the next run.
+
+At the trial weekend, tensions softened. The early pair soaked up the first arrivals; the express lifted the heaviest slice of foot traffic; the chalk line and cone made late arrivals shrug instead of shout. By noon, the bakery still sold out of buns, but the queue no longer blocked the door. We didn’t claim to have solved summer. We presented a one-page summary: fewer idle minutes, fewer stops on the ramp, and the same total capacity spread more evenly. The harbour master circled one sentence and smiled: “Small changes, timed right, can feel like a bigger boat.”
+</p>
+    </div>
+
+    <div class="card">
+      <h2>Multiple-Choice Questions (Single Answer)</h2>
+      <div id="questions"></div>
+      <div class="actions">
+        <button class="primary" onclick="grade()">Check answers & score</button>
+        <button class="ghost" onclick="resetAll()">Reset</button>
+        <span id="score" class="score"></span>
+      </div>
+      <details>
+        <summary>Answer key (view after checking)</summary>
+        <ol id="answerList" class="ans"></ol>
+      </details>
+    </div>
+
+    <div class="footer">© 2025 Miss K | For classroom practice only.</div>
+  </div>
+
+<script>
+const DATA = [{"q": "What problem did the island face on summer Saturdays?", "a": ["Too many buses", "Ferry queues that blocked the bakery and caused tension", "Storms every hour", "No crew"], "ans": "B", "exp": ""}, {"q": "What long-term plan did the council want?", "a": ["A bridge", "A bigger boat someday", "Close the ferry", "Ban visitors"], "ans": "B", "exp": ""}, {"q": "What did the maths club propose instead?", "a": ["Price rise", "Immediate timetable and loading-order redesign using observations", "More adverts", "Night sailings only"], "ans": "B", "exp": ""}, {"q": "How were arrivals measured?", "a": ["Hourly guess", "Ten-minute blocks counting cars, bikes, walkers", "Daily totals only", "Ticket sales only"], "ans": "B", "exp": ""}, {"q": "What did chalk lines mark?", "a": ["Parking fees", "Where the twelfth car should stop", "A bike lane", "Footpath"], "ans": "B", "exp": ""}, {"q": "Which two loading sequences were tested?", "a": ["Random order vs alphabetical", "Cars first then walkers, and walkers first with bikes alongside", "Bikes only vs cars only", "Crew first vs captain first"], "ans": "B", "exp": ""}, {"q": "What incentive moved people to an earlier boat?", "a": ["Free fuel", "Café tokens for the 8:20 sailing", "Postcards", "Loud music"], "ans": "B", "exp": ""}, {"q": "What pattern did the data show about demand?", "a": ["Peaked 9:10–10:00", "Steady all day", "Late evening peak", "No peak"], "ans": "A", "exp": ""}, {"q": "What inefficiency was observed on the ramp?", "a": ["Too many cones", "Ramp sat idle for about three minutes after some unloads", "Broken ropes", "Slow captain"], "ans": "B", "exp": ""}, {"q": "What happened when walkers boarded first?", "a": ["Chaos", "Cars moved smoothly with fewer pauses", "Bikes blocked the ramp", "Crew refused"], "ans": "B", "exp": ""}, {"q": "Where did bikes load in the better sequence?", "a": ["With cars", "With walkers", "Last only", "Not allowed"], "ans": "B", "exp": ""}, {"q": "How did the chalk line help?", "a": ["Decorated pavement", "Gave a clear rule that reduced arguments", "Tripped people", "Blocked bikes"], "ans": "B", "exp": ""}, {"q": "What timetable change was suggested for early morning?", "a": ["Fewer sailings", "Two early sailings fifteen minutes apart", "Hourly boats", "Cancel 8:20"], "ans": "B", "exp": ""}, {"q": "What message did the queue board display?", "a": ["Menu", "Next departures and simple lining rules", "Weather", "Apologies"], "ans": "B", "exp": ""}, {"q": "What is a 'walk-on express'?", "a": ["A fast boat", "A dedicated departure for forty foot passengers counted quickly", "A bike race", "A bus"], "ans": "B", "exp": ""}, {"q": "What was the effect of the trial weekend?", "a": ["More shouting", "Softer tensions, bakery door clear, steadier flow", "No change", "Closed café"], "ans": "B", "exp": ""}, {"q": "What remained unchanged despite improvements?", "a": ["Total capacity per trip", "Bakery selling buns by noon", "The ramp", "The weather"], "ans": "B", "exp": ""}, {"q": "What is the central idea of the passage?", "a": ["Only big boats solve queues", "Small, timed changes to process can improve flow and fairness", "Numbers are boring", "Everyone should arrive late"], "ans": "B", "exp": ""}, {"q": "Why did fewer handbrake pauses occur?", "a": ["Steeper ramp", "Walkers first reduced car stop-starts", "Fewer cars", "Wider deck"], "ans": "B", "exp": ""}, {"q": "Which evidence shows demand shifting earlier?", "a": ["Tokens moved twenty people to 8:20", "Sunrise earlier", "Wind dropped", "Bridge opened"], "ans": "A", "exp": ""}, {"q": "What habit does the passage encourage?", "a": ["Guess and hope", "Observe, test sequences, adjust timetables", "Blame visitors", "Close the ferry"], "ans": "B", "exp": ""}, {"q": "Which metric did the summary highlight?", "a": ["More cones", "Fewer idle minutes and ramp stops with same capacity", "Higher prices", "New crew uniforms"], "ans": "B", "exp": ""}, {"q": "Why include a loud, simple board?", "a": ["Decoration", "To set clear expectations that reduce conflict", "For advertising", "For art class"], "ans": "B", "exp": ""}, {"q": "Which is an inference rather than a direct fact?", "a": ["Queue no longer blocked door", "Tensions softened because rules were clearer", "Two early sailings were scheduled", "Tokens offered"], "ans": "B", "exp": ""}, {"q": "What role did the harbour master play?", "a": ["Opposed trial", "Praised the outcome with a quote", "Drove the ferry", "Sold buns"], "ans": "B", "exp": ""}, {"q": "Why test two loading orders?", "a": ["To satisfy the captain", "To find which reduced delays and wobbles", "To entertain tourists", "To confuse people"], "ans": "B", "exp": ""}, {"q": "Which stakeholder offered an incentive?", "a": ["Police", "Café parent", "Bus driver", "Lighthouse keeper"], "ans": "B", "exp": ""}, {"q": "What visual aid stopped cars blocking the bakery?", "a": ["A flag", "Chalk line and cone at stopping point", "Fence", "Poster"], "ans": "B", "exp": ""}, {"q": "Which title fits best?", "a": ["A Bridge Too Far", "Right on Time: Rethinking Our Ferry Queue", "Closed for Summer", "The Angry Queue"], "ans": "B", "exp": ""}, {"q": "Why does the passage mention bikes wobbling?", "a": ["Humour", "To show safety improved when bikes loaded with walkers", "To blame cyclists", "To promote helmets"], "ans": "B", "exp": ""}, {"q": "What does 'same total capacity spread more evenly' imply?", "a": ["More boats added", "Distribution across time reduced peaks", "Fewer passengers overall", "Longer crossings"], "ans": "B", "exp": ""}, {"q": "Which early sailings were paired?", "a": ["8:20 and 8:35", "9:20 and 9:35", "7:00 and 7:15", "10:00 and 10:15"], "ans": "A", "exp": ""}, {"q": "What queue instruction was given to walkers?", "a": ["Stand right", "Line left", "Board last", "Wait at café"], "ans": "B", "exp": ""}, {"q": "What was proposed on the busiest days at 9:20?", "a": ["Staff break", "Walk-on express departure", "Car-only sailing", "Maintenance"], "ans": "B", "exp": ""}, {"q": "Which habit should transport planners adopt from the story?", "a": ["Bigger boats only", "Evidence-led tweaks before big investments", "Random schedule changes", "Ignore queues"], "ans": "B", "exp": ""}];
+
+const container = document.getElementById('questions');
+DATA.forEach((item, idx)=>{
+  const n = idx + 1;
+  const block = document.createElement('div');
+  block.className = 'q';
+  block.innerHTML = `
+    <h3>${n}. ${item.q}</h3>
+    <div class="opts">
+      ${['A','B','C','D'].map((k,i)=>{
+        const text = item.a[i];
+        const name = 'q'+n;
+        const id = name + '_' + k;
+        return `
+        <label for="${id}">
+          <input type="radio" name="${name}" id="${id}" value="${k}" />
+          <span>(${k}) ${text}</span>
+        </label>`
+      }).join('')}
+    </div>
+    <div id="fb_${n}" class="ans"></div>
+  `;
+  container.appendChild(block);
+});
+
+function grade(){
+  let score = 0;
+  DATA.forEach((item, idx)=>{
+    const n = idx + 1;
+    const picked = document.querySelector(`input[name='q${n}']:checked`);
+    const fb = document.getElementById('fb_'+n);
+    if(!picked){
+      fb.innerHTML = "<span class='bad'>Not answered</span>";
+      return;
+    }
+    if(picked.value === item.ans){
+      score++;
+      fb.innerHTML = "<span class='ok'>✔ Correct</span>";
+    }else{
+      fb.innerHTML = "<span class='bad'>✘ Incorrect</span>. Correct: " + item.ans;
+    }
+  });
+  document.getElementById('score').textContent = `Score: ${score} / ${DATA.length}`;
+}
+
+function resetAll(){
+  document.querySelectorAll("input[type='radio']").forEach(r=>r.checked=false);
+  document.getElementById('score').textContent = "";
+  DATA.forEach((_,i)=>{
+    const fb = document.getElementById('fb_'+(i+1));
+    fb.textContent = "";
+  });
+}
+
+const ansList = document.getElementById('answerList');
+DATA.forEach((item, idx)=>{
+  const li = document.createElement('li');
+  li.textContent = `${idx+1}. ${item.ans}`;
+  ansList.appendChild(li);
+});
+</script>
+</body>
+</html>
