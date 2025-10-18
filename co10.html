@@ -1,0 +1,137 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>11+ Comprehension — CO10</title>
+  <style>
+    :root{--bg:#f7fafc;--card:#ffffff;--ink:#1a202c;--muted:#4a5568;--accent:#2b6cb0;--ok:#2f855a;--bad:#c53030;}
+    html,body{margin:0;padding:0;background:var(--bg);color:var(--ink);font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,"Noto Sans",sans-serif;line-height:1.6}
+    .wrap{max-width:1000px;margin:24px auto;padding:0 16px}
+    header{display:flex;gap:12px;align-items:center;flex-wrap:wrap}
+    header h1{font-size:1.6rem;margin:.2rem 0}
+    header .tag{background:#ebf8ff;color:var(--accent);border:1px solid #bee3f8;padding:2px 8px;border-radius:999px;font-size:.85rem}
+    .card{background:var(--card);border:1px solid #e2e8f0;border-radius:16px;box-shadow:0 4px 16px rgba(0,0,0,.06);padding:20px;margin:16px 0}
+    .story{font-size:1.05rem;white-space:pre-wrap}
+    .q{margin:14px 0}
+    .q h3{margin:0 0 6px 0;font-size:1.02rem}
+    .opts{display:grid;grid-template-columns:1fr;gap:6px}
+    @media (min-width:700px){.opts{grid-template-columns:1fr 1fr}}
+    label{display:flex;gap:8px;align-items:flex-start;border:1px solid #e2e8f0;border-radius:12px;padding:8px 10px;background:#fff;cursor:pointer}
+    .actions{display:flex;gap:8px;flex-wrap:wrap;align-items:center}
+    button{border:none;border-radius:999px;padding:10px 14px;cursor:pointer}
+    .primary{background:var(--accent);color:#fff}
+    .ghost{background:#edf2f7;color:var(--ink)}
+    .ok{color:var(--ok)}
+    .bad{color:var(--bad)}
+    .score{font-size:1.2rem;font-weight:700}
+    .footer{color:var(--muted);font-size:.9rem}
+    .ans{font-size:.95rem;color:var(--muted)}
+  </style>
+</head>
+<body>
+  <div class="wrap">
+    <header>
+      <h1>11+ Comprehension (CO10)</h1>
+      <span class="tag">Time allowed: 30 minutes</span>
+    </header>
+
+    <div class="card">
+      <h2>Passage</h2>
+      <p class="story" id="story">
+
+When two spring storms flooded the corner by Maple and 3rd, the council promised bigger drains. Our science club proposed something smaller first: a rain garden on the school’s front lawn to catch run‑off from the roof. Some parents imagined a muddy hole. The design looked nothing like a pond. It was a shallow basin with native grasses and a stone-filled trench called a swale leading from the downspout. The idea was to slow water, sink it into the soil, and filter grit before it reached the street.
+
+We began by mapping where puddles formed after rain. Using chalk, we traced the edges, then measured how long the water stayed. A geography teacher showed us how to do a percolation test: dig a narrow pit, fill it with water, and time the drop. Our soil drained steadily but not fast; we would need a mix of sand and compost under the planting layer. The caretaker marked utilities, and we phoned a local nursery that donated tough plants—switchgrass, sedges, and purple coneflowers.
+
+Installation day felt like a festival. Volunteers lifted turf, shaped a shallow bowl, and lined the swale with river stones. A small weir—two boards between stakes—created a step so the basin wouldn’t overflow onto the path. We set a ruler in the center marked “0–15 cm” to read depth during storms. A pair of younger pupils painted a sign that explained how the garden worked and reminded dogs to keep out while roots settled. Before we finished, a light drizzle arrived and trickled along the stones exactly as drawn on the plan.
+
+The first big test came a week later. An afternoon downpour hammered the roof and filled the gutter like a drum. Instead of sheet water racing over the pavement, the swale shone silver and the basin rose to 9 cm, then sank to 3 cm by evening. The next morning, except for a damp ring, the lawn looked ordinary. We posted a graph on the school website showing depth change over time and invited families to add observations from their doorsteps: Were nearby drains less clogged? Did puddles shrink?
+
+Not every comment was praise. One neighbour worried about mosquitoes. We explained that rain gardens are designed to empty within two days—too quick for most mosquitoes to hatch—and added a note to the sign. A parent asked whether the garden could freeze in winter and push stones onto the path. We built a small wooden lip along the edge as a shield. Two months later, the council still planned its bigger drains, but our corner flooded less often. The rain garden hadn’t solved the town’s storms; it had made one place ready to welcome the water that always comes.
+</p>
+    </div>
+
+    <div class="card">
+      <h2>Multiple-Choice Questions (Single Answer)</h2>
+      <div id="questions"></div>
+      <div class="actions">
+        <button class="primary" onclick="grade()">Check answers & score</button>
+        <button class="ghost" onclick="resetAll()">Reset</button>
+        <span id="score" class="score"></span>
+      </div>
+      <details>
+        <summary>Answer key (view after checking)</summary>
+        <ol id="answerList" class="ans"></ol>
+      </details>
+    </div>
+
+    <div class="footer">© 2025 Miss K | For classroom practice only.</div>
+  </div>
+
+<script>
+const DATA = [{"q": "What problem did the community face at Maple and 3rd?", "a": ["Traffic jams", "Flooding during storms", "Littering", "Power cuts"], "ans": "B", "exp": ""}, {"q": "What did the council promise to install?", "a": ["Street lights", "Bigger drains", "New benches", "Bike racks"], "ans": "B", "exp": ""}, {"q": "What solution did the science club propose first?", "a": ["A concrete wall", "A rain garden on the school lawn", "A new car park", "A fountain"], "ans": "B", "exp": ""}, {"q": "Which statement best describes a rain garden in the passage?", "a": ["A deep pond", "A shallow basin with plants and a stone-lined swale", "A water tank", "A plastic tray"], "ans": "B", "exp": ""}, {"q": "What is the main purpose of the swale?", "a": ["To grow vegetables", "To carry and slow roof water into the basin", "To store tools", "To keep dogs out"], "ans": "B", "exp": ""}, {"q": "What did students map with chalk?", "a": ["Bus routes", "Where puddles formed and how long they lasted", "Plant locations", "Boundary lines of the school"], "ans": "B", "exp": ""}, {"q": "What is a percolation test used to measure?", "a": ["Wind speed", "How fast water drains through soil", "Water temperature", "Rainfall colour"], "ans": "B", "exp": ""}, {"q": "What soil improvement did the team decide on?", "a": ["Clay and gravel", "Sand and compost under the planting layer", "Only more clay", "Pure stones"], "ans": "B", "exp": ""}, {"q": "Who donated the plants?", "a": ["The council", "A local nursery", "A supermarket", "The police"], "ans": "B", "exp": ""}, {"q": "Which plants were mentioned?", "a": ["Roses and tulips", "Switchgrass, sedges, and purple coneflowers", "Pine trees", "Cacti"], "ans": "B", "exp": ""}, {"q": "What structure prevented overflow onto the path?", "a": ["A tall fence", "A small weir made of boards between stakes", "A drain cover", "A metal gate"], "ans": "B", "exp": ""}, {"q": "Why was a ruler placed in the basin?", "a": ["Decoration", "To measure water depth during storms", "To mark property lines", "To teach fractions"], "ans": "B", "exp": ""}, {"q": "What did the painted sign ask people to do?", "a": ["Feed birds", "Keep dogs out while roots settled", "Add fertiliser", "Pick flowers"], "ans": "B", "exp": ""}, {"q": "What happened during the first big downpour?", "a": ["The basin overflowed", "The swale carried water, depth peaked at 9 cm then fell", "The ruler broke", "The plants died"], "ans": "B", "exp": ""}, {"q": "How did the team share results with families?", "a": ["A TV ad", "A graph on the school website and an invitation to report observations", "A private letter", "They didn’t share"], "ans": "B", "exp": ""}, {"q": "What concern did a neighbour raise?", "a": ["Noise", "Mosquito breeding", "Plant allergies", "Vandalism"], "ans": "B", "exp": ""}, {"q": "How did the club answer the mosquito concern?", "a": ["By draining it daily", "By explaining it empties within two days—too fast for most mosquitoes", "By spraying chemicals", "By covering it with plastic"], "ans": "B", "exp": ""}, {"q": "What winter issue did a parent ask about?", "a": ["Snowmen", "Freezing could push stones onto the path", "Too much shade", "Wild animals"], "ans": "B", "exp": ""}, {"q": "What feature was added to address winter worries?", "a": ["A wooden lip along the edge", "A heater", "A fence", "A drain grate"], "ans": "A", "exp": ""}, {"q": "What overall effect did the rain garden have after two months?", "a": ["It caused more floods", "The corner flooded less often, though council still planned bigger drains", "Nothing changed", "The plants failed"], "ans": "B", "exp": ""}, {"q": "Which sentence best states the central idea?", "a": ["Small, evidence-based designs can reduce flooding in specific places", "Only large projects work", "Gardens are only for beauty", "Measurements are unnecessary"], "ans": "A", "exp": ""}, {"q": "What habit does the passage encourage?", "a": ["Ignoring storms", "Noticing, measuring, and designing to fit local conditions", "Relying on guesses", "Waiting for others"], "ans": "B", "exp": ""}, {"q": "Why were chalk maps useful?", "a": ["They looked artistic", "They showed exactly where water collected and how long it stayed", "They kept dogs away", "They replaced rulers"], "ans": "B", "exp": ""}, {"q": "What does “welcome the water” suggest?", "a": ["Invite rain into classrooms", "Manage rain by slowing and soaking it safely", "Build more swimming pools", "Let all water sit forever"], "ans": "B", "exp": ""}, {"q": "Which detail shows community involvement?", "a": ["A teacher working alone", "Nursery donating plants and families adding observations", "A closed gate", "Silent meetings"], "ans": "B", "exp": ""}, {"q": "Why is the rain garden not a complete solution?", "a": ["It breaks easily", "It only helps one site while larger drainage is still needed", "It wastes water", "It harms plants"], "ans": "B", "exp": ""}, {"q": "What data point is specifically given for the first storm?", "a": ["Depth peaked at 9 cm then dropped to 3 cm by evening", "Wind at 20 km/h", "Temperature 10°C", "Rain lasted 30 minutes"], "ans": "A", "exp": ""}, {"q": "Why was the swale lined with river stones?", "a": ["For colour only", "To guide flow and prevent erosion", "To warm water", "To keep cats away"], "ans": "B", "exp": ""}, {"q": "How did the team prepare before digging?", "a": ["No preparation", "Caretaker marked utilities and soil tests were done", "They guessed a location", "They copied a picture"], "ans": "B", "exp": ""}, {"q": "Which statement is an inference rather than a direct fact?", "a": ["The basin drained by the next morning", "Parents imagined a muddy hole", "The garden increased bird songs", "The council planned bigger drains"], "ans": "C", "exp": ""}, {"q": "What does the small weir do?", "a": ["Speeds water into the street", "Creates a step to control basin level", "Catches fish", "Stops rain"], "ans": "B", "exp": ""}, {"q": "Which title best fits the passage?", "a": ["Storm Walls", "Welcoming the Rain: Building a School Rain Garden", "Maple Street Mysteries", "The Biggest Drain"], "ans": "B", "exp": ""}, {"q": "What extra task did the website invite families to do?", "a": ["Donate money only", "Report local drain and puddle observations", "Vote for flowers", "Join a sports team"], "ans": "B", "exp": ""}, {"q": "Why did some parents worry at first?", "a": ["They dislike plants", "They feared it would be a messy pond", "They hate councils", "They wanted a car park"], "ans": "B", "exp": ""}, {"q": "Which measurement tool appears in the passage?", "a": ["Barometer", "Ruler set in the basin", "Anemometer only", "Thermal camera"], "ans": "B", "exp": ""}, {"q": "What outcome during drizzle suggested success on install day?", "a": ["Stones floated", "Water followed the swale as planned", "The basin cracked", "The ruler fell"], "ans": "B", "exp": ""}];
+
+const container = document.getElementById('questions');
+DATA.forEach((item, idx)=>{
+  const n = idx + 1;
+  const block = document.createElement('div');
+  block.className = 'q';
+  block.innerHTML = `
+    <h3>${n}. ${item.q}</h3>
+    <div class="opts">
+      ${['A','B','C','D'].map((k,i)=>{
+        const text = item.a[i];
+        const name = 'q'+n;
+        const id = name + '_' + k;
+        return `
+        <label for="${id}">
+          <input type="radio" name="${name}" id="${id}" value="${k}" />
+          <span>(${k}) ${text}</span>
+        </label>`
+      }).join('')}
+    </div>
+    <div id="fb_${n}" class="ans"></div>
+  `;
+  container.appendChild(block);
+});
+
+function grade(){
+  let score = 0;
+  DATA.forEach((item, idx)=>{
+    const n = idx + 1;
+    const picked = document.querySelector(`input[name='q${n}']:checked`);
+    const fb = document.getElementById('fb_'+n);
+    if(!picked){
+      fb.innerHTML = "<span class='bad'>Not answered</span>";
+      return;
+    }
+    if(picked.value === item.ans){
+      score++;
+      fb.innerHTML = "<span class='ok'>✔ Correct</span>";
+    }else{
+      fb.innerHTML = "<span class='bad'>✘ Incorrect</span>. Correct: " + item.ans;
+    }
+  });
+  document.getElementById('score').textContent = `Score: ${score} / ${DATA.length}`;
+}
+
+function resetAll(){
+  document.querySelectorAll("input[type='radio']").forEach(r=>r.checked=false);
+  document.getElementById('score').textContent = "";
+  DATA.forEach((_,i)=>{
+    const fb = document.getElementById('fb_'+(i+1));
+    fb.textContent = "";
+  });
+}
+
+const ansList = document.getElementById('answerList');
+DATA.forEach((item, idx)=>{
+  const li = document.createElement('li');
+  li.textContent = `${idx+1}. ${item.ans}`;
+  ansList.appendChild(li);
+});
+</script>
+</body>
+</html>
