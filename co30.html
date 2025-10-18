@@ -1,0 +1,135 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>11+ Comprehension — CO30</title>
+  <style>
+    :root{--bg:#f7fafc;--card:#ffffff;--ink:#1a202c;--muted:#4a5568;--accent:#2b6cb0;--ok:#2f855a;--bad:#c53030;}
+    html,body{margin:0;padding:0;background:var(--bg);color:var(--ink);font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,"Noto Sans",sans-serif;line-height:1.6}
+    .wrap{max-width:1000px;margin:24px auto;padding:0 16px}
+    header{display:flex;gap:12px;align-items:center;flex-wrap:wrap}
+    header h1{font-size:1.6rem;margin:.2rem 0}
+    header .tag{background:#ebf8ff;color:var(--accent);border:1px solid #bee3f8;padding:2px 8px;border-radius:999px;font-size:.85rem}
+    .card{background:var(--card);border:1px solid #e2e8f0;border-radius:16px;box-shadow:0 4px 16px rgba(0,0,0,.06);padding:20px;margin:16px 0}
+    .story{font-size:1.05rem;white-space:pre-wrap}
+    .q{margin:14px 0}
+    .q h3{margin:0 0 6px 0;font-size:1.02rem}
+    .opts{display:grid;grid-template-columns:1fr;gap:6px}
+    @media (min-width:700px){.opts{grid-template-columns:1fr 1fr}}
+    label{display:flex;gap:8px;align-items:flex-start;border:1px solid #e2e8f0;border-radius:12px;padding:8px 10px;background:#fff;cursor:pointer}
+    .actions{display:flex;gap:8px;flex-wrap:wrap;align-items:center}
+    button{border:none;border-radius:999px;padding:10px 14px;cursor:pointer}
+    .primary{background:var(--accent);color:#fff}
+    .ghost{background:#edf2f7;color:var(--ink)}
+    .ok{color:var(--ok)}
+    .bad{color:var(--bad)}
+    .score{font-size:1.2rem;font-weight:700}
+    .footer{color:var(--muted);font-size:.9rem}
+    .ans{font-size:.95rem;color:var(--muted)}
+  </style>
+</head>
+<body>
+  <div class="wrap">
+    <header>
+      <h1>11+ Comprehension (CO30)</h1>
+      <span class="tag">Time allowed: 30 minutes</span>
+    </header>
+
+    <div class="card">
+      <h2>Passage</h2>
+      <p class="story" id="story">
+
+The clock in the old town hall had missed so many minutes that people used it as a joke. “Meet you when the clock decides,” they said. Our history club asked the council if we could research a restoration plan. The answer was cautious: we could document, not touch. We climbed the narrow stairs with a caretaker and found a dusty room with a cast-iron frame, two big weights on chains, and a pendulum the size of a canoe paddle. A pigeon had nested in one corner; a spider web joined the hour hand’s gear to a beam.
+
+We drew diagrams and wrote down what moved what. Winding the weights powered the gears; the escapement ticked the pendulum; rods ran to the faces. The caretaker said a specialist visited five years ago and oiled parts, but the clock still drifted and sometimes stopped. We logged temperature and drafts near the pendulum and noticed a cracked window that let wind rock the rod on stormy days. We timed the swing with a stopwatch: it wandered faster after gusts and slower as dust clogged the crutch—a forked arm that nudged the pendulum each tick.
+
+We interviewed shopkeepers who remembered when the chime matched the school bell, and we read a manual for a similar mechanism online. The manual warned against random oiling: too much oil attracts grit, making things worse. It recommended cleaning, replacing bushings, and sealing drafts near the pendulum. Our report suggested three steps: fit a clear cover around the pendulum path to calm air, repair the cracked window, and hire a clock restorer to inspect worn pivots. We also proposed a winding rota so the weights would never run low on busy weeks.
+
+At the council meeting, we showed a short video of the clock stopping as wind pushed through the gap. The councillors agreed to the window repair immediately and to seek quotes for the rest. The caretaker smiled at the rota suggestion and pinned a card by the stairs with initials for Monday and Thursday. A month later, the clock kept time well enough that jokes changed. “Meet you at the clock,” people said, and they did.
+</p>
+    </div>
+
+    <div class="card">
+      <h2>Multiple-Choice Questions (Single Answer)</h2>
+      <div id="questions"></div>
+      <div class="actions">
+        <button class="primary" onclick="grade()">Check answers & score</button>
+        <button class="ghost" onclick="resetAll()">Reset</button>
+        <span id="score" class="score"></span>
+      </div>
+      <details>
+        <summary>Answer key (view after checking)</summary>
+        <ol id="answerList" class="ans"></ol>
+      </details>
+    </div>
+
+    <div class="footer">© 2025 Miss K | For classroom practice only.</div>
+  </div>
+
+<script>
+const DATA = [{"q": "What was wrong with the town hall clock?", "a": ["Too loud", "It lost time and sometimes stopped", "It rang hourly", "It was digital"], "ans": "B", "exp": ""}, {"q": "What permission did the council give the history club?", "a": ["Full repairs", "Document only, don’t touch", "Paint it", "Sell it"], "ans": "B", "exp": ""}, {"q": "What powered the gears?", "a": ["Batteries", "Weights on chains", "Solar", "Springs only"], "ans": "B", "exp": ""}, {"q": "What device regulated the tick?", "a": ["Computer", "Pendulum with escapement", "Water", "Magnet"], "ans": "B", "exp": ""}, {"q": "What problem did a cracked window cause?", "a": ["More light", "Drafts that rocked the pendulum rod", "Noise", "Rainbows"], "ans": "B", "exp": ""}, {"q": "What is the 'crutch'?", "a": ["Clock room", "Forked arm nudging pendulum each tick", "Window latch", "Bell rope"], "ans": "B", "exp": ""}, {"q": "What did the manual warn about?", "a": ["Never oil", "Random oiling attracts grit and worsens wear", "Use glue", "Open windows"], "ans": "B", "exp": ""}, {"q": "What three steps did the report recommend?", "a": ["Paint gears, add lights, sell clock", "Cover pendulum path, fix window, hire restorer for worn parts", "New tower, remove weights, silence bell", "Add Wi‑Fi"], "ans": "B", "exp": ""}, {"q": "What was proposed to prevent weights running low?", "a": ["Ignore them", "Winding rota with initials", "Automatic motor", "Shorter chains"], "ans": "B", "exp": ""}, {"q": "What evidence convinced councillors?", "a": ["Rumours", "Video showing wind stopping clock", "Cartoons", "Memes"], "ans": "B", "exp": ""}, {"q": "What changed after a month?", "a": ["Clock removed", "Clock kept time well enough; jokes changed", "No change", "Tower closed"], "ans": "B", "exp": ""}, {"q": "What powered the faces?", "a": ["Batteries", "Rods from mechanism", "Magic", "Cables only"], "ans": "B", "exp": ""}, {"q": "Who smiled at the rota?", "a": ["Mayor", "Caretaker", "Shopkeeper", "Teacher"], "ans": "B", "exp": ""}, {"q": "Where did a pigeon nest?", "a": ["In the pendulum", "In a corner of the clock room", "On the face", "On the stairs"], "ans": "B", "exp": ""}, {"q": "What did interviews add?", "a": ["Nothing", "History of when chime matched school bell", "Price of oil", "Names of pigeons"], "ans": "B", "exp": ""}, {"q": "What is the central idea?", "a": ["Clocks fix themselves", "Careful observation and expert help can restore public timepieces", "Only jokes matter", "Digital is best"], "ans": "B", "exp": ""}, {"q": "Why not touch the mechanism?", "a": ["Too dusty", "Safety and preservation; students not trained", "Too bright", "Boring"], "ans": "B", "exp": ""}, {"q": "What effect did drafts have on timing?", "a": ["Speeded or slowed swing leading to drift", "No effect", "Made it louder", "Changed colour"], "ans": "A", "exp": ""}, {"q": "Which is an inference rather than fact?", "a": ["Window was cracked", "Pendulum cover would calm air and improve stability", "Weights on chains power gears", "Caretaker pinned rota card"], "ans": "B", "exp": ""}, {"q": "What tool measured swing?", "a": ["Ruler", "Stopwatch", "Compass", "Thermometer"], "ans": "B", "exp": ""}, {"q": "What online source helped?", "a": ["A manual for similar mechanism", "A movie", "A game", "A blog post about pigeons"], "ans": "A", "exp": ""}, {"q": "What card was pinned by stairs?", "a": ["Jokes", "Rota with initials for winding days", "Fire drill", "Menu"], "ans": "B", "exp": ""}, {"q": "What showed dust effects?", "a": ["Crutch clogged slowed ticks", "Shiny gears", "Rainbows", "New paint"], "ans": "B", "exp": ""}, {"q": "What task would a restorer do?", "a": ["Sell oil", "Inspect worn pivots/bushings and clean", "Play music", "Paint clock"], "ans": "B", "exp": ""}, {"q": "What phrase shows change in public attitude?", "a": ["Meet you when the clock decides", "Meet you at the clock", "Never meet", "Clock joke"], "ans": "B", "exp": ""}, {"q": "Why include temperature logs?", "a": ["Fashion", "To track conditions that might affect timing", "To decorate charts", "To plan parties"], "ans": "B", "exp": ""}, {"q": "What is an escapement?", "a": ["A door", "Mechanism that lets gears advance in controlled ticks", "A rope", "A window"], "ans": "B", "exp": ""}, {"q": "What safety issue did the stairs present?", "a": ["None", "Narrow climb needing caretaker escort", "Too short", "Too bright"], "ans": "B", "exp": ""}, {"q": "Why add a clear cover rather than solid box?", "a": ["To see motion while calming air", "To hide it", "To add weight", "To heat it"], "ans": "B", "exp": ""}, {"q": "Which title fits best?", "a": ["When Minutes Matter Again: Restoring the Town Clock", "Pigeon Problems", "Windy Windows", "Sell the Clock"], "ans": "A", "exp": ""}, {"q": "What did a spider web connect?", "a": ["Bell to door", "Hour hand gear to beam", "Weights to pendulum", "Nothing"], "ans": "B", "exp": ""}, {"q": "What does 'document, not touch' imply?", "a": ["Take photos, notes, and measurements only", "Repair quickly", "Paint it blue", "Wind it"], "ans": "A", "exp": ""}, {"q": "Who remembered the chime timing?", "a": ["Council", "Shopkeepers", "Pigeons", "Tourists"], "ans": "B", "exp": ""}, {"q": "What immediate action did council take?", "a": ["Hired restorer", "Fixed cracked window", "Removed bell", "Installed Wi‑Fi"], "ans": "B", "exp": ""}, {"q": "What habit does the story encourage?", "a": ["Guess and joke", "Observe carefully, propose practical steps, involve experts", "Ignore drafts", "Oil everything"], "ans": "B", "exp": ""}];
+
+const container = document.getElementById('questions');
+DATA.forEach((item, idx)=>{
+  const n = idx + 1;
+  const block = document.createElement('div');
+  block.className = 'q';
+  block.innerHTML = `
+    <h3>${n}. ${item.q}</h3>
+    <div class="opts">
+      ${['A','B','C','D'].map((k,i)=>{
+        const text = item.a[i];
+        const name = 'q'+n;
+        const id = name + '_' + k;
+        return `
+        <label for="${id}">
+          <input type="radio" name="${name}" id="${id}" value="${k}" />
+          <span>(${k}) ${text}</span>
+        </label>`
+      }).join('')}
+    </div>
+    <div id="fb_${n}" class="ans"></div>
+  `;
+  container.appendChild(block);
+});
+
+function grade(){
+  let score = 0;
+  DATA.forEach((item, idx)=>{
+    const n = idx + 1;
+    const picked = document.querySelector(`input[name='q${n}']:checked`);
+    const fb = document.getElementById('fb_'+n);
+    if(!picked){
+      fb.innerHTML = "<span class='bad'>Not answered</span>";
+      return;
+    }
+    if(picked.value === item.ans){
+      score++;
+      fb.innerHTML = "<span class='ok'>✔ Correct</span>";
+    }else{
+      fb.innerHTML = "<span class='bad'>✘ Incorrect</span>. Correct: " + item.ans;
+    }
+  });
+  document.getElementById('score').textContent = `Score: ${score} / ${DATA.length}`;
+}
+
+function resetAll(){
+  document.querySelectorAll("input[type='radio']").forEach(r=>r.checked=false);
+  document.getElementById('score').textContent = "";
+  DATA.forEach((_,i)=>{
+    const fb = document.getElementById('fb_'+(i+1));
+    fb.textContent = "";
+  });
+}
+
+const ansList = document.getElementById('answerList');
+DATA.forEach((item, idx)=>{
+  const li = document.createElement('li');
+  li.textContent = `${idx+1}. ${item.ans}`;
+  ansList.appendChild(li);
+});
+</script>
+</body>
+</html>

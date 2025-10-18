@@ -1,0 +1,135 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>11+ Comprehension — CO29</title>
+  <style>
+    :root{--bg:#f7fafc;--card:#ffffff;--ink:#1a202c;--muted:#4a5568;--accent:#2b6cb0;--ok:#2f855a;--bad:#c53030;}
+    html,body{margin:0;padding:0;background:var(--bg);color:var(--ink);font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,"Noto Sans",sans-serif;line-height:1.6}
+    .wrap{max-width:1000px;margin:24px auto;padding:0 16px}
+    header{display:flex;gap:12px;align-items:center;flex-wrap:wrap}
+    header h1{font-size:1.6rem;margin:.2rem 0}
+    header .tag{background:#ebf8ff;color:var(--accent);border:1px solid #bee3f8;padding:2px 8px;border-radius:999px;font-size:.85rem}
+    .card{background:var(--card);border:1px solid #e2e8f0;border-radius:16px;box-shadow:0 4px 16px rgba(0,0,0,.06);padding:20px;margin:16px 0}
+    .story{font-size:1.05rem;white-space:pre-wrap}
+    .q{margin:14px 0}
+    .q h3{margin:0 0 6px 0;font-size:1.02rem}
+    .opts{display:grid;grid-template-columns:1fr;gap:6px}
+    @media (min-width:700px){.opts{grid-template-columns:1fr 1fr}}
+    label{display:flex;gap:8px;align-items:flex-start;border:1px solid #e2e8f0;border-radius:12px;padding:8px 10px;background:#fff;cursor:pointer}
+    .actions{display:flex;gap:8px;flex-wrap:wrap;align-items:center}
+    button{border:none;border-radius:999px;padding:10px 14px;cursor:pointer}
+    .primary{background:var(--accent);color:#fff}
+    .ghost{background:#edf2f7;color:var(--ink)}
+    .ok{color:var(--ok)}
+    .bad{color:var(--bad)}
+    .score{font-size:1.2rem;font-weight:700}
+    .footer{color:var(--muted);font-size:.9rem}
+    .ans{font-size:.95rem;color:var(--muted)}
+  </style>
+</head>
+<body>
+  <div class="wrap">
+    <header>
+      <h1>11+ Comprehension (CO29)</h1>
+      <span class="tag">Time allowed: 30 minutes</span>
+    </header>
+
+    <div class="card">
+      <h2>Passage</h2>
+      <p class="story" id="story">
+
+We wanted to count birds around the playing fields, but a drone would scare them and the council said no. So we made a “Sound Map”: at twelve marked points, students recorded one minute of audio on their phones at the same time each morning for two weeks. We clapped twice at the start of each clip so we could align recordings later, then stood still and faced the wind so our jackets wouldn’t scrape the microphones.
+
+Back in class, we labelled each clip with a simple code—A for blackbird, C for crow, R for robin, U for unknown—and kept a tally by location. We cross-checked by playing ambiguous clips to the music teacher and a local bird group volunteer. We didn’t try to identify every trill. The rule was “Be confident or say U.” Our map showed clusters: blackbirds preferred the hedges, robins favoured the fence by the allotments, and crows owned the tall floodlight poles.
+
+Rain made some days messy. We marked those squares grey and ignored them in totals. A delivery truck once idled by the gym and drowned out a minute at point 7, so we noted “noise event” and rescheduled an extra sample the next morning. By the end, our poster displayed a grid with small symbols for each species and a bar chart of counts per point. We suggested leaving the hedges untrimmed until fledglings had flown and moving the bins away from the floodlights so the crows would visit the field edge instead of perching over the walkway.
+
+At assembly, we played a rapid collage of calls so listeners could hear the difference between robin ticks and blackbird phrases. The head teacher asked if the project could repeat in winter. We said yes—and added that anyone could join by contributing one minute from the same points at the agreed time. The map would thicken with seasons, drawn not by drones but by ears.
+</p>
+    </div>
+
+    <div class="card">
+      <h2>Multiple-Choice Questions (Single Answer)</h2>
+      <div id="questions"></div>
+      <div class="actions">
+        <button class="primary" onclick="grade()">Check answers & score</button>
+        <button class="ghost" onclick="resetAll()">Reset</button>
+        <span id="score" class="score"></span>
+      </div>
+      <details>
+        <summary>Answer key (view after checking)</summary>
+        <ol id="answerList" class="ans"></ol>
+      </details>
+    </div>
+
+    <div class="footer">© 2025 Miss K | For classroom practice only.</div>
+  </div>
+
+<script>
+const DATA = [{"q": "Why didn’t the club use a drone?", "a": ["No battery", "It would scare birds and council said no", "Too expensive", "No pilot"], "ans": "B", "exp": ""}, {"q": "What is a 'Sound Map'?", "a": ["A drone flight plan", "Grid of locations with one-minute audio samples", "A painting", "GPS track"], "ans": "B", "exp": ""}, {"q": "How many points were recorded?", "a": ["5", "12", "20", "2"], "ans": "B", "exp": ""}, {"q": "What did two claps at the start help with?", "a": ["Scaring birds", "Aligning recordings later", "Starting stopwatch", "Warming hands"], "ans": "B", "exp": ""}, {"q": "What coding was used for species?", "a": ["Full names only", "Letters like A, C, R, U", "Numbers only", "Colours"], "ans": "B", "exp": ""}, {"q": "What rule guided identification?", "a": ["Guess everything", "Be confident or mark unknown (U)", "Only blackbirds", "Only crows"], "ans": "B", "exp": ""}, {"q": "Who helped cross-check?", "a": ["Maths teacher", "Music teacher and bird group volunteer", "Police", "Parents only"], "ans": "B", "exp": ""}, {"q": "Where did blackbirds cluster?", "a": ["Floodlight poles", "Hedges", "Car park", "Gym"], "ans": "B", "exp": ""}, {"q": "Which days were ignored in totals?", "a": ["Sunny", "Rain-noisy days marked grey", "Weekends", "All"], "ans": "B", "exp": ""}, {"q": "What happened at point 7?", "a": ["Silence", "Truck idled; noise event; extra sample next morning", "Concert", "Wind stopped"], "ans": "B", "exp": ""}, {"q": "How were results displayed?", "a": ["Only text", "Grid map with symbols and a bar chart", "3D model", "None"], "ans": "B", "exp": ""}, {"q": "What changes were suggested?", "a": ["Cut hedges", "Leave hedges until fledglings fly; move bins from floodlights", "Add more trucks", "Play loud music"], "ans": "B", "exp": ""}, {"q": "What did assembly include?", "a": ["Silence", "Collage of calls to hear differences", "Movie", "Dance"], "ans": "B", "exp": ""}, {"q": "When might the project repeat?", "a": ["Never", "Winter", "Only summer", "Night"], "ans": "B", "exp": ""}, {"q": "Who could join future recordings?", "a": ["Only club", "Anyone recording one minute at same points/time", "Teachers only", "Parents only"], "ans": "B", "exp": ""}, {"q": "What is the central idea?", "a": ["Drones are best", "Careful, low-impact audio sampling can map bird presence", "Birds are random", "Counting is impossible"], "ans": "B", "exp": ""}, {"q": "Why face the wind?", "a": ["To look cool", "Reduce jacket noise on microphones", "For warmth", "For selfies"], "ans": "B", "exp": ""}, {"q": "What does 'U' stand for?", "a": ["Umbrella", "Unknown", "Unlucky", "Under"], "ans": "B", "exp": ""}, {"q": "Which species liked floodlight poles?", "a": ["Robins", "Crows", "Blackbirds", "None"], "ans": "B", "exp": ""}, {"q": "Which is an inference rather than fact?", "a": ["Hedges untrimmed help fledglings", "Hedges preferred by blackbirds (observed)", "12 points sampled", "Noise event at point 7"], "ans": "A", "exp": ""}, {"q": "Why ignore rain-noisy days?", "a": ["Too wet to stand", "Audio was unreliable for IDs", "Birds absent", "Phones broke"], "ans": "B", "exp": ""}, {"q": "What did moving bins hope to change?", "a": ["Bin colour", "Where crows perched and fed", "Student routes", "Weather"], "ans": "B", "exp": ""}, {"q": "What symbol set was used on grid?", "a": ["Numbers", "Small species symbols", "Traffic signs", "Emojis only"], "ans": "B", "exp": ""}, {"q": "What habit does the study teach?", "a": ["Guessing", "Log conditions, mark noise, resample", "Shout at birds", "Use drones secretly"], "ans": "B", "exp": ""}, {"q": "Why cross-check with experts?", "a": ["For marks", "To improve accuracy on tricky calls", "To advertise", "To get funding"], "ans": "B", "exp": ""}, {"q": "What time rule applied?", "a": ["Any time", "Same time each morning", "Evening only", "Lunch only"], "ans": "B", "exp": ""}, {"q": "How long was each clip?", "a": ["10 minutes", "1 minute", "5 seconds", "An hour"], "ans": "B", "exp": ""}, {"q": "What equipment was used?", "a": ["Studio mics", "Phones", "Drums", "Drones"], "ans": "B", "exp": ""}, {"q": "Which location did robins favour?", "a": ["Fence by allotments", "Car park", "Gym", "River"], "ans": "A", "exp": ""}, {"q": "What did the poster include besides grid?", "a": ["Bar chart of counts per point", "Nothing", "A novel", "A play"], "ans": "A", "exp": ""}, {"q": "What safety/ethics benefit comes from no drones?", "a": ["Less noise and disturbance", "More speed", "Cool photos", "Higher cost"], "ans": "A", "exp": ""}, {"q": "What weather made data messy?", "a": ["Fog", "Rain", "Snow", "Heat"], "ans": "B", "exp": ""}, {"q": "How was alignment ensured?", "a": ["Two claps at start", "Whistle", "Countdown", "Random"], "ans": "A", "exp": ""}, {"q": "What seasonal extension was proposed?", "a": ["Never repeat", "Repeat in winter to compare", "Only spring", "Only on weekends"], "ans": "B", "exp": ""}, {"q": "Which title fits best?", "a": ["Drones Grounded", "Birdsong by the Grid: A Sound Map", "Gym Class", "Truck Trouble"], "ans": "B", "exp": ""}];
+
+const container = document.getElementById('questions');
+DATA.forEach((item, idx)=>{
+  const n = idx + 1;
+  const block = document.createElement('div');
+  block.className = 'q';
+  block.innerHTML = `
+    <h3>${n}. ${item.q}</h3>
+    <div class="opts">
+      ${['A','B','C','D'].map((k,i)=>{
+        const text = item.a[i];
+        const name = 'q'+n;
+        const id = name + '_' + k;
+        return `
+        <label for="${id}">
+          <input type="radio" name="${name}" id="${id}" value="${k}" />
+          <span>(${k}) ${text}</span>
+        </label>`
+      }).join('')}
+    </div>
+    <div id="fb_${n}" class="ans"></div>
+  `;
+  container.appendChild(block);
+});
+
+function grade(){
+  let score = 0;
+  DATA.forEach((item, idx)=>{
+    const n = idx + 1;
+    const picked = document.querySelector(`input[name='q${n}']:checked`);
+    const fb = document.getElementById('fb_'+n);
+    if(!picked){
+      fb.innerHTML = "<span class='bad'>Not answered</span>";
+      return;
+    }
+    if(picked.value === item.ans){
+      score++;
+      fb.innerHTML = "<span class='ok'>✔ Correct</span>";
+    }else{
+      fb.innerHTML = "<span class='bad'>✘ Incorrect</span>. Correct: " + item.ans;
+    }
+  });
+  document.getElementById('score').textContent = `Score: ${score} / ${DATA.length}`;
+}
+
+function resetAll(){
+  document.querySelectorAll("input[type='radio']").forEach(r=>r.checked=false);
+  document.getElementById('score').textContent = "";
+  DATA.forEach((_,i)=>{
+    const fb = document.getElementById('fb_'+(i+1));
+    fb.textContent = "";
+  });
+}
+
+const ansList = document.getElementById('answerList');
+DATA.forEach((item, idx)=>{
+  const li = document.createElement('li');
+  li.textContent = `${idx+1}. ${item.ans}`;
+  ansList.appendChild(li);
+});
+</script>
+</body>
+</html>
