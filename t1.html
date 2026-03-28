@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Advanced Comprehension Test</title>
+<style>
+body { font-family: Arial; background:#f3f0ff; }
+.container { max-width:900px; margin:auto; background:white; padding:20px; border-radius:10px; }
+.passage { background:#f6f4ff; padding:15px; border-left:5px solid #5e35b1; white-space:pre-line; }
+button { background:#5e35b1; color:white; padding:10px; margin:5px; border:none; cursor:pointer; }
+button:hover { opacity:0.9; }
+.correct {color:green;}
+.wrong {color:red;}
+label { display:block; margin:6px 0; }
+</style>
+</head>
+<body>
+
+<div class="container">
+<h1>Advanced Comprehension Test</h1>
+<div id="timer"></div>
+<div id="passage" class="passage"></div>
+<div id="q"></div>
+<button onclick="prev()">Previous</button>
+<button onclick="next()">Next</button>
+<button onclick="submitTest()">Submit</button>
+<div id="score"></div>
+<div id="review"></div>
+</div>
+
+<script>
+const data = [
+
+{
+title: "Passage 1",
+text: `Far beyond the reach of urban influence, an isolated research facility stood on the edge of a vast polar ice sheet. The environment was unforgiving—temperatures plunged unpredictably, and the silence was often interrupted only by the distant cracking of shifting ice. Yet within this stark landscape, a team of scientists pursued answers to questions that could reshape humanity’s understanding of climate systems.
+
+Their work required precision, patience, and an unusual tolerance for monotony. Every measurement taken—whether atmospheric pressure, ice density, or temperature fluctuation—was meticulously recorded. Though the data appeared routine, the researchers understood that even the slightest deviation could signal a profound environmental shift.
+
+One evening, a series of anomalies began to emerge across multiple instruments. Unlike previous irregularities, these readings were consistent and sustained. The team initially approached the situation with skepticism, suspecting calibration errors. However, repeated verification eliminated that possibility.
+
+As the implications became clearer, a sense of urgency replaced doubt. The data suggested that a previously unknown process might be accelerating ice melt beneath the surface. If confirmed, such a development could have far-reaching consequences for global sea levels.
+
+Despite physical exhaustion and the psychological strain of isolation, the researchers intensified their efforts. Discussions grew more frequent, hypotheses more complex, and the atmosphere within the station increasingly tense.
+
+Ultimately, their findings were transmitted to scientific institutions worldwide. While further investigation would be required, the team had contributed a crucial piece to a much larger puzzle. Their experience underscored not only the unpredictability of natural systems but also the importance of vigilance, collaboration, and intellectual rigor in scientific discovery.`,
+
+questions: [
+{q:"Which best describes the primary purpose of the research team?",options:["To survive extreme conditions","To monitor wildlife","To investigate climate-related phenomena","To develop new technology"],answer:2},
+{q:"The phrase 'unusual tolerance for monotony' implies that the work was:",options:["Dangerous","Repetitive","Creative","Unpredictable"],answer:1},
+{q:"Why were small data changes significant?",options:["They improved efficiency","They indicated possible major shifts","They reduced workload","They simplified analysis"],answer:1},
+{q:"What distinguishes the anomalies from earlier irregularities?",options:["They were ignored","They were inconsistent","They persisted and aligned across instruments","They occurred only once"],answer:2},
+{q:"What was the team's initial interpretation of the anomalies?",options:["Breakthrough discovery","Instrument malfunction","Environmental disaster","Human error"],answer:1},
+{q:"What does 'eliminated that possibility' refer to?",options:["Human mistake","Data loss","Calibration error","Communication failure"],answer:2},
+{q:"What is implied about the newly observed process?",options:["It is harmless","It slows ice melting","It may worsen global conditions","It is already understood"],answer:2},
+{q:"How did the team’s emotional state evolve?",options:["Confidence to boredom","Curiosity to fear","Skepticism to urgency","Calm to excitement"],answer:2},
+{q:"What challenge did isolation create?",options:["Lack of data","Mental strain","Technical failure","Communication loss"],answer:1},
+{q:"What does 'intellectual rigor' most nearly mean?",options:["Physical strength","Careful reasoning","Fast thinking","Creative guessing"],answer:1},
+{q:"Why is the setting important to the passage?",options:["It adds danger only","It emphasizes scientific importance","It explains equipment design","It shows tourism"],answer:1},
+{q:"Which best describes the tone of the passage?",options:["Humorous","Analytical","Casual","Critical"],answer:1},
+{q:"What role does teamwork play?",options:["Minor support","Central to success","Unnecessary","Negative"],answer:1},
+{q:"What is suggested about the future of the findings?",options:["They are final","They need further validation","They will be ignored","They are incorrect"],answer:1},
+{q:"What does 'profound environmental shift' suggest?",options:["Small change","Temporary issue","Major transformation","Predictable cycle"],answer:2},
+{q:"Why is verification mentioned?",options:["To show doubt","To confirm reliability","To delay work","To simplify tasks"],answer:1},
+{q:"What does the passage imply about climate systems?",options:["They are simple","They are predictable","They are complex and uncertain","They are unimportant"],answer:2},
+{q:"Which word best describes the team's approach?",options:["Careless","Systematic","Random","Impulsive"],answer:1},
+{q:"What is the significance of sharing findings globally?",options:["Recognition","Collaboration and impact","Competition","Funding"],answer:1},
+{q:"What is the central theme?",options:["Survival","Discovery under pressure","Technology advancement","Isolation"],answer:1}
+]
+},
+
+{
+title: "Passage 2",
+text: `In a rapidly modernising coastal region, economic growth had long been prioritised over environmental sustainability. Expanding industries brought prosperity, but they also introduced subtle yet cumulative damage to marine ecosystems.
+
+Local fishermen began noticing changes that were difficult to quantify but impossible to ignore. Fish populations fluctuated unpredictably, and certain species seemed to vanish altogether. While official reports remained inconclusive, lived experience told a different story.
+
+Tensions arose between economic stakeholders and environmental advocates. Some argued that restricting industrial activity would hinder development, while others warned that neglecting ecological balance would result in irreversible consequences.
+
+Amid this debate, a coalition of younger residents initiated grassroots efforts. Their approach was not confrontational but educational. They organised awareness campaigns, collaborated with scientists, and promoted sustainable practices.
+
+Gradually, attitudes began to shift. Policies were adjusted, and industries were encouraged—sometimes compelled—to adopt more responsible methods. Though progress was slow, measurable improvements emerged over time.
+
+The region’s transformation highlighted a critical insight: long-term prosperity cannot exist without environmental stewardship. The balance between progress and preservation, once overlooked, became the foundation for a more sustainable future.`,
+
+questions: [
+{q:"What is the central conflict in the passage?",options:["Tradition vs modernity","Economy vs environment","City vs rural","People vs government"],answer:1},
+{q:"What does 'cumulative damage' imply?",options:["Instant destruction","Gradual harm over time","Visible damage","Reversible effects"],answer:1},
+{q:"Why were fishermen concerned?",options:["Income loss only","Unpredictable ecosystem changes","Bad weather","Government rules"],answer:1},
+{q:"What is suggested about official reports?",options:["They were accurate","They were incomplete","They were detailed","They were ignored"],answer:1},
+{q:"What caused tension?",options:["Lack of jobs","Conflicting priorities","Poor weather","Tourism"],answer:1},
+{q:"What strategy did young residents use?",options:["Protests","Violence","Education","Ignoring issue"],answer:2},
+{q:"What does 'grassroots' imply?",options:["Government-led","Community-driven","Corporate","International"],answer:1},
+{q:"What change occurred over time?",options:["Economic decline","Policy adjustment","Population loss","Industry shutdown"],answer:1},
+{q:"What does 'stewardship' mean here?",options:["Ownership","Care and responsibility","Control","Profit"],answer:1},
+{q:"What is the author's perspective?",options:["Neutral","Supportive of balance","Against development","Against youth"],answer:1},
+{q:"Why is balance important?",options:["To reduce work","To ensure sustainability","To increase speed","To attract tourists"],answer:1},
+{q:"What role did education play?",options:["Minor","Central","None","Negative"],answer:1},
+{q:"What does 'irreversible consequences' suggest?",options:["Temporary damage","Permanent harm","Small effects","Unknown results"],answer:1},
+{q:"How did industries respond?",options:["Ignored change","Adapted slowly","Closed immediately","Expanded"],answer:1},
+{q:"What is implied about early priorities?",options:["Balanced","Environment-focused","Economy-focused","Community-focused"],answer:2},
+{q:"What type of writing is this?",options:["Narrative","Argumentative","Descriptive","Instructional"],answer:1},
+{q:"What is the long-term outcome?",options:["Failure","Growth without limits","Sustainable progress","Conflict"],answer:2},
+{q:"What influenced change most?",options:["Government","Youth initiatives","Weather","Tourism"],answer:1},
+{q:"What does 'subtle damage' imply?",options:["Invisible but real","Fake","Sudden","Obvious"],answer:0},
+{q:"What is the key message?",options:["Avoid growth","Balance is essential","Ignore environment","Focus on profit"],answer:1}
+]
+}
+
+];
+
+let p = 0, q = 0, answers = [];
+let time = 1800;
+
+function timer(){
+  let m = Math.floor(time / 60);
+  let s = time % 60;
+  document.getElementById("timer").innerHTML = "<h3>Time: " + m + ":" + String(s).padStart(2,'0') + "</h3>";
+  if(time > 0){
+    time--;
+    setTimeout(timer, 1000);
+  } else {
+    submitTest();
+  }
+}
+
+function load(){
+  document.getElementById("passage").innerHTML = "<h2>" + data[p].title + "</h2>" + data[p].text;
+  show();
+}
+
+function show(){
+  let item = data[p].questions[q];
+  let html = "<p><strong>" + item.q + "</strong></p>";
+  item.options.forEach((opt, i) => {
+    const checked = answers[p*20+q] === i ? "checked" : "";
+    html += "<label><input type='radio' name='q' onclick='save(" + i + ")' " + checked + "> " + opt + "</label>";
+  });
+  html += "<p>Question " + (p*20 + q + 1) + " of 40</p>";
+  document.getElementById("q").innerHTML = html;
+}
+
+function save(c){
+  answers[p*20 + q] = c;
+}
+
+function next(){
+  if(q < 19) q++;
+  else if(p < 1){ p++; q = 0; load(); return; }
+  show();
+}
+
+function prev(){
+  if(q > 0) q--;
+  else if(p > 0){ p--; q = 19; load(); return; }
+  show();
+}
+
+function submitTest(){
+  let score = 0, review = "";
+  data.forEach((pass, pi) => {
+    pass.questions.forEach((qq, qi) => {
+      let idx = pi*20 + qi;
+      let user = answers[idx];
+      if(user === qq.answer) score++;
+      review += "<p>" + qq.q + "<br>";
+      review += "Your: <span class='" + (user===qq.answer ? "correct" : "wrong") + "'>" + (qq.options[user] || "None") + "</span><br>";
+      review += "Correct: <span class='correct'>" + qq.options[qq.answer] + "</span></p>";
+    });
+  });
+  document.getElementById("score").innerHTML = "<h2>Score: " + score + "/40</h2>";
+  document.getElementById("review").innerHTML = review;
+}
+
+timer();
+load();
+</script>
+</body>
+</html>
