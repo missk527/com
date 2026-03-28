@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Comprehension Test (Final Fixed)</title>
+<style>
+body { font-family: Arial; background:#e6f0ff; }
+.container { max-width:900px; margin:auto; background:white; padding:20px; border-radius:10px; }
+.passage { background:#f0f6ff; padding:15px; border-left:5px solid #004080; white-space:pre-line; }
+button { background:#004080; color:white; padding:10px; margin:5px; border:none; cursor:pointer; }
+button:hover { opacity:0.9; }
+.correct {color:green;}
+.wrong {color:red;}
+label { display:block; margin:6px 0; }
+</style>
+</head>
+<body>
+
+<div class="container">
+<h1>Comprehension Test</h1>
+<div id="timer"></div>
+<div id="passage" class="passage"></div>
+<div id="q"></div>
+<button onclick="prev()">Previous</button>
+<button onclick="next()">Next</button>
+<button onclick="submitTest()">Submit</button>
+<div id="score"></div>
+<div id="review"></div>
+</div>
+
+<script>
+const data = [
+
+{
+title: "Passage 1",
+text: `Deep beneath a thick jungle canopy lay the ruins of an ancient city that had been forgotten for centuries. The trees grew so closely together that sunlight barely reached the forest floor.
+
+A group of students joined an experienced research team determined to uncover the truth. The journey was long and exhausting. They crossed rivers and pushed through thick vegetation.
+
+After several days, they discovered unusual stone patterns. As they cleared vines, they uncovered walls and pathways.
+
+Further exploration revealed staircases, statues, and open spaces. Although damaged, the discovery was valuable and showed the importance of teamwork and perseverance.`,
+
+questions: [
+{q:"What is the main idea?",options:["Failure","Technology","Danger","Discovery and perseverance"],answer:3},
+{q:"Where is the city?",options:["Desert","Jungle","Ocean","Mountain"],answer:1},
+{q:"Why was the journey hard?",options:["Cold","Heat and plants","Noise","Rain"],answer:1},
+{q:"What did they find first?",options:["Gold","Animals","Stone patterns","Water"],answer:2},
+{q:"How did they feel?",options:["Happy","Excited","Angry","Bored"],answer:1},
+{q:"What blocked sunlight?",options:["Clouds","Trees","Buildings","Fog"],answer:1},
+{q:"What did they uncover?",options:["Roads","Walls","Cars","Food"],answer:1},
+{q:"What does perseverance mean?",options:["Quit","Try again","Ignore","Hide"],answer:1},
+{q:"What helped them succeed?",options:["Luck","Teamwork","Money","Speed"],answer:1},
+{q:"What damaged the city?",options:["Fire","Time","People","Animals"],answer:1},
+{q:"What surrounded the city?",options:["Snow","Jungle","Sand","Water"],answer:1},
+{q:"What did they carry?",options:["Phones","Maps","Weapons","Nothing"],answer:1},
+{q:"What did they imagine?",options:["Future","Past life","War","Weather"],answer:1},
+{q:"Why is discovery important?",options:["Fun","History","Money","Games"],answer:1},
+{q:"What did they climb?",options:["Trees","Rocks","Houses","Cars"],answer:1},
+{q:"What was the atmosphere?",options:["Bright","Cold","Dark","Noisy"],answer:2},
+{q:"What did they clear?",options:["Sand","Vines","Water","Snow"],answer:1},
+{q:"What kind of place?",options:["New","Ancient","Modern","Small"],answer:1},
+{q:"What lesson?",options:["Quit","Work alone","Teamwork","Sleep"],answer:2},
+{q:"What was found?",options:["City","Village","River","Desert"],answer:0}
+]
+},
+
+{
+title: "Passage 2",
+text: `One day, all technology stopped working. No phones, computers, or internet.
+
+At first, people were frustrated. Shops could not operate, and work stopped.
+
+However, families started talking and spending time together. Children played outside.
+
+People noticed nature more. By the end, many realised happiness does not depend on technology.`,
+
+questions: [
+{q:"Main idea?",options:["Danger","Technology failure","Happiness beyond tech","Work"],answer:2},
+{q:"What stopped?",options:["Water","Technology","Food","Time"],answer:1},
+{q:"How did people feel first?",options:["Happy","Angry","Excited","Calm"],answer:1},
+{q:"What changed?",options:["Weather","Habits","Jobs","City"],answer:1},
+{q:"What did children do?",options:["Study","Play outside","Sleep","Work"],answer:1},
+{q:"What did people notice?",options:["Cars","Nature","Money","Noise"],answer:1},
+{q:"What lesson?",options:["Use tech","Avoid people","Value real life","Stay home"],answer:2},
+{q:"What returned?",options:["Power","Food","People","Time"],answer:0},
+{q:"What improved?",options:["Health","Relationships","Weather","Money"],answer:1},
+{q:"What stopped shops?",options:["Rain","No power","Crowds","Police"],answer:1},
+{q:"What was missing?",options:["Internet","Books","Food","Water"],answer:0},
+{q:"What did families do?",options:["Fight","Talk","Sleep","Work"],answer:1},
+{q:"What did adults lose?",options:["Money","Work ability","Friends","Time"],answer:1},
+{q:"What feeling at end?",options:["Sad","Happy","Angry","Confused"],answer:1},
+{q:"What is NOT needed?",options:["Happiness","Tech","Family","Nature"],answer:1},
+{q:"What did neighbours do?",options:["Ignore","Talk","Fight","Run"],answer:1},
+{q:"What slowed down?",options:["Everything","Nothing","Cars","Time"],answer:0},
+{q:"What did people realise?",options:["Tech is everything","Tech not essential","Tech is bad","Tech is slow"],answer:1},
+{q:"What came back?",options:["Internet","Nature","Silence","Dark"],answer:0},
+{q:"What remained?",options:["Old habits","New habits","Nothing","Anger"],answer:1}
+]
+},
+
+{
+title: "Passage 3",
+text: `An island far in the ocean is surrounded by danger. Few people visit it.
+
+Explorers arrived and found empty buildings and strange symbols.
+
+At night, glowing lights appeared. They could not explain them.
+
+They left with more questions. The island remains a mystery.`,
+
+questions: [
+{q:"Main idea?",options:["War","Mystery island","Technology","City"],answer:1},
+{q:"Where is island?",options:["Forest","Ocean","City","Desert"],answer:1},
+{q:"What surrounds it?",options:["Trees","Rocks","Sand","Snow"],answer:1},
+{q:"What did they find?",options:["People","Buildings","Cars","Animals"],answer:1},
+{q:"What appeared at night?",options:["Rain","Lights","Wind","Sound"],answer:1},
+{q:"What feeling?",options:["Clear","Confused","Happy","Calm"],answer:1},
+{q:"Why mystery?",options:["Unknown lights","Known facts","Maps","People"],answer:0},
+{q:"What did they leave with?",options:["Answers","Questions","Gold","Maps"],answer:1},
+{q:"What on walls?",options:["Paint","Symbols","Photos","Maps"],answer:1},
+{q:"What did NOT exist?",options:["Animals","Buildings","Symbols","Lights"],answer:0},
+{q:"Who visited?",options:["Farmers","Explorers","Teachers","Kids"],answer:1},
+{q:"Island is?",options:["Safe","Dangerous","Small","Bright"],answer:1},
+{q:"What time lights?",options:["Day","Night","Morning","Noon"],answer:1},
+{q:"What is theme?",options:["Mystery","War","Science","Food"],answer:0},
+{q:"What did they study?",options:["City","Island","People","Cars"],answer:1},
+{q:"What was empty?",options:["Buildings","Ocean","Sky","Forest"],answer:0},
+{q:"What is unexplained?",options:["Symbols","Lights","Ocean","Sand"],answer:1},
+{q:"What did they NOT find?",options:["Answers","Buildings","Lights","Symbols"],answer:0},
+{q:"What is island now?",options:["Clear","Known","Mystery","Gone"],answer:2},
+{q:"What did they do?",options:["Stay","Leave","Sleep","Hide"],answer:1}
+]
+}
+
+];
+
+let p = 0, q = 0, answers = [];
+let time = 1800;
+
+function timer(){
+  let m = Math.floor(time / 60);
+  let s = time % 60;
+  document.getElementById("timer").innerHTML = "<h3>Time: " + m + ":" + String(s).padStart(2,'0') + "</h3>";
+  if(time > 0){
+    time--;
+    setTimeout(timer, 1000);
+  } else {
+    submitTest();
+  }
+}
+
+function load(){
+  document.getElementById("passage").innerHTML = "<h2>" + data[p].title + "</h2>" + data[p].text;
+  show();
+}
+
+function show(){
+  let item = data[p].questions[q];
+  let html = "<p><strong>" + item.q + "</strong></p>";
+  item.options.forEach((opt, i) => {
+    const checked = answers[p*20+q] === i ? "checked" : "";
+    html += "<label><input type='radio' name='q' onclick='save(" + i + ")' " + checked + "> " + opt + "</label>";
+  });
+  html += "<p>Question " + (p*20 + q + 1) + " of 60</p>";
+  document.getElementById("q").innerHTML = html;
+}
+
+function save(c){
+  answers[p*20 + q] = c;
+}
+
+function next(){
+  if(q < 19) q++;
+  else if(p < 2){ p++; q = 0; load(); return; }
+  show();
+}
+
+function prev(){
+  if(q > 0) q--;
+  else if(p > 0){ p--; q = 19; load(); return; }
+  show();
+}
+
+function submitTest(){
+  let score = 0, review = "";
+  data.forEach((pass, pi) => {
+    pass.questions.forEach((qq, qi) => {
+      let idx = pi*20 + qi;
+      let user = answers[idx];
+      if(user === qq.answer) score++;
+      review += "<p>" + qq.q + "<br>";
+      review += "Your: <span class='" + (user===qq.answer ? "correct" : "wrong") + "'>" + (qq.options[user] || "None") + "</span><br>";
+      review += "Correct: <span class='correct'>" + qq.options[qq.answer] + "</span></p>";
+    });
+  });
+  document.getElementById("score").innerHTML = "<h2>Score: " + score + "/60</h2>";
+  document.getElementById("review").innerHTML = review;
+}
+
+timer();
+load();
+</script>
+</body>
+</html>
